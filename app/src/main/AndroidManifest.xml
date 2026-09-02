@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Permessi minimi per un Device Admin/Device Owner "puro":
+        - BIND_DEVICE_ADMIN non va dichiarato come <uses-permission>, è il
+          sistema che lo richiede a chi invoca il receiver (vedi sotto).
+        - Nessun altro uses-permission è necessario per diventare Device
+          Owner e usare Lock Task Mode: quei privilegi arrivano dallo stato
+          di Device Owner stesso, non da permessi runtime dichiarati qui.
+        - RECEIVE_BOOT_COMPLETED serve solo a BootCompletedReceiver, per
+          rientrare in kiosk mode automaticamente dopo un riavvio.
+        - INTERNET serve a SilentAppInstaller per scaricare gli APK delle
+          app gestite elencate in assets/managed_apps.json. L'installazione
+          silenziosa vera e propria (PackageInstaller) non richiede invece
+          alcun permesso runtime: è concessa automaticamente perché l'app
+          è Device Owner.
+        - QUERY_ALL_PACKAGES serve al launcher del kiosk (MainActivity) per
+          verificare quali app di launcher_apps.json risultano installate.
+          Da Android 11 la visibilità dei pacchetti installati è ristretta
+          di default (Package Visibility); un agente MDM Device Owner deve
+          poter vedere tutti i pacchetti per svolgere il suo compito. Non
+          essendo un'app distribuita su Play Store, non è soggetta alle
+          restrizioni che Google impone lì su questo permesso.
+    -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.MdmAgent"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:resizeableActivity="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".MdmDeviceAdminReceiver"
+            android:label="@string/app_name"
+            android:description="@string/device_admin_description"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_policies" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".InstallStatusReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.erdbau.mdmagent.ACTION_INSTALL_STATUS" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

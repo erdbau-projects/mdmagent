@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Policy di base dichiarate dal Device Admin. Come Device Owner l'app avrà
+    comunque accesso alle API "forti" (setLockTaskPackages, ecc.) a
+    prescindere da questa lista: qui dichiariamo solo le policy classiche
+    da Device Administrator, utili per gestione password/lock/wipe.
+-->
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-policies>
+        <limit-password />
+        <watch-login />
+        <reset-password />
+        <force-lock />
+        <wipe-data />
+        <expire-password />
+        <encrypted-storage />
+        <disable-camera />
+        <disable-keyguard-features />
+    </uses-policies>
+</device-admin>

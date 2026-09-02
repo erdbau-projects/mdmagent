@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MDM Agent</string>
+    <string name="device_admin_description">Consente la gestione centralizzata del tablet come dispositivo aziendale (kiosk mode, policy di sicurezza).</string>
+    <string name="device_admin_disable_warning">Disattivando questa app come amministratore, il tablet uscirà dalla modalità kiosk gestita.</string>
+    <string name="status_not_device_owner">Questa app non è impostata come Device Owner. Provisioning richiesto.</string>
+    <string name="status_kiosk_active">Modalità kiosk attiva.</string>
+    <string name="status_desktop_mode_warning">Attenzione: la Modalità Desktop è ancora attiva e il kiosk resta in una finestra flottante (minimizza/allarga/X visibili). Chiudi la Modalità Desktop dal pannello in basso, poi premi di nuovo il pulsante qui sotto.</string>
+    <string name="status_maintenance_mode">Modalità manutenzione — kiosk sospeso.</string>
+    <string name="button_reenter_kiosk">Rientra in modalità kiosk</string>
+    <string name="maintenance_pin_title">PIN amministratore</string>
+    <string name="maintenance_pin_wrong">PIN errato</string>
+</resources>

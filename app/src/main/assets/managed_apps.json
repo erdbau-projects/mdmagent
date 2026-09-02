@@ -1,0 +1,9 @@
+[
+  {
+    "packageName": "com.carriez.flutter_hbb",
+    "displayName": "RustDesk",
+    "downloadUrl": "https://github.com/rustdesk/rustdesk/releases/download/1.4.9/rustdesk-1.4.9-aarch64-signed.apk",
+    "sha256": "KFtPBzXAAOUVW5pvCHtXdE5GyWD0Mylj9RrdGASYIQI=",
+    "versionCode": 2067
+  }
+]

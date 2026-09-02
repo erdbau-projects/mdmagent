@@ -1,0 +1,33 @@
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/app/build
+/app/release
+*.keystore
+*.jks
+app/keystore.properties
+
+# Credenziali/config Managed Google Play (Android Management API) — mai versionati
+tools/android_management/*.json
+tools/android_management/*service-account*
+tools/android_management/.oauth_token.json
+tools/android_management/.signup_state.json
+
+# Artefatti operativi/interni (screenshot, snapshot da tablet reali, liste
+# pacchetti, QR di provisioning, documenti procedurali) — il repo è pubblico
+# (serve a SelfUpdater/SilentAppInstaller senza autenticazione), quindi qui
+# dentro va solo il codice, non dati di dispositivi o dell'azienda.
+/app/debug/
+*.apk
+docs/
+/*.png
+/tablet_snapshot_*.txt
+/.packages_before.txt
+/.packages_after.txt
