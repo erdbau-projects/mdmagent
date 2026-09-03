@@ -127,7 +127,6 @@ class MainActivity : AppCompatActivity() {
             // collega, non raggiungibili via USB (vedi applyScreenOffTimeout()).
             startActivity(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:$packageName")))
         }
-
         ContextCompat.registerReceiver(
             this,
             installStatusReceiver,
@@ -266,11 +265,18 @@ class MainActivity : AppCompatActivity() {
             addCategory(Intent.CATEGORY_DEFAULT)
         }
         dpm.addPersistentPreferredActivity(adminComponent, homeFilter, ComponentName(this, MainActivity::class.java))
-        // Nessuna feature di sistema durante il lock task: niente barra di
-        // stato/notifiche, niente overview, niente global actions. Vale per
-        // tutte le app nella whitelist, non solo la nostra — così anche
-        // RENTRI e le altre restano sempre a schermo intero.
-        dpm.setLockTaskFeatures(adminComponent, DevicePolicyManager.LOCK_TASK_FEATURE_NONE)
+        // Niente barra di stato/notifiche, niente overview durante il lock
+        // task. Vale per tutte le app nella whitelist, non solo la nostra —
+        // così anche RENTRI e le altre restano sempre a schermo intero.
+        // GLOBAL_ACTIONS è l'eccezione voluta: senza, tenendo premuto il
+        // tasto power il sistema non può mostrare il menu Spegni/Riavvia
+        // (bloccato come tutto il resto) e forza invece un riavvio brutale
+        // — segnalato dall'utente. Con questa feature abilitata, il tasto
+        // power torna a offrire la scelta vera (verificato via dumpsys:
+        // mFlags=16 applicato correttamente). Non esiste un modo per
+        // spegnere il device via codice, nemmeno da Device Owner: resta
+        // l'unica via, non c'è un pulsante equivalente nel kiosk.
+        dpm.setLockTaskFeatures(adminComponent, DevicePolicyManager.LOCK_TASK_FEATURE_GLOBAL_ACTIONS)
 
         // L'utente non deve poter aggiungere/rimuovere/toccare l'account
         // Google mentre il tablet è in uso normale: l'account resta attivo
