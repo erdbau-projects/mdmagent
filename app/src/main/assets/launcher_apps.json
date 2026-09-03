@@ -12,10 +12,6 @@
     "displayName": "Adobe Acrobat Reader"
   },
   {
-    "packageName": "it.dataservices.dsuite",
-    "displayName": "DS Suite"
-  },
-  {
     "packageName": "de.mts_ag.android.mts_smart.mts",
     "displayName": "MTS"
   },

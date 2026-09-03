@@ -8,6 +8,7 @@ import android.os.Build
 import android.util.Log
 import org.json.JSONObject
 import java.io.File
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
 
 /**
@@ -28,6 +29,11 @@ import kotlin.concurrent.thread
  *     "downloadUrl": "https://github.com/<utente>/<repo>/releases/download/vX.Y.Z/app-release.apk",
  *     "sha256": "<checksum base64 url-safe>"
  *   }
+ *
+ * checkAndUpdate() viene chiamato da MainActivity sia all'avvio (onCreate,
+ * quindi ad ogni boot) sia periodicamente mentre il kiosk resta acceso (vedi
+ * PERIODIC_CHECK_INTERVAL_MS): senza il ricontrollo periodico, un tablet
+ * lasciato acceso e mai riavviato non vedrebbe mai un nuovo aggiornamento.
  */
 object SelfUpdater {
 
@@ -42,8 +48,25 @@ object SelfUpdater {
     private const val MAX_RETRIES = 3
     private val RETRY_DELAYS_MS = longArrayOf(10_000, 30_000)
 
+    /**
+     * Intervallo del ricontrollo periodico (vedi MainActivity), effettuato
+     * mentre il kiosk resta acceso e in uso — senza questo, un tablet mai
+     * riavviato non vedrebbe mai un nuovo aggiornamento, perché altrimenti
+     * checkAndUpdate() viene invocato solo all'avvio (onCreate/boot).
+     */
+    const val PERIODIC_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000L // 6 ore
+
+    // Evita che due controlli (es. quello di avvio e quello periodico, se
+    // capitano vicini) partano in sovrapposizione e scarichino/installino
+    // due volte lo stesso APK in parallelo.
+    private val checkInProgress = AtomicBoolean(false)
+
     fun checkAndUpdate(context: Context) {
         val appContext = context.applicationContext
+        if (!checkInProgress.compareAndSet(false, true)) {
+            Log.i(TAG, "Controllo aggiornamento DPC già in corso, salto questa richiesta")
+            return
+        }
         thread(name = "SelfUpdater") {
             try {
                 val manifest = fetchManifest()
@@ -58,6 +81,8 @@ object SelfUpdater {
                 // Un fallimento qui (rete assente, manifest non raggiungibile, ecc.)
                 // non deve mai bloccare l'avvio del kiosk: solo un log.
                 Log.w(TAG, "Controllo aggiornamento DPC fallito (non bloccante): ${e.message}")
+            } finally {
+                checkInProgress.set(false)
             }
         }
     }

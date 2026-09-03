@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Traduzione tedesca. Android sceglie automaticamente questo file quando la
+    lingua di sistema del tablet è impostata su tedesco, altrimenti ricade sul
+    default in values/strings.xml (italiano) — nessun codice da cambiare per
+    supportare tablet bilingui, basta la lingua di sistema del dispositivo.
+-->
+<resources>
+    <string name="app_name">MDM Agent</string>
+    <string name="device_admin_description">Ermöglicht die zentrale Verwaltung des Tablets als Firmengerät (Kiosk-Modus, Sicherheitsrichtlinien).</string>
+    <string name="device_admin_disable_warning">Wenn diese App als Administrator deaktiviert wird, verlässt das Tablet den verwalteten Kiosk-Modus.</string>
+    <string name="status_not_device_owner">Diese App ist nicht als Device Owner eingerichtet. Provisioning erforderlich.</string>
+    <string name="status_kiosk_active">Kiosk-Modus aktiv.</string>
+    <string name="status_desktop_mode_warning">Achtung: Der Desktop-Modus ist noch aktiv, der Kiosk bleibt in einem schwebenden Fenster (Minimieren/Vergrößern/X sichtbar). Desktop-Modus über das untere Panel schließen und dann erneut die Schaltfläche unten drücken.</string>
+    <string name="status_maintenance_mode">Wartungsmodus — Kiosk pausiert.</string>
+    <string name="button_reenter_kiosk">Zurück in den Kiosk-Modus</string>
+    <string name="maintenance_pin_title">Administrator-PIN</string>
+    <string name="maintenance_pin_wrong">Falscher PIN</string>
+</resources>

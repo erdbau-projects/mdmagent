@@ -11,6 +11,8 @@ import android.content.IntentFilter
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import android.os.UserManager
 import android.text.InputType
@@ -53,6 +55,21 @@ class MainActivity : AppCompatActivity() {
 
     private var tapCount = 0
     private var firstTapTimestamp = 0L
+
+    /**
+     * Ricontrolla periodicamente l'aggiornamento del DPC mentre il kiosk resta
+     * acceso e in uso (vedi SelfUpdater.PERIODIC_CHECK_INTERVAL_MS): senza
+     * questo, un tablet lasciato acceso e mai riavviato non vedrebbe mai un
+     * nuovo aggiornamento, perché SelfUpdater viene altrimenti invocato solo
+     * all'avvio (onCreate/boot).
+     */
+    private val updateCheckHandler = Handler(Looper.getMainLooper())
+    private val periodicUpdateCheck = object : Runnable {
+        override fun run() {
+            SelfUpdater.checkAndUpdate(this@MainActivity)
+            updateCheckHandler.postDelayed(this, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
+        }
+    }
 
     /**
      * Riascolta l'esito delle installazioni silenziose (SilentAppInstaller)
@@ -100,6 +117,9 @@ class MainActivity : AppCompatActivity() {
             // (vedi SelfUpdater per il formato del manifest remoto). Non
             // bloccante: un fallimento qui non impedisce mai l'uso del kiosk.
             SelfUpdater.checkAndUpdate(this)
+            // E ricontrolla periodicamente finché il kiosk resta acceso, così
+            // un tablet mai riavviato riceve comunque i nuovi aggiornamenti.
+            updateCheckHandler.postDelayed(periodicUpdateCheck, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
         } else {
             Log.w(TAG, "App non è Device Owner: kiosk mode non avviato.")
             findViewById<TextView>(R.id.statusText).setText(R.string.status_not_device_owner)
@@ -109,6 +129,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(installStatusReceiver)
+        updateCheckHandler.removeCallbacks(periodicUpdateCheck)
     }
 
     override fun onResume() {

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Default (italiano) e fallback per ogni lingua non tradotta esplicitamente.
+    Traduzione tedesca in values-de/strings.xml — tablet bilingui: Android
+    sceglie da solo in base alla lingua di sistema del dispositivo. Se si
+    aggiunge una nuova stringa qui, aggiungerla anche là.
+-->
 <resources>
     <string name="app_name">MDM Agent</string>
     <string name="device_admin_description">Consente la gestione centralizzata del tablet come dispositivo aziendale (kiosk mode, policy di sicurezza).</string>
