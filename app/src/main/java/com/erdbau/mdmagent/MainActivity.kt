@@ -10,11 +10,13 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
+import android.os.BatteryManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.os.UserManager
+import android.provider.Settings
 import android.text.InputType
 import android.util.Log
 import android.util.TypedValue
@@ -87,6 +89,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Aggiorna l'indicatore batteria in alto a destra. ACTION_BATTERY_CHANGED
+     * è una sticky broadcast: registrarsi consegna subito lo stato corrente,
+     * poi il sistema la reinvia da solo ad ogni variazione — non serve
+     * pollare.
+     */
+    private val batteryReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
+            val scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
+            if (level < 0 || scale <= 0) return
+            val percent = level * 100 / scale
+            val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
+            val isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                status == BatteryManager.BATTERY_STATUS_FULL
+            val icon = if (isCharging) "⚡" else "🔋"
+            findViewById<TextView>(R.id.batteryText).text = "$icon $percent%"
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -102,6 +124,12 @@ class MainActivity : AppCompatActivity() {
             this,
             installStatusReceiver,
             IntentFilter(SilentAppInstaller.ACTION_INSTALL_STATUS),
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
+        ContextCompat.registerReceiver(
+            this,
+            batteryReceiver,
+            IntentFilter(Intent.ACTION_BATTERY_CHANGED),
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
 
@@ -129,6 +157,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(installStatusReceiver)
+        unregisterReceiver(batteryReceiver)
         updateCheckHandler.removeCallbacks(periodicUpdateCheck)
     }
 
@@ -217,6 +246,7 @@ class MainActivity : AppCompatActivity() {
         dpm.setAccountManagementDisabled(adminComponent, "com.google", true)
         // Blocco extra: nessuna installazione da fonti diverse da Play Store.
         dpm.addUserRestriction(adminComponent, UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES)
+        applyScreenOffTimeout()
 
         try {
             startLockTask()
@@ -226,6 +256,21 @@ class MainActivity : AppCompatActivity() {
             populateAppGrid(apps)
         } catch (e: IllegalArgumentException) {
             Log.e(TAG, "Impossibile avviare Lock Task Mode", e)
+        }
+    }
+
+    /**
+     * Allunga il timeout di spegnimento schermo (SCREEN_OFF_TIMEOUT è in
+     * millisecondi). Da Device Owner questa scrittura è concessa senza il
+     * dialogo "Modifica impostazioni di sistema" richiesto alle app normali
+     * — ma non è garantita su ogni OEM/versione Android, quindi non deve mai
+     * bloccare l'ingresso in kiosk se fallisce.
+     */
+    private fun applyScreenOffTimeout() {
+        try {
+            Settings.System.putInt(contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, SCREEN_OFF_TIMEOUT_MS)
+        } catch (e: SecurityException) {
+            Log.w(TAG, "Impossibile impostare il timeout schermo (non bloccante)", e)
         }
     }
 
@@ -374,6 +419,9 @@ class MainActivity : AppCompatActivity() {
 
         private const val TAPS_REQUIRED = 7
         private const val TAP_WINDOW_MS = 3000L
+
+        // Timeout di spegnimento schermo del kiosk (vedi applyScreenOffTimeout()).
+        private const val SCREEN_OFF_TIMEOUT_MS = 10 * 60 * 1000
 
         // TODO: cambia questo PIN prima di distribuire in produzione, ed
         // eventualmente spostalo in un meccanismo meno statico (vedi nota

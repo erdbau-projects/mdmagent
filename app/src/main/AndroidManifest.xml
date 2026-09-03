@@ -23,10 +23,17 @@
           poter vedere tutti i pacchetti per svolgere il suo compito. Non
           essendo un'app distribuita su Play Store, non è soggetta alle
           restrizioni che Google impone lì su questo permesso.
+        - WRITE_SETTINGS serve a MainActivity per allungare il timeout dello
+          spegnimento schermo (Settings.System.SCREEN_OFF_TIMEOUT) mentre il
+          kiosk è attivo. Va comunque dichiarato qui perché venga riconosciuto,
+          ma non richiede il consenso esplicito dell'utente (niente dialogo
+          "Modifica impostazioni di sistema"): da Device Owner viene concesso
+          automaticamente, come gli altri privilegi di questo file.
     -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="false"
