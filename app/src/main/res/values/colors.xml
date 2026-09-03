@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Palette brand ERDBAU, ricavata dal logo aziendale (Logo_Erdbau.JPG) per
+    lo sfondo del kiosk. Vedi anche drawable-nodpi/logo_watermark.png (stessa
+    fonte, ritagliata/ricolorata in chiaro per restare leggibile sullo sfondo
+    scuro qui sotto).
+-->
+<resources>
+    <color name="kiosk_background">#FFFFFF</color>
+    <color name="kiosk_text">#1A1A1A</color>
+    <color name="brand_red">#84121C</color>
+</resources>

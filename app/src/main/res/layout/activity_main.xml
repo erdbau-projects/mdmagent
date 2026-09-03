@@ -1,43 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/kiosk_background">
 
     <!--
-        Barra di stato in alto: fa anche da zona per il gesto di uscita
-        manutenzione (7 tap ravvicinati). Piccola apposta per lasciare
-        spazio alla griglia delle app sotto.
+        Watermark del logo aziendale: in basso e a bassa opacità apposta, per
+        non competere mai con le icone della griglia sopra (che possono
+        occupare più o meno spazio a seconda di quante app sono configurate
+        in launcher_apps.json).
     -->
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="@string/status_not_device_owner" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:alpha="0.22"
+        android:src="@drawable/logo_watermark"
+        android:importantForAccessibility="no" />
 
-    <Button
-        android:id="@+id/exitMaintenanceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:text="@string/button_reenter_kiosk"
-        android:visibility="gone" />
-
-    <!--
-        Griglia delle app del launcher: popolata a runtime in MainActivity
-        da assets/launcher_apps.json, un pulsante per ogni app installata.
-    -->
-    <GridLayout
-        android:id="@+id/appGrid"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:columnCount="3"
-        android:padding="24dp"
-        android:gravity="center" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <!--
+            Barra di stato in alto: fa anche da zona per il gesto di uscita
+            manutenzione (7 tap ravvicinati). Piccola apposta per lasciare
+            spazio alla griglia delle app sotto.
+        -->
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/status_not_device_owner" />
+
+        <Button
+            android:id="@+id/exitMaintenanceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/brand_red"
+            android:textColor="@android:color/white"
+            android:text="@string/button_reenter_kiosk"
+            android:visibility="gone" />
+
+        <!--
+            Griglia delle app del launcher: popolata a runtime in MainActivity
+            da assets/launcher_apps.json, un pulsante per ogni app installata.
+        -->
+        <GridLayout
+            android:id="@+id/appGrid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:columnCount="3"
+            android:padding="24dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+</FrameLayout>
