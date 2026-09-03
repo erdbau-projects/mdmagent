@@ -14,6 +14,7 @@
     <string name="status_desktop_mode_warning">Achtung: Der Desktop-Modus ist noch aktiv, der Kiosk bleibt in einem schwebenden Fenster (Minimieren/Vergrößern/X sichtbar). Desktop-Modus über das untere Panel schließen und dann erneut die Schaltfläche unten drücken.</string>
     <string name="status_maintenance_mode">Wartungsmodus — Kiosk pausiert.</string>
     <string name="button_reenter_kiosk">Zurück in den Kiosk-Modus</string>
+    <string name="button_enable_screen_timeout">Längeren Bildschirm-Timeout aktivieren (dann \"Zulassen\" antippen)</string>
     <string name="maintenance_pin_title">Administrator-PIN</string>
     <string name="maintenance_pin_wrong">Falscher PIN</string>
 </resources>

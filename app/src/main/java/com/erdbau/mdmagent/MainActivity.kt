@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.BatteryManager
 import android.os.Bundle
 import android.os.Handler
@@ -119,6 +120,13 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.statusText).setOnClickListener { onStatusTextTapped() }
         findViewById<Button>(R.id.exitMaintenanceButton).setOnClickListener { reenterKioskFromMaintenance() }
+        findViewById<Button>(R.id.enableWriteSettingsButton).setOnClickListener {
+            // Apre direttamente la schermata di sistema con l'interruttore
+            // per QUESTA app già in evidenza: basta un tocco su "Consenti",
+            // senza bisogno di adb — pensata per i tablet già in mano a un
+            // collega, non raggiungibili via USB (vedi applyScreenOffTimeout()).
+            startActivity(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:$packageName")))
+        }
 
         ContextCompat.registerReceiver(
             this,
@@ -166,13 +174,34 @@ class MainActivity : AppCompatActivity() {
         // Se per qualche motivo l'app risulta ancora Device Owner ma non è
         // (più) in lock task mode, ci rientra — a meno che l'uscita sia
         // intenzionale (modalità manutenzione in corso).
-        if (maintenanceMode) return
+        if (maintenanceMode) {
+            // Si torna qui anche subito dopo la schermata di sistema aperta
+            // da enableWriteSettingsButton: aggiorna la sua visibilità (e
+            // applica subito il timeout se il permesso è appena stato dato,
+            // senza aspettare il prossimo "Rientra in modalità kiosk").
+            updateWriteSettingsButtonVisibility()
+            return
+        }
         if (::dpm.isInitialized && dpm.isDeviceOwnerApp(packageName)) {
             val am = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
             if (am.lockTaskModeState == ActivityManager.LOCK_TASK_MODE_NONE) {
                 enterKioskMode()
             }
         }
+    }
+
+    /**
+     * Mostra enableWriteSettingsButton solo se il permesso WRITE_SETTINGS
+     * non è ancora stato concesso (Settings.System.canWrite) — sui tablet
+     * dove è già stato dato via adb in fase di provisioning, il pulsante non
+     * compare mai. Se il permesso risulta appena concesso, applica subito il
+     * timeout schermo invece di aspettare il prossimo ingresso in kiosk.
+     */
+    private fun updateWriteSettingsButtonVisibility() {
+        val alreadyGranted = Settings.System.canWrite(this)
+        if (alreadyGranted) applyScreenOffTimeout()
+        findViewById<Button>(R.id.enableWriteSettingsButton).visibility =
+            if (alreadyGranted) View.GONE else View.VISIBLE
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -198,6 +227,10 @@ class MainActivity : AppCompatActivity() {
     // --- Kiosk mode ----------------------------------------------------------
 
     private fun enterKioskMode() {
+        // Non è più uno stato di manutenzione, qualunque sia l'esito qui
+        // sotto: il pulsante "abilita timeout" non ha senso fuori da lì.
+        findViewById<Button>(R.id.enableWriteSettingsButton).visibility = View.GONE
+
         if (isInMultiWindowMode) {
             // Caso raro ma reale (visto su Tab S9 FE+): si rientra in kiosk
             // mentre la Modalità Desktop di Samsung è ancora attiva (es.
@@ -410,6 +443,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.statusText).setText(R.string.status_maintenance_mode)
         findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.VISIBLE
         findViewById<GridLayout>(R.id.appGrid).removeAllViews()
+        updateWriteSettingsButtonVisibility()
     }
 
     private fun reenterKioskFromMaintenance() {

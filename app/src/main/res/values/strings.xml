@@ -14,6 +14,7 @@
     <string name="status_desktop_mode_warning">Attenzione: la Modalità Desktop è ancora attiva e il kiosk resta in una finestra flottante (minimizza/allarga/X visibili). Chiudi la Modalità Desktop dal pannello in basso, poi premi di nuovo il pulsante qui sotto.</string>
     <string name="status_maintenance_mode">Modalità manutenzione — kiosk sospeso.</string>
     <string name="button_reenter_kiosk">Rientra in modalità kiosk</string>
+    <string name="button_enable_screen_timeout">Abilita timeout schermo più lungo (tocca poi \"Consenti\")</string>
     <string name="maintenance_pin_title">PIN amministratore</string>
     <string name="maintenance_pin_wrong">PIN errato</string>
 </resources>

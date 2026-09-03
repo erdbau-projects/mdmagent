@@ -64,6 +64,22 @@
             android:visibility="gone" />
 
         <!--
+            Visibile solo in manutenzione e solo se WRITE_SETTINGS non è
+            ancora stato concesso (Settings.System.canWrite): apre la
+            schermata di sistema dove basta un tocco sull'interruttore,
+            senza bisogno di adb — utile per i tablet già in mano a un
+            collega, non raggiungibili via USB. Vedi MainActivity.
+        -->
+        <Button
+            android:id="@+id/enableWriteSettingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/button_enable_screen_timeout"
+            android:visibility="gone" />
+
+        <!--
             Griglia delle app del launcher: popolata a runtime in MainActivity
             da assets/launcher_apps.json, un pulsante per ogni app installata.
         -->
