@@ -25,10 +25,14 @@
           restrizioni che Google impone lì su questo permesso.
         - WRITE_SETTINGS serve a MainActivity per allungare il timeout dello
           spegnimento schermo (Settings.System.SCREEN_OFF_TIMEOUT) mentre il
-          kiosk è attivo. Va comunque dichiarato qui perché venga riconosciuto,
-          ma non richiede il consenso esplicito dell'utente (niente dialogo
-          "Modifica impostazioni di sistema"): da Device Owner viene concesso
-          automaticamente, come gli altri privilegi di questo file.
+          kiosk è attivo. ATTENZIONE: a differenza degli altri privilegi di
+          questo file, essere Device Owner NON basta a ottenerlo — va
+          concesso esplicitamente via adb, una tantum per device (vedi
+          skill provisiona-tablet, step 6: `adb shell appops set
+          com.erdbau.mdmagent WRITE_SETTINGS allow`). Senza quel passaggio
+          la scrittura fallisce in silenzio (SecurityException catturata in
+          MainActivity.applyScreenOffTimeout(), solo un warning nei log) e
+          il timeout resta quello di default del sistema.
     -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />

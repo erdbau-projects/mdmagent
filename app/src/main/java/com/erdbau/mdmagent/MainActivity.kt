@@ -261,10 +261,13 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Allunga il timeout di spegnimento schermo (SCREEN_OFF_TIMEOUT è in
-     * millisecondi). Da Device Owner questa scrittura è concessa senza il
-     * dialogo "Modifica impostazioni di sistema" richiesto alle app normali
-     * — ma non è garantita su ogni OEM/versione Android, quindi non deve mai
-     * bloccare l'ingresso in kiosk se fallisce.
+     * millisecondi). ATTENZIONE: essere Device Owner NON basta per questa
+     * scrittura — richiede il permesso WRITE_SETTINGS concesso via adb, una
+     * tantum per device (vedi skill provisiona-tablet, step 6: `adb shell
+     * appops set com.erdbau.mdmagent WRITE_SETTINGS allow`). Senza quel
+     * passaggio va in SecurityException ogni volta (verificato dal vivo) —
+     * gestita qui sotto senza bloccare mai l'ingresso in kiosk, ma il
+     * timeout resta quello di default del sistema finché non viene concesso.
      */
     private fun applyScreenOffTimeout() {
         try {

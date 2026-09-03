@@ -69,7 +69,26 @@ Deve rispondere `Success: Device owner set to package ...`. Se fallisce con
 aggiunto un account nel frattempo (es. durante la build) — fermati e ridillo
 all'utente, non ripetere il tentativo alla cieca.
 
-## 6. Verifica finale
+## 6. Concedi il permesso per il timeout schermo
+
+```
+adb shell appops set com.erdbau.mdmagent WRITE_SETTINGS allow
+```
+
+Necessario perché l'app possa allungare `Settings.System.SCREEN_OFF_TIMEOUT` (vedi
+`MainActivity.applyScreenOffTimeout()`): **essere Device Owner non basta**, questo
+permesso va concesso esplicitamente via adb, una tantum per device — non c'è modo di
+ottenerlo automaticamente dal codice. Se questo passo viene saltato, l'app non va in
+errore (fallisce in silenzio, loggando solo un warning) ma il timeout resta a quello
+di default del sistema (tipicamente 30s).
+
+Verifica facoltativa:
+```
+adb shell appops get com.erdbau.mdmagent WRITE_SETTINGS
+```
+Deve mostrare `WRITE_SETTINGS: allow`.
+
+## 7. Verifica finale
 
 ```
 adb shell am start -n com.erdbau.mdmagent/.MainActivity
@@ -81,7 +100,7 @@ Deve mostrare `mLockTaskModeState=LOCKED`. Se dopo un reboot recente lo stato no
 torna LOCKED, non dare per scontato che l'errore sia altrove: ripeti il punto 3
 (controllo Device Owner effettivo) prima di ipotizzare altre cause.
 
-## 7. Riepilogo per l'utente
+## 8. Riepilogo per l'utente
 
 Riporta chiaramente l'esito (successo/fallimento e a quale punto), e se è andato
 tutto bene ricorda i prossimi passi manuali: entrare in manutenzione (7 tap + PIN),
