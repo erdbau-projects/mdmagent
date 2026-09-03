@@ -169,6 +169,27 @@ class MainActivity : AppCompatActivity() {
     // --- Kiosk mode ----------------------------------------------------------
 
     private fun enterKioskMode() {
+        if (isInMultiWindowMode) {
+            // Caso raro ma reale (visto su Tab S9 FE+): si rientra in kiosk
+            // mentre la Modalità Desktop di Samsung è ancora attiva (es.
+            // dimenticata aperta dopo la manutenzione, per installare app da
+            // Play Store). Controllo fatto PRIMA di toccare qualunque
+            // impostazione DPM: se lanciassimo comunque startLockTask() con
+            // LOCK_TASK_FEATURE_NONE (niente barra di stato/notifiche) mentre
+            // il task è ancora in finestra flottante, l'utente resterebbe
+            // bloccato senza alcun modo di raggiungere i controlli di sistema
+            // per chiudere la Modalità Desktop — un vicolo cieco risolvibile
+            // solo con adb (visto dal vivo: serve un riavvio per uscirne).
+            // Meglio restare "sbloccati" — barra di stato/notifiche ancora
+            // disponibili — finché l'utente non chiude la Modalità Desktop e
+            // ripreme il pulsante. Non esiste un'API pubblica per chiuderla
+            // da codice.
+            Log.w(TAG, "In multi-window/freeform (probabile Modalità Desktop): kiosk non avviato per non bloccare l'uscita")
+            findViewById<TextView>(R.id.statusText).text = getString(R.string.status_desktop_mode_warning)
+            findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.VISIBLE
+            return
+        }
+
         val apps = loadLauncherApps().filter { isInstalled(it.packageName) }
         val lockedPackages = (listOf(packageName) + apps.map { it.packageName }).toTypedArray()
         dpm.setLockTaskPackages(adminComponent, lockedPackages)
@@ -200,22 +221,6 @@ class MainActivity : AppCompatActivity() {
         try {
             startLockTask()
             Log.i(TAG, "Lock Task Mode avviata (${lockedPackages.size} pacchetti in whitelist)")
-
-            if (isInMultiWindowMode) {
-                // Caso raro ma reale (visto su Tab S9 FE+): si rientra in kiosk
-                // mentre la Modalità Desktop di Samsung è ancora attiva (es.
-                // dimenticata aperta dopo la manutenzione, per installare app da
-                // Play Store). Il task resta in finestra flottante — con la sua
-                // barra minimizza/allarga/X — anche dentro il Lock Task, bucando
-                // di fatto il kiosk pur restando "LOCKED". Non esiste un'API
-                // pubblica per chiudere la Modalità Desktop da codice: meglio
-                // avvisare l'operatore che dichiarare il kiosk attivo in silenzio.
-                Log.e(TAG, "Kiosk avviato ma il task è ancora in multi-window/freeform: probabile Modalità Desktop attiva")
-                findViewById<TextView>(R.id.statusText).text = getString(R.string.status_desktop_mode_warning)
-                findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.VISIBLE
-                return
-            }
-
             findViewById<TextView>(R.id.statusText).setText(R.string.status_kiosk_active)
             findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.GONE
             populateAppGrid(apps)
