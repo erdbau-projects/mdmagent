@@ -12,6 +12,7 @@ import android.content.pm.PackageInstaller
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.BatteryManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -115,7 +116,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         enableImmersiveFullscreen()
 
-        dpm = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        dpm = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
         adminComponent = MdmDeviceAdminReceiver.getComponentName(this)
 
         findViewById<TextView>(R.id.statusText).setOnClickListener { onStatusTextTapped() }
@@ -182,7 +183,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         if (::dpm.isInitialized && dpm.isDeviceOwnerApp(packageName)) {
-            val am = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val am = getSystemService(ACTIVITY_SERVICE) as ActivityManager
             if (am.lockTaskModeState == ActivityManager.LOCK_TASK_MODE_NONE) {
                 enterKioskMode()
             }
@@ -276,7 +277,13 @@ class MainActivity : AppCompatActivity() {
         // mFlags=16 applicato correttamente). Non esiste un modo per
         // spegnere il device via codice, nemmeno da Device Owner: resta
         // l'unica via, non c'è un pulsante equivalente nel kiosk.
-        dpm.setLockTaskFeatures(adminComponent, DevicePolicyManager.LOCK_TASK_FEATURE_GLOBAL_ACTIONS)
+        // setLockTaskFeatures richiede API 28+: sui tablet più vecchi (24-27)
+        // la feature semplicemente non si abilita e il tasto power si
+        // comporta come da comportamento di default del lock task su quelle
+        // versioni — nessun altro effetto collaterale.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            dpm.setLockTaskFeatures(adminComponent, DevicePolicyManager.LOCK_TASK_FEATURE_GLOBAL_ACTIONS)
+        }
 
         // L'utente non deve poter aggiungere/rimuovere/toccare l'account
         // Google mentre il tablet è in uso normale: l'account resta attivo
