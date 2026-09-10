@@ -22,5 +22,9 @@
   {
     "packageName": "com.sec.android.app.camera",
     "displayName": "Fotocamera"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "displayName": "Maps"
   }
 ]
