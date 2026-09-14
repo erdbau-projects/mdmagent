@@ -17,6 +17,17 @@ if (hasSigningConfig) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
+// Stesso schema di keystore.properties: token GitHub per StatusReporter letto
+// da app/github_status.properties, NON versionato (vedi .gitignore). Se il
+// file manca, il token in BuildConfig resta vuoto e StatusReporter salta
+// silenziosamente il check-in (vedi StatusReporter.reportStatus).
+val githubStatusPropertiesFile = project.file("github_status.properties")
+val githubStatusProperties = Properties()
+if (githubStatusPropertiesFile.exists()) {
+    githubStatusProperties.load(FileInputStream(githubStatusPropertiesFile))
+}
+val githubStatusToken = githubStatusProperties.getProperty("githubStatusToken", "")
+
 android {
     namespace = "com.erdbau.mdmagent"
     compileSdk = 34
@@ -27,6 +38,8 @@ android {
         targetSdk = 34
         versionCode = 14
         versionName = "1.2.2"
+
+        buildConfigField("String", "GITHUB_STATUS_TOKEN", "\"$githubStatusToken\"")
     }
 
     signingConfigs {
@@ -67,6 +80,7 @@ android {
 
     buildFeatures {
         viewBinding = false
+        buildConfig = true
     }
 }
 

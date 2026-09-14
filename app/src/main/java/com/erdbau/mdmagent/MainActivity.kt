@@ -71,6 +71,11 @@ class MainActivity : AppCompatActivity() {
     private val periodicUpdateCheck = object : Runnable {
         override fun run() {
             SelfUpdater.checkAndUpdate(this@MainActivity)
+            // Stesso ritmo dell'auto-update: ogni ricontrollo periodico è
+            // anche un check-in di stato, così il file status/<seriale>.json
+            // nel repo resta aggiornato per tutta la vita del kiosk, non solo
+            // all'avvio.
+            StatusReporter.reportStatus(this@MainActivity)
             updateCheckHandler.postDelayed(this, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
         }
     }
@@ -119,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         dpm = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
         adminComponent = MdmDeviceAdminReceiver.getComponentName(this)
 
+        findViewById<TextView>(R.id.deviceNameText).text = getDeviceName()
         findViewById<TextView>(R.id.statusText).setOnClickListener { onStatusTextTapped() }
         findViewById<Button>(R.id.exitMaintenanceButton).setOnClickListener { reenterKioskFromMaintenance() }
         findViewById<Button>(R.id.enableWriteSettingsButton).setOnClickListener {
@@ -153,8 +159,13 @@ class MainActivity : AppCompatActivity() {
             // (vedi SelfUpdater per il formato del manifest remoto). Non
             // bloccante: un fallimento qui non impedisce mai l'uso del kiosk.
             SelfUpdater.checkAndUpdate(this)
+            // Check-in di stato (seriale, versione, app installate) nel repo
+            // GitHub: vedi StatusReporter per il formato e la nota di
+            // sicurezza sul token imbustato nell'APK.
+            StatusReporter.reportStatus(this)
             // E ricontrolla periodicamente finché il kiosk resta acceso, così
-            // un tablet mai riavviato riceve comunque i nuovi aggiornamenti.
+            // un tablet mai riavviato riceve comunque i nuovi aggiornamenti
+            // (e resta aggiornato anche il suo status/<seriale>.json).
             updateCheckHandler.postDelayed(periodicUpdateCheck, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
         } else {
             Log.w(TAG, "App non è Device Owner: kiosk mode non avviato.")
@@ -197,6 +208,21 @@ class MainActivity : AppCompatActivity() {
      * compare mai. Se il permesso risulta appena concesso, applica subito il
      * timeout schermo invece di aspettare il prossimo ingresso in kiosk.
      */
+    /**
+     * "Nome dispositivo" di sistema (lo stesso mostrato in Impostazioni >
+     * Info tablet e nel Bluetooth) — usato qui solo per riconoscere il
+     * tablet a colpo d'occhio, senza doverlo aprire via adb. Letto con la
+     * chiave stringa invece della costante Settings.Global.DEVICE_NAME per
+     * restare compatibile fin da minSdk 24 (la costante tipizzata arriva
+     * solo da API 25, ma la impostazione esiste già prima). Se non è mai
+     * stato personalizzato (es. tablet appena provisionato) risulta vuoto:
+     * fallback al modello.
+     */
+    private fun getDeviceName(): String {
+        val name = Settings.Global.getString(contentResolver, "device_name")
+        return if (!name.isNullOrBlank()) name else Build.MODEL
+    }
+
     private fun updateWriteSettingsButtonVisibility() {
         val alreadyGranted = Settings.System.canWrite(this)
         if (alreadyGranted) applyScreenOffTimeout()
