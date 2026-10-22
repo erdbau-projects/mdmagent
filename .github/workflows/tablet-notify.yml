@@ -1,0 +1,44 @@
+# Email quando un tablet cambia qualcosa nei check-in (vedi
+# tools/notify_tablet_events.py), più un controllo giornaliero dei tablet
+# silenziosi. Credenziali SMTP nei secret del repo, mai nel sorgente.
+name: Notifiche tablet
+
+on:
+  push:
+    branches: [main]
+    paths: ["status/**"]
+  schedule:
+    - cron: "0 6 * * *" # ogni giorno alle 06:00 UTC (08:00 in Italia d'estate)
+  workflow_dispatch:
+
+# Check-in di più tablet ravvicinati: in coda, non in parallelo, così ogni
+# email confronta i commit giusti e nessuna va persa.
+concurrency:
+  group: tablet-notify
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      MAIL_TO: ${{ secrets.MAIL_TO }}
+      MAIL_FROM: ${{ secrets.MAIL_FROM }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Novità nei check-in
+        if: github.event_name == 'push'
+        run: python3 tools/notify_tablet_events.py diff "${{ github.event.before }}" "${{ github.sha }}"
+
+      - name: Tablet silenziosi da più di 48 ore
+        if: github.event_name != 'push'
+        run: python3 tools/notify_tablet_events.py stale 48
