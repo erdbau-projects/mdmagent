@@ -499,9 +499,9 @@ class MainActivity : AppCompatActivity() {
         // Timeout di spegnimento schermo del kiosk (vedi applyScreenOffTimeout()).
         private const val SCREEN_OFF_TIMEOUT_MS = 10 * 60 * 1000
 
-        // TODO: cambia questo PIN prima di distribuire in produzione, ed
-        // eventualmente spostalo in un meccanismo meno statico (vedi nota
-        // di sicurezza: è comunque leggibile decompilando l'APK).
-        private const val ADMIN_EXIT_PIN = "160273"
+        // PIN letto da app/kiosk.properties (non versionato, vedi
+        // build.gradle.kts): così non finisce in chiaro nel repo pubblico.
+        // Resta comunque leggibile decompilando l'APK.
+        private const val ADMIN_EXIT_PIN = BuildConfig.ADMIN_EXIT_PIN
     }
 }

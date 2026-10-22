@@ -28,6 +28,17 @@ if (githubStatusPropertiesFile.exists()) {
 }
 val githubStatusToken = githubStatusProperties.getProperty("githubStatusToken", "")
 
+// PIN di uscita dal kiosk da app/kiosk.properties, NON versionato (vedi
+// .gitignore): il repo è pubblico e il PIN non deve stare nel sorgente.
+// A differenza del token, qui il file è obbligatorio: niente APK senza PIN.
+val kioskPropertiesFile = project.file("kiosk.properties")
+val kioskProperties = Properties()
+if (kioskPropertiesFile.exists()) {
+    kioskProperties.load(FileInputStream(kioskPropertiesFile))
+}
+val adminExitPin: String = kioskProperties.getProperty("adminExitPin")
+    ?: throw GradleException("Manca app/kiosk.properties con adminExitPin=<PIN> (vedi kiosk.properties.example)")
+
 android {
     namespace = "com.erdbau.mdmagent"
     compileSdk = 34
@@ -36,10 +47,11 @@ android {
         applicationId = "com.erdbau.mdmagent"
         minSdk = 24
         targetSdk = 34
-        versionCode = 15
-        versionName = "1.2.3"
+        versionCode = 16
+        versionName = "1.2.4"
 
         buildConfigField("String", "GITHUB_STATUS_TOKEN", "\"$githubStatusToken\"")
+        buildConfigField("String", "ADMIN_EXIT_PIN", "\"$adminExitPin\"")
     }
 
     signingConfigs {

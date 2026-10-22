@@ -14,6 +14,7 @@ local.properties
 *.jks
 app/keystore.properties
 app/github_status.properties
+app/kiosk.properties
 
 # Credenziali/config Managed Google Play (Android Management API) — mai versionati
 tools/android_management/*.json

@@ -1,0 +1,4 @@
+# Copia questo file in "kiosk.properties" (stessa cartella, app/) e metti il
+# PIN reale. kiosk.properties NON va versionato (vedi .gitignore): il repo e' pubblico.
+
+adminExitPin=000000
