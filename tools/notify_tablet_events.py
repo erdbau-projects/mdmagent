@@ -117,7 +117,7 @@ def cmd_stale(hours: int) -> tuple[str, str] | None:
 
 def send_mail(subject: str, body: str) -> None:
     host = os.environ["SMTP_HOST"]
-    port = int(os.environ.get("SMTP_PORT", "587"))
+    port = int(os.environ.get("SMTP_PORT") or "587")
     user = os.environ["SMTP_USER"]
     password = os.environ["SMTP_PASSWORD"]
 
