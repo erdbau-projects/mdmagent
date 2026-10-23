@@ -3,6 +3,7 @@ package com.erdbau.mdmagent
 import android.app.ActivityManager
 import android.app.AlertDialog
 import android.app.admin.DevicePolicyManager
+import android.app.admin.SystemUpdatePolicy
 import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
@@ -319,6 +320,7 @@ class MainActivity : AppCompatActivity() {
         // Blocco extra: nessuna installazione da fonti diverse da Play Store.
         dpm.addUserRestriction(adminComponent, UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES)
         applyScreenOffTimeout()
+        applySystemUpdatePolicy()
 
         try {
             startLockTask()
@@ -346,6 +348,24 @@ class MainActivity : AppCompatActivity() {
             Settings.System.putInt(contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, SCREEN_OFF_TIMEOUT_MS)
         } catch (e: SecurityException) {
             Log.w(TAG, "Impossibile impostare il timeout schermo (non bloccante)", e)
+        }
+    }
+
+    /**
+     * Aggiornamenti di sistema (OTA Android/Samsung) installati in automatico,
+     * ma solo nella finestra notturna: così un riavvio per update non arriva
+     * mai mentre il tablet è in uso. Fuori finestra l'OTA resta in attesa
+     * fino alla notte successiva. Non tocca gli aggiornamenti delle app dal
+     * Play Store, che si gestiscono dalle impostazioni del Play Store stesso.
+     */
+    private fun applySystemUpdatePolicy() {
+        try {
+            dpm.setSystemUpdatePolicy(
+                adminComponent,
+                SystemUpdatePolicy.createWindowedInstallPolicy(UPDATE_WINDOW_START_MIN, UPDATE_WINDOW_END_MIN)
+            )
+        } catch (e: Exception) {
+            Log.w(TAG, "Impossibile impostare la policy di aggiornamento di sistema (non bloccante)", e)
         }
     }
 
@@ -498,6 +518,11 @@ class MainActivity : AppCompatActivity() {
 
         // Timeout di spegnimento schermo del kiosk (vedi applyScreenOffTimeout()).
         private const val SCREEN_OFF_TIMEOUT_MS = 10 * 60 * 1000
+
+        // Finestra notturna per gli update di sistema, in minuti dalla
+        // mezzanotte (ora locale del tablet): 01:00-05:00.
+        private const val UPDATE_WINDOW_START_MIN = 1 * 60
+        private const val UPDATE_WINDOW_END_MIN = 5 * 60
 
         // PIN letto da app/kiosk.properties (non versionato, vedi
         // build.gradle.kts): così non finisce in chiaro nel repo pubblico.
