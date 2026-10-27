@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 16,
   "dpcVersionName": "1.2.4",
-  "lastCheckIn": "2026-10-23T06:23:12Z",
+  "lastCheckIn": "2026-10-27T14:45:44Z",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -23,7 +23,7 @@
     },
     "com.sec.android.app.myfiles": {
       "installed": true,
-      "versionName": "15.4.07.41"
+      "versionName": "15.4.09.5"
     },
     "com.sec.android.app.camera": {
       "installed": true,
