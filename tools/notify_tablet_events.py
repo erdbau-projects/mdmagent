@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 """
-Manda una email quando un tablet cambia qualcosa di significativo nei suoi
-check-in di stato (status/<seriale>.json, scritti da StatusReporter).
+Email sui check-in di stato dei tablet (status/<seriale>.json, scritti da
+StatusReporter).
 
-Gira dentro la GitHub Action .github/workflows/tablet-notify.yml, in due modi:
+La GitHub Action .github/workflows/tablet-notify.yml usa le modalità weekly
+e critical; diff e stale restano per lanciarle a mano.
+
+    python tools/notify_tablet_events.py weekly
+        Riepilogo della settimana precedente (lunedì-domenica, ora italiana):
+        novità per tablet, giorni con check-in, tablet silenziosi.
+        Parte sempre, anche senza novità, così si vede che il sistema gira.
+
+    python tools/notify_tablet_events.py critical <sha_prima> <sha_dopo>
+        Come diff, ma segnala solo gli eventi critici (app sparita da un
+        tablet). Tutto il resto aspetta il riepilogo del lunedì.
 
     python tools/notify_tablet_events.py diff <sha_prima> <sha_dopo>
         Confronta i file status/ tra due commit e segnala: nuovo tablet,
@@ -30,9 +40,14 @@ import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
+from zoneinfo import ZoneInfo
 
 STATUS_DIR = "status/"
 NULL_SHA = "0" * 40
+EXPECTED_TABLETS = 26
+LOCAL_TZ = ZoneInfo("Europe/Rome")
+WEEKDAYS = ["lun", "mar", "mer", "gio", "ven", "sab", "dom"]
+CRITICAL = "⚠️"  # prefisso degli eventi che meritano un'email subito
 
 
 def git(*args: str) -> str:
@@ -70,13 +85,13 @@ def describe_changes(old: dict | None, new: dict) -> list[str]:
         if not o.get("installed") and n.get("installed"):
             events.append(f"📦 {pkg} installata ({n.get('versionName')})")
         elif o.get("installed") and not n.get("installed"):
-            events.append(f"⚠️ {pkg} non più installata (era {o.get('versionName')})")
+            events.append(f"{CRITICAL} {pkg} non più installata (era {o.get('versionName')})")
         elif n.get("installed") and o.get("versionName") != n.get("versionName"):
             events.append(f"📦 {pkg} {o.get('versionName')} → {n.get('versionName')}")
     return events
 
 
-def cmd_diff(before: str, after: str) -> tuple[str, str] | None:
+def change_sections(before: str, after: str, only_critical: bool = False) -> list[str]:
     if before == NULL_SHA:
         changed = [p for p in git("ls-tree", "-r", "--name-only", after, STATUS_DIR).splitlines()]
     else:
@@ -88,12 +103,26 @@ def cmd_diff(before: str, after: str) -> tuple[str, str] | None:
         if new is None:
             continue  # file cancellato o non valido
         events = describe_changes(load_status_at(before, path), new)
+        if only_critical:
+            events = [e for e in events if e.startswith(CRITICAL)]
         if events:
             sections.append(f"{tablet_label(new)}\n" + "\n".join(f"  {e}" for e in events))
+    return sections
 
+
+def cmd_diff(before: str, after: str) -> tuple[str, str] | None:
+    sections = change_sections(before, after)
     if not sections:
         return None
     subject = f"[MDMAgent] {len(sections)} tablet con novità"
+    return subject, "\n\n".join(sections)
+
+
+def cmd_critical(before: str, after: str) -> tuple[str, str] | None:
+    sections = change_sections(before, after, only_critical=True)
+    if not sections:
+        return None
+    subject = f"[MDMAgent] ATTENZIONE: {len(sections)} tablet con problemi"
     return subject, "\n\n".join(sections)
 
 
@@ -113,6 +142,59 @@ def cmd_stale(hours: int) -> tuple[str, str] | None:
     if not stale:
         return None
     return f"[MDMAgent] {len(stale)} tablet silenziosi da più di {hours} ore", "\n".join(stale)
+
+
+def commit_before(moment: datetime) -> str:
+    sha = git("rev-list", "-1", "--first-parent", f"--before={moment.isoformat()}", "HEAD").strip()
+    return sha or NULL_SHA
+
+
+def cmd_weekly() -> tuple[str, str]:
+    # Settimana chiusa più recente: da lunedì 00:00 a lunedì 00:00 ora italiana,
+    # anche se GitHub fa partire il cron in ritardo o lo si lancia a metà settimana.
+    today = datetime.now(LOCAL_TZ).date()
+    this_monday = today - timedelta(days=today.weekday())
+    end = datetime.combine(this_monday, datetime.min.time(), LOCAL_TZ)
+    start = end - timedelta(days=7)
+
+    tablets = {}
+    for name in sorted(os.listdir(STATUS_DIR)):
+        if name.endswith(".json"):
+            with open(os.path.join(STATUS_DIR, name), encoding="utf-8") as f:
+                tablets[STATUS_DIR + name] = json.load(f)
+
+    activity, silent = [], []
+    for path, status in tablets.items():
+        dates = git("log", f"--since={start.isoformat()}", f"--until={end.isoformat()}",
+                    "--format=%cI", "--", path).split()
+        days = {datetime.fromisoformat(d).astimezone(LOCAL_TZ).weekday() for d in dates}
+        if days:
+            active = " ".join(WEEKDAYS[d] for d in sorted(days))
+            activity.append(f"  {tablet_label(status)}: {active} ({len(dates)} check-in)")
+        else:
+            silent.append(f"  {tablet_label(status)}: ultimo check-in {status.get('lastCheckIn')}")
+
+    changes = change_sections(commit_before(start), commit_before(end))
+    period = f"{start:%d/%m} - {(end - timedelta(days=1)):%d/%m/%Y}"
+
+    body = [
+        f"Settimana {period}",
+        f"{len(activity)} tablet attivi, {len(silent)} silenziosi, "
+        f"{len(tablets)} conosciuti su {EXPECTED_TABLETS} attesi.",
+        "",
+        "NOVITÀ",
+        "\n\n".join(changes) if changes else "  Nessuna",
+        "",
+        "TABLET SILENZIOSI IN SETTIMANA",
+        "\n".join(silent) if silent else "  Nessuno",
+        "",
+        "ATTIVITÀ",
+        "\n".join(activity) if activity else "  Nessun check-in",
+    ]
+    subject = f"[MDMAgent] Riepilogo settimana {period}"
+    if silent:
+        subject += f" - {len(silent)} silenziosi"
+    return subject, "\n".join(body)
 
 
 def send_mail(subject: str, body: str) -> None:
@@ -145,6 +227,10 @@ def main() -> None:
         result = cmd_diff(sys.argv[2], sys.argv[3])
     elif mode == "stale":
         result = cmd_stale(int(sys.argv[2]))
+    elif mode == "critical":
+        result = cmd_critical(sys.argv[2], sys.argv[3])
+    elif mode == "weekly":
+        result = cmd_weekly()
     else:
         sys.exit(f"Modalità sconosciuta: {mode}")
 

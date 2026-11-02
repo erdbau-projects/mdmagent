@@ -1,6 +1,6 @@
-# Email quando un tablet cambia qualcosa nei check-in (vedi
-# tools/notify_tablet_events.py), più un controllo giornaliero dei tablet
-# silenziosi. Credenziali SMTP nei secret del repo, mai nel sorgente.
+# Email sui check-in dei tablet (vedi tools/notify_tablet_events.py):
+# subito solo per gli eventi critici, il resto nel riepilogo del lunedì.
+# Credenziali SMTP nei secret del repo, mai nel sorgente.
 name: Notifiche tablet
 
 on:
@@ -8,11 +8,11 @@ on:
     branches: [main]
     paths: ["status/**"]
   schedule:
-    - cron: "0 6 * * *" # ogni giorno alle 06:00 UTC (08:00 in Italia d'estate)
+    - cron: "0 5 * * 1" # lunedì alle 05:00 UTC (06:00/07:00 in Italia); GitHub può ritardare di qualche ora
   workflow_dispatch:
 
 # Check-in di più tablet ravvicinati: in coda, non in parallelo, così ogni
-# email confronta i commit giusti e nessuna va persa.
+# controllo confronta i commit giusti e nessun evento critico va perso.
 concurrency:
   group: tablet-notify
   cancel-in-progress: false
@@ -35,10 +35,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Novità nei check-in
+      - name: Eventi critici nei check-in
         if: github.event_name == 'push'
-        run: python3 tools/notify_tablet_events.py diff "${{ github.event.before }}" "${{ github.sha }}"
+        run: python3 tools/notify_tablet_events.py critical "${{ github.event.before }}" "${{ github.sha }}"
 
-      - name: Tablet silenziosi da più di 48 ore
+      - name: Riepilogo della settimana precedente
         if: github.event_name != 'push'
-        run: python3 tools/notify_tablet_events.py stale 48
+        run: python3 tools/notify_tablet_events.py weekly
