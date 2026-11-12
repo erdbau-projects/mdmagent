@@ -3,11 +3,11 @@
   "model": "SM-X236B",
   "dpcVersionCode": 18,
   "dpcVersionName": "1.2.6",
-  "lastCheckIn": "2026-11-12T12:45:25Z",
+  "lastCheckIn": "2026-11-12T13:39:41Z",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
-      "versionName": "1.7.0"
+      "versionName": "1.7.6"
     },
     "com.carriez.flutter_hbb": {
       "installed": true,
