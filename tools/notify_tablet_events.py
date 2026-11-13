@@ -24,6 +24,11 @@ e critical; diff e stale restano per lanciarle a mano.
     python tools/notify_tablet_events.py stale <ore>
         Segnala i tablet che non fanno check-in da più di <ore> ore.
 
+Catalogo tools/tablet_catalogo.json (si aggiorna con tools/cataloga_tablet.py):
+i tablet con "posizione": "ufficio" sono NON SUL CAMPO. Nel riepilogo hanno una
+sezione a parte e non contano tra i silenziosi; stale li ignora. Nelle
+etichette compare il seriale dell'etichetta (serialeHW) se catalogato.
+
 Configurazione SMTP da variabili d'ambiente (secret del repo su GitHub):
     SMTP_HOST, SMTP_PORT (465 = SSL, altrimenti STARTTLS), SMTP_USER,
     SMTP_PASSWORD, MAIL_TO (uno o più indirizzi separati da virgola),
@@ -63,9 +68,31 @@ def load_status_at(sha: str, path: str) -> dict | None:
         return None
 
 
+CATALOG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tablet_catalogo.json")
+
+
+def load_catalog() -> dict:
+    try:
+        with open(CATALOG_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+
+CATALOG = load_catalog()
+
+
+def in_office(status: dict) -> bool:
+    return CATALOG.get(status.get("serial", ""), {}).get("posizione") == "ufficio"
+
+
 def tablet_label(status: dict) -> str:
     name = status.get("deviceName")
-    label = f"{status.get('serial', '?')} ({status.get('model', '?')})"
+    entry = CATALOG.get(status.get("serial", ""), {})
+    hw = f", {entry['serialeHW']}" if entry.get("serialeHW") else ""
+    label = f"{status.get('serial', '?')} ({status.get('model', '?')}{hw})"
+    if entry.get("nota"):
+        label += f" [{entry['nota']}]"
     return f"{name} - {label}" if name else label
 
 
@@ -134,6 +161,8 @@ def cmd_stale(hours: int) -> tuple[str, str] | None:
             continue
         with open(os.path.join(STATUS_DIR, name), encoding="utf-8") as f:
             status = json.load(f)
+        if in_office(status):
+            continue  # NON SUL CAMPO: il silenzio è atteso
         last = datetime.fromisoformat(status["lastCheckIn"].replace("Z", "+00:00"))
         if now - last > timedelta(hours=hours):
             days = (now - last).total_seconds() / 86400
@@ -163,12 +192,14 @@ def cmd_weekly() -> tuple[str, str]:
             with open(os.path.join(STATUS_DIR, name), encoding="utf-8") as f:
                 tablets[STATUS_DIR + name] = json.load(f)
 
-    activity, silent = [], []
+    activity, silent, office = [], [], []
     for path, status in tablets.items():
         dates = git("log", f"--since={start.isoformat()}", f"--until={end.isoformat()}",
                     "--format=%cI", "--", path).split()
         days = {datetime.fromisoformat(d).astimezone(LOCAL_TZ).weekday() for d in dates}
-        if days:
+        if in_office(status):
+            office.append(f"  {tablet_label(status)}: ultimo check-in {status.get('lastCheckIn')}")
+        elif days:
             active = " ".join(WEEKDAYS[d] for d in sorted(days))
             activity.append(f"  {tablet_label(status)}: {active} ({len(dates)} check-in)")
         else:
@@ -179,14 +210,17 @@ def cmd_weekly() -> tuple[str, str]:
 
     body = [
         f"Settimana {period}",
-        f"{len(activity)} tablet attivi, {len(silent)} silenziosi, "
+        f"{len(activity)} tablet attivi, {len(silent)} silenziosi, {len(office)} non sul campo, "
         f"{len(tablets)} conosciuti su {EXPECTED_TABLETS} attesi.",
         "",
         "NOVITÀ",
         "\n\n".join(changes) if changes else "  Nessuna",
         "",
-        "TABLET SILENZIOSI IN SETTIMANA",
+        "TABLET SILENZIOSI IN SETTIMANA (sul campo)",
         "\n".join(silent) if silent else "  Nessuno",
+        "",
+        "NON SUL CAMPO (in ufficio, da tools/tablet_catalogo.json)",
+        "\n".join(office) if office else "  Nessuno",
         "",
         "ATTIVITÀ",
         "\n".join(activity) if activity else "  Nessun check-in",
