@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 18,
   "dpcVersionName": "1.2.6",
-  "lastCheckIn": "2026-11-09T09:54:19Z",
+  "lastCheckIn": "2026-11-13T15:53:24Z",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -15,7 +15,7 @@
     },
     "com.adobe.reader": {
       "installed": true,
-      "versionName": "26.10.0.51145"
+      "versionName": "26.10.1.51189"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
@@ -31,7 +31,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.43.00.1002020710"
+      "versionName": "26.45.00.1011720968"
     }
   }
 }
