@@ -34,3 +34,6 @@ docs/
 /.packages_before.txt
 /.packages_after.txt
 /Logo_Erdbau.JPG
+
+# Note locali
+/Instruzioni per installare MDMAgent.txt
