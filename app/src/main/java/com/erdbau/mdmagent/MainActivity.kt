@@ -475,7 +475,9 @@ class MainActivity : AppCompatActivity() {
             .setTitle(R.string.maintenance_pin_title)
             .setView(input)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                if (input.text.toString() == ADMIN_EXIT_PIN) {
+                val pin = input.text.toString()
+                // PIN di emergenza fisso oppure PIN del mese (vedi RotatingPin).
+                if (pin == ADMIN_EXIT_PIN || RotatingPin.isValid(pin, ROTATING_PIN_SECRET)) {
                     enterMaintenanceMode()
                 } else {
                     Toast.makeText(this, R.string.maintenance_pin_wrong, Toast.LENGTH_SHORT).show()
@@ -528,5 +530,9 @@ class MainActivity : AppCompatActivity() {
         // build.gradle.kts): così non finisce in chiaro nel repo pubblico.
         // Resta comunque leggibile decompilando l'APK.
         private const val ADMIN_EXIT_PIN = BuildConfig.ADMIN_EXIT_PIN
+
+        // Segreto del PIN mensile (stesso file, stessa esposizione: leggibile
+        // decompilando l'APK, come il PIN fisso).
+        private const val ROTATING_PIN_SECRET = BuildConfig.ROTATING_PIN_SECRET
     }
 }

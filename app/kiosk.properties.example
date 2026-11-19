@@ -2,3 +2,8 @@
 # PIN reale. kiosk.properties NON va versionato (vedi .gitignore): il repo e' pubblico.
 
 adminExitPin=000000
+
+# Segreto del PIN mensile a rotazione (vedi RotatingPin.kt), almeno 32 caratteri.
+# Generalo con:  python3 -c "import secrets;print(secrets.token_hex(32))"
+# Va usato lo STESSO segreto nel portale camweb (pagina /pin).
+rotatingPinSecret=sostituisci-con-un-segreto-casuale-di-64-caratteri-esadecimali

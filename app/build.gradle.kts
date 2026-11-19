@@ -38,6 +38,11 @@ if (kioskPropertiesFile.exists()) {
 }
 val adminExitPin: String = kioskProperties.getProperty("adminExitPin")
     ?: throw GradleException("Manca app/kiosk.properties con adminExitPin=<PIN> (vedi kiosk.properties.example)")
+// Segreto del PIN mensile a rotazione (vedi RotatingPin.kt): obbligatorio anche
+// lui, così una release non può partire per sbaglio senza PIN del mese.
+val rotatingPinSecret: String = kioskProperties.getProperty("rotatingPinSecret")
+    ?.takeIf { it.length >= 32 }
+    ?: throw GradleException("Manca rotatingPinSecret (almeno 32 caratteri) in app/kiosk.properties (vedi kiosk.properties.example)")
 
 android {
     namespace = "com.erdbau.mdmagent"
@@ -47,11 +52,12 @@ android {
         applicationId = "com.erdbau.mdmagent"
         minSdk = 24
         targetSdk = 34
-        versionCode = 19
-        versionName = "1.2.7"
+        versionCode = 20
+        versionName = "1.2.8"
 
         buildConfigField("String", "GITHUB_STATUS_TOKEN", "\"$githubStatusToken\"")
         buildConfigField("String", "ADMIN_EXIT_PIN", "\"$adminExitPin\"")
+        buildConfigField("String", "ROTATING_PIN_SECRET", "\"$rotatingPinSecret\"")
     }
 
     signingConfigs {
