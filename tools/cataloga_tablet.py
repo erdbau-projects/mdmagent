@@ -5,7 +5,7 @@ che dice se un tablet è sul campo o in ufficio (NON SUL CAMPO). Il riepilogo
 del lunedì (notify_tablet_events.py) mette quelli "ufficio" in una sezione a
 parte e non li conta tra i silenziosi.
 
-    python tools/cataloga_tablet.py ufficio [--nota "testo"] [--riavvia]
+    python tools/cataloga_tablet.py ufficio [--nome "Camion 12"] [--nota "testo"] [--riavvia]
     python tools/cataloga_tablet.py campo   [--nota "testo"] [--riavvia]
 
 L'ID usato nei file status/ è l'ANDROID_ID *visto da MDMAgent*: da Android 8 è
@@ -73,6 +73,7 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("posizione", choices=["ufficio", "campo"])
     p.add_argument("--nota", default=None, help="es. 'scorta', 'in riparazione', 'camion 12'")
+    p.add_argument("--nome", default=None, help="nome da mostrare nella gestione tablet, es. 'Camion 12'")
     p.add_argument("--riavvia", action="store_true", help="riavvia il tablet se l'ID non è nel log")
     a = p.parse_args()
 
@@ -97,6 +98,7 @@ def main() -> None:
         "serialeHW": seriale_hw,
         "modello": modello,
         "posizione": a.posizione,
+        "nome": a.nome if a.nome is not None else voce.get("nome", ""),
         "nota": a.nota if a.nota is not None else voce.get("nota", ""),
         "aggiornato": date.today().isoformat(),
     })

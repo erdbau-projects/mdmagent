@@ -72,6 +72,9 @@ object StatusReporter {
      * (accesso concesso senza dialog) — coerente col fatto che questa classe
      * va invocata solo a Device Owner già confermato (vedi MainActivity).
      */
+    /** Id del tablet usato in status/ e nei profili (vedi ProfileManager). */
+    internal fun deviceId(context: Context): String = getSerial(context.applicationContext)
+
     private fun getSerial(context: Context): String = try {
         Build.getSerial()
     } catch (e: SecurityException) {
@@ -108,6 +111,7 @@ object StatusReporter {
             put("dpcVersionCode", ownVersionCode)
             put("dpcVersionName", ownInfo.versionName ?: "")
             put("lastCheckIn", isoTimestampNow())
+            put("profilo", ProfileManager.cachedProfileId(context) ?: "integrato")
             put("apps", apps)
         }
     }
@@ -127,6 +131,8 @@ object StatusReporter {
                 Log.w(TAG, "Impossibile leggere $assetName per la lista app da tracciare", e)
             }
         }
+        // Anche le app del profilo del reparto, se diverse dalla lista integrata.
+        ProfileManager.cachedApps(context)?.forEach { names.add(it.packageName) }
         return names.toList()
     }
 

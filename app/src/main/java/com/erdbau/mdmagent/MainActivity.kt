@@ -37,7 +37,7 @@ import androidx.core.content.ContextCompat
 import org.json.JSONArray
 
 /** Un'app installata manualmente da Play Store, mostrata come icona nel launcher del kiosk. */
-private data class LauncherApp(val packageName: String, val displayName: String)
+internal data class LauncherApp(val packageName: String, val displayName: String)
 
 /**
  * Activity di ingresso, e anche il "launcher" del kiosk: mostra una griglia
@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
             // nel repo resta aggiornato per tutta la vita del kiosk, non solo
             // all'avvio.
             StatusReporter.reportStatus(this@MainActivity)
+            refreshProfile()
             updateCheckHandler.postDelayed(this, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
         }
     }
@@ -93,6 +94,25 @@ class MainActivity : AppCompatActivity() {
                 val pkg = intent.getStringExtra(SilentAppInstaller.EXTRA_PACKAGE_NAME)
                 Log.i(TAG, "Installazione silenziosa completata ($pkg), aggiorno la griglia")
                 if (!maintenanceMode) enterKioskMode()
+            }
+        }
+    }
+
+    /**
+     * App installate o rimosse da fuori (Play Store, anche da remoto dal sito
+     * play.google.com): se riguardano il profilo del tablet, ricostruisce
+     * subito kiosk e griglia, senza aspettare il riavvio dell'app. Gli
+     * aggiornamenti di un'app già presente (EXTRA_REPLACING) non cambiano la
+     * griglia e vengono ignorati.
+     */
+    private val packageChangeReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) return
+            val pkg = intent.data?.schemeSpecificPart ?: return
+            if (maintenanceMode) return
+            if (loadLauncherApps().any { it.packageName == pkg }) {
+                Log.i(TAG, "App del profilo ${intent.action?.substringAfterLast('.')}: $pkg, aggiorno la griglia")
+                enterKioskMode()
             }
         }
     }
@@ -147,6 +167,17 @@ class MainActivity : AppCompatActivity() {
             IntentFilter(Intent.ACTION_BATTERY_CHANGED),
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
+        // Broadcast di sistema: arrivano anche con RECEIVER_NOT_EXPORTED.
+        ContextCompat.registerReceiver(
+            this,
+            packageChangeReceiver,
+            IntentFilter().apply {
+                addAction(Intent.ACTION_PACKAGE_ADDED)
+                addAction(Intent.ACTION_PACKAGE_REMOVED)
+                addDataScheme("package")
+            },
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
 
         if (dpm.isDeviceOwnerApp(packageName)) {
             enterKioskMode()
@@ -164,6 +195,8 @@ class MainActivity : AppCompatActivity() {
             // GitHub: vedi StatusReporter per il formato e la nota di
             // sicurezza sul token imbustato nell'APK.
             StatusReporter.reportStatus(this)
+            // Profilo del reparto (quali app mostra il kiosk): vedi ProfileManager.
+            refreshProfile()
             // E ricontrolla periodicamente finché il kiosk resta acceso, così
             // un tablet mai riavviato riceve comunque i nuovi aggiornamenti
             // (e resta aggiornato anche il suo status/<seriale>.json).
@@ -178,6 +211,7 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         unregisterReceiver(installStatusReceiver)
         unregisterReceiver(batteryReceiver)
+        unregisterReceiver(packageChangeReceiver)
         updateCheckHandler.removeCallbacks(periodicUpdateCheck)
     }
 
@@ -325,7 +359,7 @@ class MainActivity : AppCompatActivity() {
         try {
             startLockTask()
             Log.i(TAG, "Lock Task Mode avviata (${lockedPackages.size} pacchetti in whitelist)")
-            findViewById<TextView>(R.id.statusText).setText(R.string.status_kiosk_active)
+            findViewById<TextView>(R.id.statusText).text = kioskStatusText()
             findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.GONE
             populateAppGrid(apps)
         } catch (e: IllegalArgumentException) {
@@ -369,7 +403,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadLauncherApps(): List<LauncherApp> {
+    /** App del profilo del tablet (ProfileManager), altrimenti la lista integrata. */
+    private fun loadLauncherApps(): List<LauncherApp> =
+        ProfileManager.cachedApps(this) ?: loadBundledLauncherApps()
+
+    private fun loadBundledLauncherApps(): List<LauncherApp> {
         return try {
             val json = assets.open("launcher_apps.json").bufferedReader().use { it.readText() }
             val array = JSONArray(json)
@@ -386,6 +424,25 @@ class MainActivity : AppCompatActivity() {
             Log.e(TAG, "Impossibile leggere launcher_apps.json", e)
             emptyList()
         }
+    }
+
+    /** Scarica il profilo; se è cambiato rifà kiosk e griglia (non in manutenzione). */
+    private fun refreshProfile() {
+        ProfileManager.refresh(this) {
+            if (!isFinishing && !isDestroyed && !maintenanceMode) {
+                Log.i(TAG, "Profilo cambiato, ricostruisco kiosk e griglia")
+                enterKioskMode()
+            }
+        }
+    }
+
+    /**
+     * "Modalità kiosk attiva · v1.3.0". Il nome del profilo NON va mostrato
+     * a chi usa il tablet (scelta dell'utente): si vede nella pagina di gestione.
+     */
+    private fun kioskStatusText(): String {
+        val base = getString(R.string.status_kiosk_active).trimEnd('.')
+        return "$base  ·  v${BuildConfig.VERSION_NAME}"
     }
 
     private fun isInstalled(pkg: String): Boolean = try {
