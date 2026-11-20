@@ -1,9 +1,10 @@
 {
   "serial": "68811bf7bda62b20",
   "model": "SM-X236B",
-  "dpcVersionCode": 14,
-  "dpcVersionName": "1.2.2",
-  "lastCheckIn": "2026-11-20T14:47:56Z",
+  "dpcVersionCode": 23,
+  "dpcVersionName": "1.3.1",
+  "lastCheckIn": "2026-11-20T14:50:58Z",
+  "profilo": "integrato",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -32,6 +33,9 @@
     "com.google.android.apps.maps": {
       "installed": true,
       "versionName": "26.39.04.984891338"
+    },
+    "net.osmand": {
+      "installed": false
     }
   }
 }
