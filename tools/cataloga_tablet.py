@@ -93,6 +93,11 @@ def main() -> None:
 
     catalogo = json.loads(CATALOGO.read_text(encoding="utf-8")) if CATALOGO.exists() else {}
     voce = catalogo.get(tablet_id, {})
+    if a.nome:
+        norm = lambda s: " ".join(s.split()).casefold()
+        for altro, v in catalogo.items():
+            if altro != tablet_id and norm(v.get("nome", "")) == norm(a.nome):
+                sys.exit(f"Il nome '{a.nome}' è già usato da {v.get('serialeHW') or altro}: scegline un altro.")
     prima = voce.get("posizione")
     voce.update({
         "serialeHW": seriale_hw,
