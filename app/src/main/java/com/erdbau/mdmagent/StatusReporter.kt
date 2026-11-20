@@ -13,7 +13,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
-import kotlin.concurrent.thread
+import android.os.Handler
+import android.os.Looper
+import java.util.concurrent.Executors
 
 /**
  * Riporta periodicamente lo stato di questo tablet (seriale, versione del
@@ -42,6 +44,23 @@ object StatusReporter {
     private const val REPO = "erdbau-projects/mdmagent"
     private const val API_BASE = "https://api.github.com/repos/$REPO/contents/status"
 
+    // Un check-in alla volta: due PUT in parallelo sullo stesso file fanno
+    // fallire il secondo con HTTP 409 (sha non più attuale), visto dal vivo.
+    private val executor = Executors.newSingleThreadExecutor { r -> Thread(r, "StatusReporter") }
+    private val mainHandler = Handler(Looper.getMainLooper())
+    private var pendingContext: Context? = null
+    private val delayedReport = Runnable { pendingContext?.let { reportStatus(it) } }
+
+    /**
+     * Check-in poco dopo un cambiamento (app installata/rimossa, profilo
+     * cambiato): più cambiamenti ravvicinati diventano un solo check-in.
+     */
+    fun reportStatusSoon(context: Context, delayMs: Long = 20_000) {
+        pendingContext = context.applicationContext
+        mainHandler.removeCallbacks(delayedReport)
+        mainHandler.postDelayed(delayedReport, delayMs)
+    }
+
     fun reportStatus(context: Context) {
         val appContext = context.applicationContext
         if (BuildConfig.GITHUB_STATUS_TOKEN.isBlank()) {
@@ -51,7 +70,7 @@ object StatusReporter {
             Log.i(TAG, "Nessun token di status configurato, salto il check-in")
             return
         }
-        thread(name = "StatusReporter") {
+        executor.execute {
             try {
                 val serial = getSerial(appContext)
                 val body = buildStatusJson(appContext, serial)
@@ -145,24 +164,30 @@ object StatusReporter {
     /** GET per l'eventuale sha esistente, poi PUT (create o update) — Contents API di GitHub. */
     private fun publish(serial: String, body: JSONObject) {
         val url = "$API_BASE/$serial.json"
-        val existingSha = fetchExistingSha(url)
-
         val content = Base64.encodeToString(body.toString(2).toByteArray(Charsets.UTF_8), Base64.NO_WRAP)
-        val payload = JSONObject().apply {
-            put("message", "status: check-in $serial")
-            put("content", content)
-            if (existingSha != null) put("sha", existingSha)
+        // Due tentativi: se nel frattempo il file è cambiato (409), si rilegge
+        // lo sha e si riprova una volta.
+        for (attempt in 1..2) {
+            val existingSha = fetchExistingSha(url)
+            val payload = JSONObject().apply {
+                put("message", "status: check-in $serial")
+                put("content", content)
+                if (existingSha != null) put("sha", existingSha)
+            }
+            val connection = openConnection(url, "PUT")
+            try {
+                connection.doOutput = true
+                connection.outputStream.use { it.write(payload.toString().toByteArray(Charsets.UTF_8)) }
+                val responseCode = connection.responseCode
+                if (responseCode in 200..299) return
+                if (responseCode != 409 || attempt == 2) {
+                    throw IOException("PUT status/$serial.json fallito: HTTP $responseCode")
+                }
+                Log.i(TAG, "Check-in: conflitto 409, riprovo con lo sha aggiornato")
+            } finally {
+                connection.disconnect()
+            }
         }
-
-        val connection = openConnection(url, "PUT")
-        connection.doOutput = true
-        connection.outputStream.use { it.write(payload.toString().toByteArray(Charsets.UTF_8)) }
-
-        val responseCode = connection.responseCode
-        if (responseCode !in 200..299) {
-            throw IOException("PUT status/$serial.json fallito: HTTP $responseCode")
-        }
-        connection.disconnect()
     }
 
     private fun fetchExistingSha(url: String): String? {

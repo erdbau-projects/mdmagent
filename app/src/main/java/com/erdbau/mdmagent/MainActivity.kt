@@ -113,6 +113,8 @@ class MainActivity : AppCompatActivity() {
             if (loadLauncherApps().any { it.packageName == pkg }) {
                 Log.i(TAG, "App del profilo ${intent.action?.substringAfterLast('.')}: $pkg, aggiorno la griglia")
                 enterKioskMode()
+                // E la comunica subito alla pagina di gestione (check-in).
+                StatusReporter.reportStatusSoon(this@MainActivity)
             }
         }
     }
@@ -432,6 +434,7 @@ class MainActivity : AppCompatActivity() {
             if (!isFinishing && !isDestroyed && !maintenanceMode) {
                 Log.i(TAG, "Profilo cambiato, ricostruisco kiosk e griglia")
                 enterKioskMode()
+                StatusReporter.reportStatusSoon(this)
             }
         }
     }
