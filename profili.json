@@ -37,23 +37,6 @@
           "displayName": "OsmAnd"
         }
       ]
-    },
-    "prova": {
-      "nome": "prova",
-      "apps": [
-        {
-          "packageName": "com.carriez.flutter_hbb",
-          "displayName": "RustDesk"
-        },
-        {
-          "packageName": "com.adobe.reader",
-          "displayName": "Adobe Acrobat Reader"
-        },
-        {
-          "packageName": "com.sec.android.app.myfiles",
-          "displayName": "I miei file"
-        }
-      ]
     }
   },
   "tablet": {}
