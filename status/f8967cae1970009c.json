@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 21,
   "dpcVersionName": "1.2.9",
-  "lastCheckIn": "2026-11-20T06:43:18Z",
+  "lastCheckIn": "2026-11-20T06:45:00Z",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
