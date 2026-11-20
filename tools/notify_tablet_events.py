@@ -178,6 +178,28 @@ def commit_before(moment: datetime) -> str:
     return sha or NULL_SHA
 
 
+def is_weekend() -> bool:
+    return datetime.now(LOCAL_TZ).weekday() >= 5  # sabato o domenica, ora italiana
+
+
+def cmd_critical_weekend() -> tuple[str, str] | None:
+    """
+    Allarmi critici dell'ultimo weekend (sabato 00:00 - lunedì 00:00 ora
+    italiana), che nel weekend non vengono spediti: lunedì col riepilogo.
+    """
+    today = datetime.now(LOCAL_TZ).date()
+    monday = datetime.combine(today - timedelta(days=today.weekday()), datetime.min.time(), LOCAL_TZ)
+    saturday = monday - timedelta(days=2)
+    before, after = commit_before(saturday), commit_before(monday)
+    if after == NULL_SHA or before == after:
+        return None
+    sections = change_sections(before, after, only_critical=True)
+    if not sections:
+        return None
+    subject = f"[MDMAgent] ATTENZIONE (weekend): {len(sections)} tablet con problemi"
+    return subject, "Problemi comparsi tra sabato e domenica:\n\n" + "\n\n".join(sections)
+
+
 def cmd_weekly() -> tuple[str, str]:
     # Settimana chiusa più recente: da lunedì 00:00 a lunedì 00:00 ora italiana,
     # anche se GitHub fa partire il cron in ritardo o lo si lancia a metà settimana.
@@ -277,7 +299,12 @@ def main() -> None:
     elif mode == "stale":
         result = cmd_stale(int(sys.argv[2]))
     elif mode == "critical":
+        if is_weekend():
+            print("Weekend: niente mail, gli allarmi arrivano lunedì (modalità critical-weekend)")
+            return
         result = cmd_critical(sys.argv[2], sys.argv[3])
+    elif mode == "critical-weekend":
+        result = cmd_critical_weekend()
     elif mode == "weekly":
         result = cmd_weekly()
     elif mode == "aggiornamenti":

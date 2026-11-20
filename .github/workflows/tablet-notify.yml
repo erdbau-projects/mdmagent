@@ -1,5 +1,6 @@
 # Email sui check-in dei tablet (vedi tools/notify_tablet_events.py):
-# subito solo per gli eventi critici, il resto nel riepilogo del lunedì.
+# subito solo per gli eventi critici (lun-ven; quelli del weekend il lunedì),
+# il resto nel riepilogo del lunedì.
 # Credenziali SMTP nei secret del repo, mai nel sorgente.
 name: Notifiche tablet
 
@@ -43,6 +44,10 @@ jobs:
       - name: Riepilogo della settimana precedente
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 5 * * 1'
         run: python3 tools/notify_tablet_events.py weekly
+
+      - name: Allarmi critici del weekend (nel weekend non si spediscono)
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 5 * * 1'
+        run: python3 tools/notify_tablet_events.py critical-weekend
 
       - name: App da aggiornare
         if: github.event_name == 'workflow_dispatch' || github.event.schedule == '30 4 * * 1-5'
