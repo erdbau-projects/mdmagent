@@ -62,6 +62,43 @@
           "displayName": "OsmAnd"
         }
       ]
+    },
+    "servizio_neve": {
+      "nome": "Servizio_Neve",
+      "apps": [
+        {
+          "packageName": "it.rentri.appmobile.firdigitale",
+          "displayName": "RENTRI FIR Digitale"
+        },
+        {
+          "packageName": "com.carriez.flutter_hbb",
+          "displayName": "RustDesk"
+        },
+        {
+          "packageName": "com.adobe.reader",
+          "displayName": "Adobe Acrobat Reader"
+        },
+        {
+          "packageName": "de.mts_ag.android.mts_smart.mts",
+          "displayName": "MTS"
+        },
+        {
+          "packageName": "com.sec.android.app.myfiles",
+          "displayName": "I miei file"
+        },
+        {
+          "packageName": "com.sec.android.app.camera",
+          "displayName": "Fotocamera"
+        },
+        {
+          "packageName": "com.google.android.apps.maps",
+          "displayName": "Maps"
+        },
+        {
+          "packageName": "net.osmand",
+          "displayName": "OsmAnd"
+        }
+      ]
     }
   },
   "tablet": {}
