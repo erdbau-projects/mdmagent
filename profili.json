@@ -31,10 +31,6 @@
         {
           "packageName": "com.google.android.apps.maps",
           "displayName": "Maps"
-        },
-        {
-          "packageName": "net.osmand",
-          "displayName": "OsmAnd"
         }
       ]
     }
