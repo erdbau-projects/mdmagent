@@ -87,8 +87,8 @@ def in_office(status: dict) -> bool:
 
 
 def tablet_label(status: dict) -> str:
-    name = status.get("deviceName")
     entry = CATALOG.get(status.get("serial", ""), {})
+    name = entry.get("nome") or status.get("deviceName")
     hw = f", {entry['serialeHW']}" if entry.get("serialeHW") else ""
     label = f"{status.get('serial', '?')} ({status.get('model', '?')}{hw})"
     if entry.get("nota"):
@@ -231,6 +231,21 @@ def cmd_weekly() -> tuple[str, str]:
     return subject, "\n".join(body)
 
 
+def cmd_aggiornamenti() -> tuple[str, str] | None:
+    """App da aggiornare (vedi tools/aggiornamenti.py): mail solo se ce ne sono."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import aggiornamenti as agg
+    apps = agg.analizza(agg.load_status(), CATALOG, agg.app_names())
+    if not apps:
+        return None
+    n = len({t["id"] for a in apps for t in a["tablet"]})
+    subject = f"[MDMAgent] App da aggiornare su {n} tablet"
+    intro = ("Versioni più vecchie di quella più recente vista sugli altri tablet.\n"
+             "Le aggiorna il Play Store sul tablet (aggiornamento automatico o a mano in manutenzione).\n"
+             "Dettagli nella pagina di gestione, scheda Aggiornamenti.\n")
+    return subject, intro + "\n" + agg.report(apps)
+
+
 def send_mail(subject: str, body: str) -> None:
     host = os.environ["SMTP_HOST"]
     port = int(os.environ.get("SMTP_PORT") or "587")
@@ -265,6 +280,8 @@ def main() -> None:
         result = cmd_critical(sys.argv[2], sys.argv[3])
     elif mode == "weekly":
         result = cmd_weekly()
+    elif mode == "aggiornamenti":
+        result = cmd_aggiornamenti()
     else:
         sys.exit(f"Modalità sconosciuta: {mode}")
 

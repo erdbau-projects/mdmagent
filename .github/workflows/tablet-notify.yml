@@ -9,6 +9,7 @@ on:
     paths: ["status/**"]
   schedule:
     - cron: "0 5 * * 1" # lunedì alle 05:00 UTC (06:00/07:00 in Italia); GitHub può ritardare di qualche ora
+    - cron: "30 4 * * *" # ogni notte alle 04:30 UTC: app da aggiornare (mail solo se ce ne sono)
   workflow_dispatch:
 
 # Check-in di più tablet ravvicinati: in coda, non in parallelo, così ogni
@@ -40,5 +41,9 @@ jobs:
         run: python3 tools/notify_tablet_events.py critical "${{ github.event.before }}" "${{ github.sha }}"
 
       - name: Riepilogo della settimana precedente
-        if: github.event_name != 'push'
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 5 * * 1'
         run: python3 tools/notify_tablet_events.py weekly
+
+      - name: App da aggiornare
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '30 4 * * *'
+        run: python3 tools/notify_tablet_events.py aggiornamenti
