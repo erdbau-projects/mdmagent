@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 23,
   "dpcVersionName": "1.3.1",
-  "lastCheckIn": "2026-11-20T15:06:03Z",
+  "lastCheckIn": "2026-11-20T15:15:33Z",
   "profilo": "camionisti",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -16,7 +16,7 @@
     },
     "com.adobe.reader": {
       "installed": true,
-      "versionName": "26.10.1.51189"
+      "versionName": "26.10.2.51485"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
@@ -24,7 +24,7 @@
     },
     "com.sec.android.app.myfiles": {
       "installed": true,
-      "versionName": "15.4.01.22"
+      "versionName": "15.4.09.5"
     },
     "com.sec.android.app.camera": {
       "installed": true,
@@ -32,7 +32,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "25.32.00.790560726"
+      "versionName": "26.46.00.1016872485"
     },
     "net.osmand": {
       "installed": true,
