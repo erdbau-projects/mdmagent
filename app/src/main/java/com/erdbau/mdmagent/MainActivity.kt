@@ -77,8 +77,19 @@ class MainActivity : AppCompatActivity() {
             // nel repo resta aggiornato per tutta la vita del kiosk, non solo
             // all'avvio.
             StatusReporter.reportStatus(this@MainActivity)
-            refreshProfile()
             updateCheckHandler.postDelayed(this, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
+        }
+    }
+
+    /**
+     * Profili ricontrollati ogni PROFILE_CHECK_INTERVAL_MS (molto più spesso
+     * dell'auto-update): dopo "Pubblica" nella pagina di gestione un tablet
+     * acceso cambia griglia entro mezz'ora. Il file è di ~2 KB.
+     */
+    private val periodicProfileCheck = object : Runnable {
+        override fun run() {
+            refreshProfile()
+            updateCheckHandler.postDelayed(this, PROFILE_CHECK_INTERVAL_MS)
         }
     }
 
@@ -203,6 +214,7 @@ class MainActivity : AppCompatActivity() {
             // un tablet mai riavviato riceve comunque i nuovi aggiornamenti
             // (e resta aggiornato anche il suo status/<seriale>.json).
             updateCheckHandler.postDelayed(periodicUpdateCheck, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
+            updateCheckHandler.postDelayed(periodicProfileCheck, PROFILE_CHECK_INTERVAL_MS)
         } else {
             Log.w(TAG, "App non è Device Owner: kiosk mode non avviato.")
             findViewById<TextView>(R.id.statusText).setText(R.string.status_not_device_owner)
@@ -215,6 +227,7 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(batteryReceiver)
         unregisterReceiver(packageChangeReceiver)
         updateCheckHandler.removeCallbacks(periodicUpdateCheck)
+        updateCheckHandler.removeCallbacks(periodicProfileCheck)
     }
 
     override fun onResume() {
@@ -576,6 +589,9 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
 
         private const val TAPS_REQUIRED = 7
+
+        // Controllo profili (vedi periodicProfileCheck): ogni 30 minuti.
+        private const val PROFILE_CHECK_INTERVAL_MS = 30 * 60 * 1000L
         private const val TAP_WINDOW_MS = 3000L
 
         // Timeout di spegnimento schermo del kiosk (vedi applyScreenOffTimeout()).

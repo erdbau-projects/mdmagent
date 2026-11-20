@@ -17,7 +17,7 @@ Uso:
   python3 tools/profili.py firma                         # dopo una modifica a mano
 
 Poi: git add profili.json profili.signed.json && git commit && git push.
-I tablet lo applicano all'avvio dell'app o entro 6 ore.
+I tablet lo applicano all'avvio dell'app o entro 30 minuti.
 """
 from __future__ import annotations
 
