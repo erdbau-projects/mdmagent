@@ -109,6 +109,13 @@ def describe_changes(old: dict | None, new: dict) -> list[str]:
     old_apps, new_apps = old.get("apps", {}), new.get("apps", {})
     for pkg in sorted(set(old_apps) | set(new_apps)):
         o, n = old_apps.get(pkg, {}), new_apps.get(pkg, {})
+        if pkg not in new_apps:
+            # Non più riportata: tolta dal profilo o rimossa apposta (es. RustDesk
+            # con la 1.4.1). Dalla 1.3.3 il check-in riporta solo le app del
+            # profilo, quindi non è un allarme.
+            if o.get("installed"):
+                events.append(f"🗑️ {pkg} non più seguita (tolta dal profilo o rimossa apposta)")
+            continue
         if not o.get("installed") and n.get("installed"):
             events.append(f"📦 {pkg} installata ({n.get('versionName')})")
         elif o.get("installed") and not n.get("installed"):
