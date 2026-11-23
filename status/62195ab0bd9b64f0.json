@@ -3,14 +3,21 @@
   "model": "SM-X236B",
   "dpcVersionCode": 27,
   "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T09:22:37Z",
+  "lastCheckIn": "2026-11-23T09:22:53Z",
   "profilo": "camionisti",
-  "impostazioni": {},
+  "impostazioni": {
+    "posizione": true,
+    "oraAutomatica": true,
+    "schermoAccesoInCarica": true,
+    "bloccaReset": true,
+    "bloccaHotspotRete": true,
+    "volumeMinimo": 50
+  },
   "stato": {
     "posizione": true,
     "bluetooth": true,
     "wifi": true,
-    "schermoAccesoInCarica": false
+    "schermoAccesoInCarica": true
   },
   "apps": {
     "it.rentri.appmobile.firdigitale": {
