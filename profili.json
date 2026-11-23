@@ -111,7 +111,65 @@
           "displayName": "OsmAnd"
         }
       ]
+    },
+    "prova_assistenza": {
+      "nome": "Prova assistenza",
+      "apps": [
+        {
+          "packageName": "it.rentri.appmobile.firdigitale",
+          "displayName": "RENTRI FIR Digitale",
+          "permessi": [
+            "fotocamera",
+            "notifiche",
+            "posizione"
+          ]
+        },
+        {
+          "packageName": "com.adobe.reader",
+          "displayName": "Adobe Acrobat Reader"
+        },
+        {
+          "packageName": "de.mts_ag.android.mts_smart.mts",
+          "displayName": "MTS",
+          "permessi": [
+            "posizione"
+          ]
+        },
+        {
+          "packageName": "com.sec.android.app.myfiles",
+          "displayName": "I miei file"
+        },
+        {
+          "packageName": "com.sec.android.app.camera",
+          "displayName": "Fotocamera"
+        },
+        {
+          "packageName": "com.google.android.apps.maps",
+          "displayName": "Maps",
+          "permessi": [
+            "notifiche",
+            "posizione"
+          ]
+        },
+        {
+          "packageName": "com.carriez.flutter_hbb",
+          "displayName": "Assistenza remota",
+          "permessi": [
+            "notifiche"
+          ]
+        }
+      ],
+      "impostazioni": {
+        "posizione": true,
+        "oraAutomatica": true,
+        "schermoAccesoInCarica": true,
+        "bloccaReset": true,
+        "bloccaHotspotRete": true,
+        "volumeMinimo": 50
+      }
     }
   },
-  "tablet": {}
+  "tablet": {
+    "9b0afe503dab1787": "prova_assistenza"
+  }
 }
