@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 29,
   "dpcVersionName": "1.4.3",
-  "lastCheckIn": "2026-11-23T10:46:37Z",
+  "lastCheckIn": "2026-11-23T10:48:22Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -29,7 +29,7 @@
     },
     "com.adobe.reader": {
       "installed": true,
-      "versionName": "26.10.1.51195"
+      "versionName": "26.10.2.51485"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
