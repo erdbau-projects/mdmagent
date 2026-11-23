@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 27,
   "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T09:01:58Z",
+  "lastCheckIn": "2026-11-23T09:16:50Z",
   "profilo": "prova_assistenza",
   "impostazioni": {
     "posizione": true,
@@ -21,10 +21,6 @@
     "schermoAccesoInCarica": true
   },
   "apps": {
-    "com.carriez.flutter_hbb": {
-      "installed": true,
-      "versionName": "1.4.9"
-    },
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
       "versionName": "1.7.6"
@@ -48,6 +44,10 @@
     "com.google.android.apps.maps": {
       "installed": true,
       "versionName": "26.46.00.1016872485"
+    },
+    "com.carriez.flutter_hbb": {
+      "installed": true,
+      "versionName": "1.4.9"
     }
   }
 }
