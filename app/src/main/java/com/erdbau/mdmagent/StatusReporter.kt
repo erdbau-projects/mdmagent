@@ -138,7 +138,13 @@ object StatusReporter {
     /** Unione dei package tracciati: le app installate a mano (launcher_apps.json) e quelle spinte in silenzio (managed_apps.json). */
     private fun trackedPackageNames(context: Context): List<String> {
         val names = LinkedHashSet<String>()
-        for (assetName in listOf("launcher_apps.json", "managed_apps.json")) {
+        // Con un profilo in cache contano le sue app (più quelle installate in
+        // silenzio): la lista integrata launcher_apps.json serve solo finché
+        // il tablet non ha mai ricevuto un profilo (prima riportava anche app
+        // tolte dal profilo, es. OsmAnd, come "mancanti").
+        val profile = ProfileManager.cachedApps(context)
+        val assets = if (profile != null) listOf("managed_apps.json") else listOf("launcher_apps.json", "managed_apps.json")
+        for (assetName in assets) {
             try {
                 val json = context.assets.open(assetName).bufferedReader().use { it.readText() }
                 val array = JSONArray(json)
@@ -150,8 +156,7 @@ object StatusReporter {
                 Log.w(TAG, "Impossibile leggere $assetName per la lista app da tracciare", e)
             }
         }
-        // Anche le app del profilo del reparto, se diverse dalla lista integrata.
-        ProfileManager.cachedApps(context)?.forEach { names.add(it.packageName) }
+        profile?.forEach { names.add(it.packageName) }
         return names.toList()
     }
 

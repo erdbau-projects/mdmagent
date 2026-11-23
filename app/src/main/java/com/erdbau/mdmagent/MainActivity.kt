@@ -118,14 +118,18 @@ class MainActivity : AppCompatActivity() {
      */
     private val packageChangeReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            if (intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) return
             val pkg = intent.data?.schemeSpecificPart ?: return
-            if (maintenanceMode) return
-            if (loadLauncherApps().any { it.packageName == pkg }) {
+            if (loadLauncherApps().none { it.packageName == pkg }) return
+            val update = intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
+            // Check-in poco dopo ogni installazione, rimozione o AGGIORNAMENTO
+            // di un'app del profilo, anche in manutenzione: la pagina di
+            // gestione vede subito le versioni nuove (più aggiornamenti
+            // ravvicinati, es. "Aggiorna tutto", diventano un solo check-in).
+            StatusReporter.reportStatusSoon(this@MainActivity)
+            // La griglia cambia solo per installazioni/rimozioni, e non in manutenzione.
+            if (!update && !maintenanceMode) {
                 Log.i(TAG, "App del profilo ${intent.action?.substringAfterLast('.')}: $pkg, aggiorno la griglia")
                 enterKioskMode()
-                // E la comunica subito alla pagina di gestione (check-in).
-                StatusReporter.reportStatusSoon(this@MainActivity)
             }
         }
     }
@@ -583,6 +587,9 @@ class MainActivity : AppCompatActivity() {
     private fun reenterKioskFromMaintenance() {
         maintenanceMode = false
         enterKioskMode()
+        // In manutenzione di solito si installano o aggiornano app: check-in
+        // all'uscita, così la pagina di gestione è subito allineata.
+        StatusReporter.reportStatusSoon(this, 5_000)
     }
 
     companion object {
