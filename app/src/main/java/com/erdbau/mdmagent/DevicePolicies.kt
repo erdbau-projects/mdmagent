@@ -13,6 +13,7 @@ import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.UserManager
 import android.provider.Settings
+import android.telecom.TelecomManager
 import android.util.Log
 import org.json.JSONObject
 
@@ -28,6 +29,8 @@ import org.json.JSONObject
  *     "bloccaReset": true,           niente ripristino di fabbrica né modalità provvisoria
  *     "volumeMinimo": 50,            volume (%) sotto cui non si scende; 0 = libero
  *     "bloccaHotspotRete": true,     niente hotspot né modifiche alla rete mobile
+ *     "telefono": true,              chiamate permesse nel kiosk: app Telefono e
+ *                                    schermata di chiamata in arrivo/in corso
  *     "playProtect": true            verifica delle app di Play Protect sempre attiva
  *                                    (resta anche in manutenzione)
  *   }
@@ -130,6 +133,25 @@ object DevicePolicies {
         }
         step("permessi app") { done += "permessi:" + grantPermissions(context, dpm, admin, apps) }
         Log.i(TAG, "Impostazioni del reparto applicate: ${done.joinToString(", ")}")
+    }
+
+    /**
+     * Pacchetti da consentire nel kiosk oltre alle app del profilo, senza
+     * metterli nella griglia. Con "telefono": l'app Telefono predefinita e la
+     * schermata delle chiamate di Samsung, altrimenti in kiosk una chiamata in
+     * arrivo non può comparire.
+     */
+    fun extraLockTaskPackages(context: Context, settings: JSONObject?): List<String> {
+        if (settings?.optBoolean("telefono") != true) return emptyList()
+        val out = linkedSetOf<String>()
+        try {
+            context.getSystemService(TelecomManager::class.java)?.defaultDialerPackage?.let { out += it }
+        } catch (e: Exception) { }
+        // com.android.server.telecom: avvia le chiamate in uscita (PrivilegedCallActivity,
+        // senza interfaccia). Senza, il kiosk blocca ogni chiamata dall'app Telefono.
+        out += listOf("com.android.server.telecom", "com.samsung.android.dialer", "com.samsung.android.incallui",
+                      "com.google.android.dialer", "com.android.dialer", "com.android.incallui")
+        return out.filter { installed(context, it) }
     }
 
     /** Manutenzione: via i blocchi (reset, data, posizione, rete), tornano al rientro in kiosk. */

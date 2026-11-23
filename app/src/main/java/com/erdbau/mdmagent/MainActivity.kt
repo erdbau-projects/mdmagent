@@ -344,7 +344,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val apps = loadLauncherApps().filter { isInstalled(it.packageName) }
-        val lockedPackages = (listOf(packageName) + apps.map { it.packageName }).toTypedArray()
+        // Più i pacchetti di sistema voluti dalle impostazioni del reparto
+        // (es. app Telefono e schermata chiamate, vedi DevicePolicies).
+        val extra = DevicePolicies.extraLockTaskPackages(this, ProfileManager.cachedSettings(this))
+        val lockedPackages = (listOf(packageName) + apps.map { it.packageName } + extra).distinct().toTypedArray()
         dpm.setLockTaskPackages(adminComponent, lockedPackages)
 
         // Ci registriamo come home/launcher di sistema, imposto dal Device
