@@ -1,9 +1,9 @@
 {
   "serial": "9b0afe503dab1787",
   "model": "SM-X236B",
-  "dpcVersionCode": 26,
-  "dpcVersionName": "1.4.0",
-  "lastCheckIn": "2026-11-23T08:46:27Z",
+  "dpcVersionCode": 27,
+  "dpcVersionName": "1.4.1",
+  "lastCheckIn": "2026-11-23T09:00:43Z",
   "profilo": "prova140",
   "impostazioni": {
     "posizione": true,
@@ -17,6 +17,7 @@
   "stato": {
     "posizione": true,
     "bluetooth": true,
+    "wifi": true,
     "schermoAccesoInCarica": true
   },
   "apps": {
