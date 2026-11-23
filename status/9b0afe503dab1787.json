@@ -3,16 +3,15 @@
   "model": "SM-X236B",
   "dpcVersionCode": 27,
   "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T09:16:50Z",
-  "profilo": "prova_assistenza",
+  "lastCheckIn": "2026-11-23T09:16:52Z",
+  "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
     "oraAutomatica": true,
     "schermoAccesoInCarica": true,
     "bloccaReset": true,
     "bloccaHotspotRete": true,
-    "volumeMinimo": 50,
-    "wifi": true
+    "volumeMinimo": 50
   },
   "stato": {
     "posizione": true,
@@ -44,10 +43,6 @@
     "com.google.android.apps.maps": {
       "installed": true,
       "versionName": "26.46.00.1016872485"
-    },
-    "com.carriez.flutter_hbb": {
-      "installed": true,
-      "versionName": "1.4.9"
     }
   }
 }
