@@ -65,6 +65,42 @@ object SilentAppInstaller {
     }
 
     /**
+     * Disinstalla in silenzio le app elencate in assets/apps_da_rimuovere.json
+     * (es. RustDesk, tolta il 23/11/2026: assistenza remota non usata). Salta
+     * le app che fanno parte del profilo attuale del tablet, così rimettere
+     * un'app in un profilo non viene contraddetto da questa lista.
+     */
+    fun uninstallRemovedApps(context: Context) {
+        val appContext = context.applicationContext
+        val list = try {
+            val a = JSONArray(appContext.assets.open("apps_da_rimuovere.json").bufferedReader().use { it.readText() })
+            (0 until a.length()).map { a.getString(it) }
+        } catch (e: Exception) {
+            emptyList()
+        }
+        val inProfile = ProfileManager.cachedApps(appContext)?.map { it.packageName }?.toSet() ?: emptySet()
+        for (pkg in list) {
+            if (pkg in inProfile) {
+                Log.i(TAG, "$pkg è nel profilo del tablet: non la disinstallo")
+                continue
+            }
+            if (getInstalledVersionCode(appContext, pkg) == null) continue
+            try {
+                val statusIntent = Intent(ACTION_INSTALL_STATUS).apply {
+                    setPackage(appContext.packageName)
+                    putExtra(EXTRA_PACKAGE_NAME, pkg)
+                }
+                val pi = PendingIntent.getBroadcast(appContext, pkg.hashCode(), statusIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
+                appContext.packageManager.packageInstaller.uninstall(pkg, pi.intentSender)
+                Log.i(TAG, "Disinstallazione avviata: $pkg")
+            } catch (e: Exception) {
+                Log.w(TAG, "Disinstallazione di $pkg non riuscita: ${e.message}")
+            }
+        }
+    }
+
+    /**
      * Prova ad installare l'app fino a MAX_RETRIES volte, con backoff, prima
      * di arrendersi. Le reti reali sui 26 tablet avranno occasionali intoppi
      * (Wi-Fi instabile, CDN che droppa una connessione, ecc.) — un singolo

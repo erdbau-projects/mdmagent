@@ -37,6 +37,11 @@ import kotlin.concurrent.thread
 object ProfileManager {
     private const val TAG = "ProfileManager"
 
+    // Catalogo dei tablet (nome da mostrare sul kiosk). Non firmato: contiene
+    // solo testo da visualizzare, nessuna regola del kiosk.
+    private const val CATALOG_URL =
+        "https://raw.githubusercontent.com/erdbau-projects/mdmagent/main/tools/tablet_catalogo.json"
+
     private const val SIGNED_URL =
         "https://raw.githubusercontent.com/erdbau-projects/mdmagent/main/profili.signed.json"
 
@@ -61,10 +66,13 @@ object ProfileManager {
     )
 
     private const val PREFS = "profili"
+    private const val MAX_ATTEMPTS = 5
+    private const val RETRY_DELAY_MS = 60_000L
     private const val KEY_ID = "id"
     private const val KEY_NAME = "nome"
     private const val KEY_APPS = "apps"
     private const val KEY_SETTINGS = "impostazioni"
+    private const val KEY_TABLET_NAME = "nomeTablet"
 
     /** App del profilo salvato, o null se il tablet non ha mai ricevuto un profilo. */
     internal fun cachedApps(context: Context): List<LauncherApp>? {
@@ -75,6 +83,9 @@ object ProfileManager {
             null
         }
     }
+
+    /** Nome del tablet dal catalogo (es. "TAB-ERD-052"), o null. */
+    fun cachedTabletName(context: Context): String? = prefs(context).getString(KEY_TABLET_NAME, null)
 
     /** Impostazioni del reparto del profilo salvato (vedi DevicePolicies), o null. */
     fun cachedSettings(context: Context): JSONObject? =
@@ -91,9 +102,13 @@ object ProfileManager {
      * tablet è cambiato lo salva e chiama onChanged sul thread principale.
      * Qualsiasi errore (rete, firma, formato) lascia tutto com'è.
      */
-    fun refresh(context: Context, onChanged: () -> Unit) {
+    fun refresh(context: Context, attempt: Int = 1, onChanged: () -> Unit) {
         val appContext = context.applicationContext
         thread(name = "ProfileManager") {
+            // Nome del tablet: indipendente dal profilo (se cambia solo il nome
+            // si aggiorna comunque la scritta).
+            val nameChanged = refreshTabletName(appContext)
+            if (nameChanged) Handler(Looper.getMainLooper()).post(onChanged)
             try {
                 val signed = JSONObject(download("$SIGNED_URL?t=${System.currentTimeMillis() / 60000}"))
                 val data = signed.getString("data")
@@ -134,9 +149,30 @@ object ProfileManager {
                 Log.i(TAG, "Profilo aggiornato: '$profileId' (${apps.size} app) per $deviceId")
                 Handler(Looper.getMainLooper()).post(onChanged)
             } catch (e: Exception) {
-                Log.w(TAG, "Aggiornamento profili fallito (non bloccante): ${e.message}")
+                Log.w(TAG, "Aggiornamento profili fallito (tentativo $attempt, non bloccante): ${e.message}")
+                // Tipico all'accensione: la rete non è ancora pronta. Si riprova
+                // dopo un minuto (fino a 5 volte) invece di aspettare 30 minuti.
+                if (attempt < MAX_ATTEMPTS) {
+                    Handler(Looper.getMainLooper()).postDelayed(
+                        { refresh(appContext, attempt + 1, onChanged) }, RETRY_DELAY_MS)
+                }
             }
         }
+    }
+
+    /** Legge il nome del tablet dal catalogo; true se è cambiato. Errori: ignorati. */
+    private fun refreshTabletName(context: Context): Boolean = try {
+        val cat = JSONObject(download("$CATALOG_URL?t=${System.currentTimeMillis() / 60000}"))
+        val name = cat.optJSONObject(StatusReporter.deviceId(context))?.optString("nome")?.trim().orEmpty()
+        val p = prefs(context)
+        if (p.getString(KEY_TABLET_NAME, "") != name) {
+            p.edit().putString(KEY_TABLET_NAME, name).apply()
+            Log.i(TAG, "Nome del tablet: '$name'")
+            true
+        } else false
+    } catch (e: Exception) {
+        Log.w(TAG, "Nome del tablet non letto (non bloccante): ${e.message}")
+        false
     }
 
     private fun parseApps(array: JSONArray): List<LauncherApp> =

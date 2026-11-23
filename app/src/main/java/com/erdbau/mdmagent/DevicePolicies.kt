@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.media.AudioManager
+import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.UserManager
 import android.provider.Settings
@@ -21,6 +22,7 @@ import org.json.JSONObject
  *   "impostazioni": {
  *     "posizione": true,             posizione accesa e non modificabile
  *     "bluetooth": true,             Bluetooth acceso (si può ancora abbinare)
+ *     "wifi": true,                  Wi-Fi acceso (le reti si configurano a mano)
  *     "oraAutomatica": true,         data/ora/fuso automatici e non modificabili
  *     "schermoAccesoInCarica": true, schermo sempre acceso quando è in carica
  *     "bloccaReset": true,           niente ripristino di fabbrica né modalità provvisoria
@@ -108,6 +110,9 @@ object DevicePolicies {
         step("bluetooth") {
             if (s.optBoolean("bluetooth") && enableBluetooth(context, dpm, admin)) done += "bluetooth"
         }
+        step("wifi") {
+            if (s.optBoolean("wifi") && enableWifi(context)) done += "wifi"
+        }
         step("volume") {
             val min = s.optInt("volumeMinimo", 0).coerceIn(0, 100)
             if (min > 0) {
@@ -136,6 +141,9 @@ object DevicePolicies {
             put("bluetooth", adapter?.isEnabled ?: JSONObject.NULL)
         } catch (e: Exception) { put("bluetooth", JSONObject.NULL) }
         try {
+            put("wifi", context.applicationContext.getSystemService(WifiManager::class.java)?.isWifiEnabled ?: JSONObject.NULL)
+        } catch (e: Exception) { put("wifi", JSONObject.NULL) }
+        try {
             put("schermoAccesoInCarica",
                 Settings.Global.getInt(context.contentResolver, Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0) != 0)
         } catch (e: Exception) { put("schermoAccesoInCarica", JSONObject.NULL) }
@@ -158,6 +166,16 @@ object DevicePolicies {
         @Suppress("DEPRECATION")
         val ok = adapter.enable()
         if (!ok) Log.w(TAG, "Bluetooth: enable() rifiutato dal sistema")
+        return ok
+    }
+
+    private fun enableWifi(context: Context): Boolean {
+        val wm = context.applicationContext.getSystemService(WifiManager::class.java) ?: return false
+        if (wm.isWifiEnabled) return true
+        // Da Android 10 setWifiEnabled() è vietato alle app, ma non al Device Owner.
+        @Suppress("DEPRECATION")
+        val ok = wm.setWifiEnabled(true)
+        if (!ok) Log.w(TAG, "Wi-Fi: setWifiEnabled() rifiutato dal sistema")
         return ok
     }
 

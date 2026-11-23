@@ -19,7 +19,7 @@ class InstallStatusReceiver : BroadcastReceiver() {
 
         when (status) {
             PackageInstaller.STATUS_SUCCESS ->
-                Log.i(TAG, "Installazione riuscita: $packageName")
+                Log.i(TAG, "Installazione/disinstallazione riuscita: $packageName")
 
             PackageInstaller.STATUS_PENDING_USER_ACTION ->
                 // Non dovrebbe succedere per un'app Device Owner: se capita,
@@ -28,7 +28,7 @@ class InstallStatusReceiver : BroadcastReceiver() {
                 Log.w(TAG, "Richiesto intervento utente per $packageName (inatteso da Device Owner)")
 
             else ->
-                Log.e(TAG, "Installazione fallita per $packageName (status=$status): $message")
+                Log.e(TAG, "Installazione/disinstallazione fallita per $packageName (status=$status): $message")
         }
     }
 

@@ -4,10 +4,6 @@
     "displayName": "RENTRI FIR Digitale"
   },
   {
-    "packageName": "com.carriez.flutter_hbb",
-    "displayName": "RustDesk"
-  },
-  {
     "packageName": "com.adobe.reader",
     "displayName": "Adobe Acrobat Reader"
   },
@@ -26,9 +22,5 @@
   {
     "packageName": "com.google.android.apps.maps",
     "displayName": "Maps"
-  },
-  {
-    "packageName": "net.osmand",
-    "displayName": "OsmAnd"
   }
 ]

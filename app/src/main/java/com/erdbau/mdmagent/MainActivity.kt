@@ -35,6 +35,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import org.json.JSONArray
+import java.lang.ref.WeakReference
 
 /** Un'app installata manualmente da Play Store, mostrata come icona nel launcher del kiosk. */
 internal data class LauncherApp(val packageName: String, val displayName: String,
@@ -162,6 +163,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        current = WeakReference(this)
         setContentView(R.layout.activity_main)
         enableImmersiveFullscreen()
 
@@ -210,6 +212,8 @@ class MainActivity : AppCompatActivity() {
             // kiosk e solo elencate in launcher_apps.json). La griglia si
             // aggiorna da sola via installStatusReceiver quando finiscono.
             SilentAppInstaller.installAllManagedApps(this)
+            // E toglie quelle non più volute (assets/apps_da_rimuovere.json).
+            SilentAppInstaller.uninstallRemovedApps(this)
             // Controlla se esiste una versione più recente del DPC stesso
             // (vedi SelfUpdater per il formato del manifest remoto). Non
             // bloccante: un fallimento qui non impedisce mai l'uso del kiosk.
@@ -242,6 +246,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        current = WeakReference(this)
         // Se per qualche motivo l'app risulta ancora Device Owner ma non è
         // (più) in lock task mode, ci rientra — a meno che l'uscita sia
         // intenzionale (modalità manutenzione in corso).
@@ -385,7 +390,7 @@ class MainActivity : AppCompatActivity() {
 
         try {
             startLockTask()
-            Log.i(TAG, "Lock Task Mode avviata (${lockedPackages.size} pacchetti in whitelist)")
+            Log.i(TAG, "Lock Task Mode avviata (${lockedPackages.size} pacchetti in whitelist, profilo ${ProfileManager.cachedProfileId(this) ?: "integrato"})")
             findViewById<TextView>(R.id.statusText).text = kioskStatusText()
             findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.GONE
             populateAppGrid(apps)
@@ -455,13 +460,23 @@ class MainActivity : AppCompatActivity() {
 
     /** Scarica il profilo; se è cambiato rifà kiosk e griglia (non in manutenzione). */
     private fun refreshProfile() {
-        ProfileManager.refresh(this) {
-            if (!isFinishing && !isDestroyed && !maintenanceMode) {
-                Log.i(TAG, "Profilo cambiato, ricostruisco kiosk e griglia")
-                enterKioskMode()
-                StatusReporter.reportStatusSoon(this)
-            }
+        // L'avviso va alla schermata ATTIVA (current), non a questa: uscendo
+        // dalle finestre multiple Android ricrea l'activity, e la vecchia
+        // istanza (già distrutta) ignorava il cambio di profilo.
+        ProfileManager.refresh(this) { current?.get()?.onProfileChanged() }
+    }
+
+    private fun onProfileChanged() {
+        if (isFinishing || isDestroyed) return
+        if (maintenanceMode) {
+            // In manutenzione si aggiorna solo la scritta; kiosk e griglia al rientro.
+            return
         }
+        Log.i(TAG, "Profilo o nome cambiati, ricostruisco kiosk e griglia")
+        enterKioskMode()
+        // Un'app uscita dal profilo può ora essere rimossa (apps_da_rimuovere.json).
+        SilentAppInstaller.uninstallRemovedApps(this)
+        StatusReporter.reportStatusSoon(this)
     }
 
     /**
@@ -469,8 +484,11 @@ class MainActivity : AppCompatActivity() {
      * a chi usa il tablet (scelta dell'utente): si vede nella pagina di gestione.
      */
     private fun kioskStatusText(): String {
+        // Nome del tablet dal catalogo (vedi ProfileManager), non la versione:
+        // quella si vede nella pagina di gestione. Mai il nome del profilo.
         val base = getString(R.string.status_kiosk_active).trimEnd('.')
-        return "$base  ·  v${BuildConfig.VERSION_NAME}"
+        val name = ProfileManager.cachedTabletName(this)
+        return if (name.isNullOrBlank()) base else "$base  ·  $name"
     }
 
     private fun isInstalled(pkg: String): Boolean = try {
@@ -606,6 +624,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
+
+        // Schermata del kiosk attualmente attiva (vedi refreshProfile).
+        @Volatile private var current: WeakReference<MainActivity>? = null
 
         private const val TAPS_REQUIRED = 7
 
