@@ -3,16 +3,16 @@
   "model": "SM-X236B",
   "dpcVersionCode": 27,
   "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T09:00:43Z",
-  "profilo": "prova140",
+  "lastCheckIn": "2026-11-23T09:00:45Z",
+  "profilo": "prova_assistenza",
   "impostazioni": {
     "posizione": true,
-    "bluetooth": true,
     "oraAutomatica": true,
     "schermoAccesoInCarica": true,
     "bloccaReset": true,
     "bloccaHotspotRete": true,
-    "volumeMinimo": 50
+    "volumeMinimo": 50,
+    "wifi": true
   },
   "stato": {
     "posizione": true,
