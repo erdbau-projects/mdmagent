@@ -27,7 +27,9 @@ import org.json.JSONObject
  *     "schermoAccesoInCarica": true, schermo sempre acceso quando è in carica
  *     "bloccaReset": true,           niente ripristino di fabbrica né modalità provvisoria
  *     "volumeMinimo": 50,            volume (%) sotto cui non si scende; 0 = libero
- *     "bloccaHotspotRete": true      niente hotspot né modifiche alla rete mobile
+ *     "bloccaHotspotRete": true,     niente hotspot né modifiche alla rete mobile
+ *     "playProtect": true            verifica delle app di Play Protect sempre attiva
+ *                                    (resta anche in manutenzione)
  *   }
  *
  * e permessi delle singole app ("permessi": ["posizione", "fotocamera", ...]
@@ -107,6 +109,11 @@ object DevicePolicies {
             restrictions(dpm, admin, NET_R, on)
             if (on) done += "rete"
         }
+        step("play protect") {
+            val on = s.optBoolean("playProtect")
+            restrictions(dpm, admin, listOf(UserManager.ENSURE_VERIFY_APPS), on)
+            if (on) done += "playProtect"
+        }
         step("bluetooth") {
             if (s.optBoolean("bluetooth") && enableBluetooth(context, dpm, admin)) done += "bluetooth"
         }
@@ -143,6 +150,10 @@ object DevicePolicies {
         try {
             put("wifi", context.applicationContext.getSystemService(WifiManager::class.java)?.isWifiEnabled ?: JSONObject.NULL)
         } catch (e: Exception) { put("wifi", JSONObject.NULL) }
+        try {
+            // Impostazione nascosta di Android: 1 = verifica app (Play Protect) attiva.
+            put("playProtect", Settings.Global.getInt(context.contentResolver, "package_verifier_enable", 1) == 1)
+        } catch (e: Exception) { put("playProtect", JSONObject.NULL) }
         try {
             put("schermoAccesoInCarica",
                 Settings.Global.getInt(context.contentResolver, Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0) != 0)
