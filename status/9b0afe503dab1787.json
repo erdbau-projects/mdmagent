@@ -1,10 +1,16 @@
 {
   "serial": "9b0afe503dab1787",
   "model": "SM-X236B",
-  "dpcVersionCode": 25,
-  "dpcVersionName": "1.3.3",
-  "lastCheckIn": "2026-11-23T08:16:01Z",
+  "dpcVersionCode": 26,
+  "dpcVersionName": "1.4.0",
+  "lastCheckIn": "2026-11-23T08:36:36Z",
   "profilo": "camionisti",
+  "impostazioni": {},
+  "stato": {
+    "posizione": false,
+    "bluetooth": false,
+    "schermoAccesoInCarica": false
+  },
   "apps": {
     "com.carriez.flutter_hbb": {
       "installed": true,
