@@ -42,7 +42,7 @@ FORBIDDEN = {
     "com.google.android.apps.nexuslauncher", "com.android.launcher3",
 }
 # Impostazioni del reparto e permessi per app (vedi DevicePolicies.kt).
-SETTINGS = {"posizione": bool, "bluetooth": bool, "oraAutomatica": bool, "schermoAccesoInCarica": bool,
+SETTINGS = {"posizione": bool, "bluetooth": bool, "wifi": bool, "oraAutomatica": bool, "schermoAccesoInCarica": bool,
             "bloccaReset": bool, "volumeMinimo": int, "bloccaHotspotRete": bool}
 PERMISSIONS = {"posizione", "posizioneSempre", "fotocamera", "microfono", "notifiche", "bluetooth", "foto", "telefono"}
 PKG_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z0-9_]+)+$")
