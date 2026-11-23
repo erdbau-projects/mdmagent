@@ -29,6 +29,7 @@ import org.json.JSONObject
  *     "bloccaReset": true,           niente ripristino di fabbrica né modalità provvisoria
  *     "volumeMinimo": 50,            volume (%) sotto cui non si scende; 0 = libero
  *     "bloccaHotspotRete": true,     niente hotspot né modifiche alla rete mobile
+ *     "inviaPosizione": true,        posizione (cifrata) nel check-in: vedi LocationReporter
  *     "telefono": true,              chiamate permesse nel kiosk: app Telefono e
  *                                    schermata di chiamata in arrivo/in corso
  *     "playProtect": true            verifica delle app di Play Protect sempre attiva
@@ -130,6 +131,15 @@ object DevicePolicies {
                 raiseVolume(context, min)
                 done += "volume>=$min%"
             }
+        }
+        step("posizione per il check-in") {
+            // Il Device Owner si concede da solo il permesso, solo se richiesto.
+            val on = s.optBoolean("inviaPosizione")
+            for (perm in listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                dpm.setPermissionGrantState(admin, context.packageName, perm,
+                    if (on) DevicePolicyManager.PERMISSION_GRANT_STATE_GRANTED else DevicePolicyManager.PERMISSION_GRANT_STATE_DENIED)
+            }
+            if (on) done += "inviaPosizione"
         }
         step("permessi app") { done += "permessi:" + grantPermissions(context, dpm, admin, apps) }
         Log.i(TAG, "Impostazioni del reparto applicate: ${done.joinToString(", ")}")

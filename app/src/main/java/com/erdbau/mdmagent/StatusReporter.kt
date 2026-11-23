@@ -134,6 +134,8 @@ object StatusReporter {
             // Impostazioni del reparto ricevute e stato reale (posizione, Bluetooth...).
             put("impostazioni", ProfileManager.cachedSettings(context) ?: JSONObject())
             put("stato", DevicePolicies.state(context))
+            // Solo con "inviaPosizione" nel profilo, e cifrata (vedi LocationReporter).
+            LocationReporter.encryptedLocation(context)?.let { put("posizioneCifrata", it) }
             put("apps", apps)
         }
     }
