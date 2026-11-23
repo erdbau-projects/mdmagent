@@ -41,6 +41,10 @@ FORBIDDEN = {
     "com.samsung.android.packageinstaller", "com.sec.android.app.launcher",
     "com.google.android.apps.nexuslauncher", "com.android.launcher3",
 }
+# Impostazioni del reparto e permessi per app (vedi DevicePolicies.kt).
+SETTINGS = {"posizione": bool, "bluetooth": bool, "oraAutomatica": bool, "schermoAccesoInCarica": bool,
+            "bloccaReset": bool, "volumeMinimo": int, "bloccaHotspotRete": bool}
+PERMISSIONS = {"posizione", "posizioneSempre", "fotocamera", "microfono", "notifiche", "bluetooth", "foto", "telefono"}
 PKG_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z0-9_]+)+$")
 
 
@@ -67,6 +71,16 @@ def validate(d: dict) -> None:
                 errs.append(f"profilo '{pid}': packageName non valido '{pkg}'")
             if pkg in FORBIDDEN:
                 errs.append(f"profilo '{pid}': '{pkg}' è vietato (uscita dal kiosk)")
+            for perm in a.get("permessi", []):
+                if perm not in PERMISSIONS:
+                    errs.append(f"profilo '{pid}', app {pkg}: permesso sconosciuto '{perm}'")
+        for k, v in (p.get("impostazioni") or {}).items():
+            if k not in SETTINGS:
+                errs.append(f"profilo '{pid}': impostazione sconosciuta '{k}'")
+            elif SETTINGS[k] is bool and not isinstance(v, bool):
+                errs.append(f"profilo '{pid}': '{k}' deve essere true/false")
+            elif SETTINGS[k] is int and (isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 100):
+                errs.append(f"profilo '{pid}': '{k}' deve essere un numero da 0 a 100")
     for tid, pid in (d.get("tablet") or {}).items():
         if pid not in profili:
             errs.append(f"tablet {tid}: profilo '{pid}' inesistente")
