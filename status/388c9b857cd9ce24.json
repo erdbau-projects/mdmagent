@@ -1,15 +1,18 @@
 {
   "serial": "388c9b857cd9ce24",
   "model": "SM-X236B",
-  "dpcVersionCode": 25,
-  "dpcVersionName": "1.3.3",
-  "lastCheckIn": "2026-11-23T09:35:54Z",
+  "dpcVersionCode": 27,
+  "dpcVersionName": "1.4.1",
+  "lastCheckIn": "2026-11-23T09:35:56Z",
   "profilo": "camionisti",
+  "impostazioni": {},
+  "stato": {
+    "posizione": true,
+    "bluetooth": true,
+    "wifi": true,
+    "schermoAccesoInCarica": false
+  },
   "apps": {
-    "com.carriez.flutter_hbb": {
-      "installed": true,
-      "versionName": "1.4.9"
-    },
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
       "versionName": "1.7.6"
