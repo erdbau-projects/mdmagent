@@ -3,8 +3,8 @@
   "model": "SM-X236B",
   "dpcVersionCode": 24,
   "dpcVersionName": "1.3.2",
-  "lastCheckIn": "2026-11-23T06:28:36Z",
-  "profilo": "integrato",
+  "lastCheckIn": "2026-11-23T06:28:38Z",
+  "profilo": "camionisti",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
