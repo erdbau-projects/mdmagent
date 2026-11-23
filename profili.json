@@ -43,7 +43,6 @@
       ],
       "impostazioni": {
         "posizione": true,
-        "bluetooth": true,
         "oraAutomatica": true,
         "schermoAccesoInCarica": true,
         "bloccaReset": true,
