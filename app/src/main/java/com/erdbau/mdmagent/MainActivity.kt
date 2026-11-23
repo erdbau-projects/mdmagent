@@ -413,6 +413,16 @@ class MainActivity : AppCompatActivity() {
      * timeout resta quello di default del sistema finché non viene concesso.
      */
     private fun applyScreenOffTimeout() {
+        // Da Android 9 il Device Owner lo imposta direttamente: niente più
+        // permesso WRITE_SETTINGS via adb (necessario per il provisioning da QR).
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ::dpm.isInitialized && dpm.isDeviceOwnerApp(packageName)) {
+            try {
+                dpm.setSystemSetting(adminComponent, Settings.System.SCREEN_OFF_TIMEOUT, SCREEN_OFF_TIMEOUT_MS.toString())
+                return
+            } catch (e: Exception) {
+                Log.w(TAG, "setSystemSetting timeout fallito, provo con WRITE_SETTINGS: ${e.message}")
+            }
+        }
         try {
             Settings.System.putInt(contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, SCREEN_OFF_TIMEOUT_MS)
         } catch (e: SecurityException) {
