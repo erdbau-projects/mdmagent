@@ -47,9 +47,10 @@
         "schermoAccesoInCarica": true,
         "bloccaReset": true,
         "bloccaHotspotRete": true,
-        "volumeMinimo": 50,
         "playProtect": true,
-        "telefono": true
+        "telefono": true,
+        "inviaPosizione": true,
+        "volumeMinimo": 50
       }
     },
     "tecnici": {
