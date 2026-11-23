@@ -3,13 +3,21 @@
   "model": "SM-X236B",
   "dpcVersionCode": 26,
   "dpcVersionName": "1.4.0",
-  "lastCheckIn": "2026-11-23T08:36:36Z",
-  "profilo": "camionisti",
-  "impostazioni": {},
+  "lastCheckIn": "2026-11-23T08:40:38Z",
+  "profilo": "prova140",
+  "impostazioni": {
+    "posizione": true,
+    "bluetooth": true,
+    "oraAutomatica": true,
+    "schermoAccesoInCarica": true,
+    "bloccaReset": true,
+    "bloccaHotspotRete": true,
+    "volumeMinimo": 50
+  },
   "stato": {
-    "posizione": false,
-    "bluetooth": false,
-    "schermoAccesoInCarica": false
+    "posizione": true,
+    "bluetooth": true,
+    "schermoAccesoInCarica": true
   },
   "apps": {
     "com.carriez.flutter_hbb": {
