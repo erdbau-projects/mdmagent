@@ -1,4 +1,12 @@
 {
+  "388c9b857cd9ce24": {
+    "serialeHW": "",
+    "modello": "SM-X236B",
+    "posizione": "ufficio",
+    "nome": "TAB-ERD-024",
+    "nota": "",
+    "aggiornato": "2026-11-23"
+  },
   "62195ab0bd9b64f0": {
     "serialeHW": "R5GL12BVNBN",
     "modello": "SM-X236B",
@@ -75,7 +83,7 @@
     "serialeHW": "",
     "modello": "SM-X236B",
     "posizione": "campo",
-    "nome": "TAB-ERD-024",
+    "nome": "",
     "nota": "",
     "aggiornato": "2026-11-23"
   }
