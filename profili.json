@@ -6,7 +6,12 @@
       "apps": [
         {
           "packageName": "it.rentri.appmobile.firdigitale",
-          "displayName": "RENTRI FIR Digitale"
+          "displayName": "RENTRI FIR Digitale",
+          "permessi": [
+            "fotocamera",
+            "notifiche",
+            "posizione"
+          ]
         },
         {
           "packageName": "com.adobe.reader",
@@ -14,7 +19,10 @@
         },
         {
           "packageName": "de.mts_ag.android.mts_smart.mts",
-          "displayName": "MTS"
+          "displayName": "MTS",
+          "permessi": [
+            "posizione"
+          ]
         },
         {
           "packageName": "com.sec.android.app.myfiles",
@@ -26,9 +34,22 @@
         },
         {
           "packageName": "com.google.android.apps.maps",
-          "displayName": "Maps"
+          "displayName": "Maps",
+          "permessi": [
+            "notifiche",
+            "posizione"
+          ]
         }
-      ]
+      ],
+      "impostazioni": {
+        "posizione": true,
+        "bluetooth": true,
+        "oraAutomatica": true,
+        "schermoAccesoInCarica": true,
+        "bloccaReset": true,
+        "bloccaHotspotRete": true,
+        "volumeMinimo": 50
+      }
     },
     "tecnici": {
       "nome": "Tecnici",
@@ -91,59 +112,7 @@
           "displayName": "OsmAnd"
         }
       ]
-    },
-    "prova140": {
-      "nome": "Prova 1.4.0",
-      "apps": [
-        {
-          "packageName": "it.rentri.appmobile.firdigitale",
-          "displayName": "RENTRI FIR Digitale",
-          "permessi": [
-            "fotocamera",
-            "notifiche",
-            "posizione"
-          ]
-        },
-        {
-          "packageName": "com.adobe.reader",
-          "displayName": "Adobe Acrobat Reader"
-        },
-        {
-          "packageName": "de.mts_ag.android.mts_smart.mts",
-          "displayName": "MTS",
-          "permessi": [
-            "posizione"
-          ]
-        },
-        {
-          "packageName": "com.sec.android.app.myfiles",
-          "displayName": "I miei file"
-        },
-        {
-          "packageName": "com.sec.android.app.camera",
-          "displayName": "Fotocamera"
-        },
-        {
-          "packageName": "com.google.android.apps.maps",
-          "displayName": "Maps",
-          "permessi": [
-            "notifiche",
-            "posizione"
-          ]
-        }
-      ],
-      "impostazioni": {
-        "posizione": true,
-        "bluetooth": true,
-        "oraAutomatica": true,
-        "schermoAccesoInCarica": true,
-        "bloccaReset": true,
-        "bloccaHotspotRete": true,
-        "volumeMinimo": 50
-      }
     }
   },
-  "tablet": {
-    "9b0afe503dab1787": "prova140"
-  }
+  "tablet": {}
 }
