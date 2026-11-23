@@ -37,7 +37,8 @@ import androidx.core.content.ContextCompat
 import org.json.JSONArray
 
 /** Un'app installata manualmente da Play Store, mostrata come icona nel launcher del kiosk. */
-internal data class LauncherApp(val packageName: String, val displayName: String)
+internal data class LauncherApp(val packageName: String, val displayName: String,
+                                 val permissions: List<String> = emptyList())
 
 /**
  * Activity di ingresso, e anche il "launcher" del kiosk: mostra una griglia
@@ -89,6 +90,11 @@ class MainActivity : AppCompatActivity() {
     private val periodicProfileCheck = object : Runnable {
         override fun run() {
             refreshProfile()
+            // Riapplica le impostazioni (es. Bluetooth spento a mano, volume abbassato).
+            if (!maintenanceMode && ::dpm.isInitialized && dpm.isDeviceOwnerApp(packageName)) {
+                DevicePolicies.apply(this@MainActivity, dpm, adminComponent,
+                    loadLauncherApps().filter { isInstalled(it.packageName) }, ProfileManager.cachedSettings(this@MainActivity))
+            }
             updateCheckHandler.postDelayed(this, PROFILE_CHECK_INTERVAL_MS)
         }
     }
@@ -374,6 +380,8 @@ class MainActivity : AppCompatActivity() {
         dpm.addUserRestriction(adminComponent, UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES)
         applyScreenOffTimeout()
         applySystemUpdatePolicy()
+        // Impostazioni del reparto e permessi delle app (vedi DevicePolicies).
+        DevicePolicies.apply(this, dpm, adminComponent, apps, ProfileManager.cachedSettings(this))
 
         try {
             startLockTask()
@@ -577,6 +585,10 @@ class MainActivity : AppCompatActivity() {
         // Riabilita temporaneamente la gestione account, per poter installare/
         // aggiornare app da Play Store durante la manutenzione.
         dpm.setAccountManagementDisabled(adminComponent, "com.google", false)
+        // Via anche i blocchi del reparto (reset, data/ora, posizione, rete):
+        // in manutenzione si può per esempio resettare il tablet dalle
+        // Impostazioni. Tornano al rientro in kiosk.
+        DevicePolicies.relaxForMaintenance(dpm, adminComponent)
 
         findViewById<TextView>(R.id.statusText).setText(R.string.status_maintenance_mode)
         findViewById<Button>(R.id.exitMaintenanceButton).visibility = View.VISIBLE

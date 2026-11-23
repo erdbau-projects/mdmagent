@@ -131,6 +131,9 @@ object StatusReporter {
             put("dpcVersionName", ownInfo.versionName ?: "")
             put("lastCheckIn", isoTimestampNow())
             put("profilo", ProfileManager.cachedProfileId(context) ?: "integrato")
+            // Impostazioni del reparto ricevute e stato reale (posizione, Bluetooth...).
+            put("impostazioni", ProfileManager.cachedSettings(context) ?: JSONObject())
+            put("stato", DevicePolicies.state(context))
             put("apps", apps)
         }
     }

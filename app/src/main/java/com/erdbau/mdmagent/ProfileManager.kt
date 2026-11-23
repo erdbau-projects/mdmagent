@@ -64,6 +64,7 @@ object ProfileManager {
     private const val KEY_ID = "id"
     private const val KEY_NAME = "nome"
     private const val KEY_APPS = "apps"
+    private const val KEY_SETTINGS = "impostazioni"
 
     /** App del profilo salvato, o null se il tablet non ha mai ricevuto un profilo. */
     internal fun cachedApps(context: Context): List<LauncherApp>? {
@@ -74,6 +75,10 @@ object ProfileManager {
             null
         }
     }
+
+    /** Impostazioni del reparto del profilo salvato (vedi DevicePolicies), o null. */
+    fun cachedSettings(context: Context): JSONObject? =
+        prefs(context).getString(KEY_SETTINGS, null)?.let { try { JSONObject(it) } catch (e: Exception) { null } }
 
     /** Id del profilo attivo ("camionisti", ...), o null se si usa la lista integrata. */
     fun cachedProfileId(context: Context): String? = prefs(context).getString(KEY_ID, null)
@@ -111,16 +116,21 @@ object ProfileManager {
                     return@thread
                 }
                 val appsJson = JSONArray().apply {
-                    apps.forEach { put(JSONObject().put("packageName", it.packageName).put("displayName", it.displayName)) }
+                    apps.forEach {
+                        put(JSONObject().put("packageName", it.packageName).put("displayName", it.displayName)
+                            .put("permessi", JSONArray(it.permissions)))
+                    }
                 }.toString()
+                val settingsJson = (profile.optJSONObject("impostazioni") ?: JSONObject()).toString()
                 val name = profile.optString("nome", profileId)
                 val p = prefs(appContext)
                 if (p.getString(KEY_ID, null) == profileId && p.getString(KEY_NAME, null) == name &&
-                    p.getString(KEY_APPS, null) == appsJson) {
+                    p.getString(KEY_APPS, null) == appsJson && p.getString(KEY_SETTINGS, null) == settingsJson) {
                     Log.i(TAG, "Profilo '$profileId' invariato")
                     return@thread
                 }
-                p.edit().putString(KEY_ID, profileId).putString(KEY_NAME, name).putString(KEY_APPS, appsJson).apply()
+                p.edit().putString(KEY_ID, profileId).putString(KEY_NAME, name).putString(KEY_APPS, appsJson)
+                    .putString(KEY_SETTINGS, settingsJson).apply()
                 Log.i(TAG, "Profilo aggiornato: '$profileId' (${apps.size} app) per $deviceId")
                 Handler(Looper.getMainLooper()).post(onChanged)
             } catch (e: Exception) {
@@ -136,7 +146,9 @@ object ProfileManager {
             when {
                 pkg.isBlank() || pkg == "com.esempio.app" -> null
                 pkg in FORBIDDEN -> { Log.w(TAG, "Pacchetto vietato nel profilo, scartato: $pkg"); null }
-                else -> LauncherApp(pkg, obj.optString("displayName", pkg))
+                else -> LauncherApp(pkg, obj.optString("displayName", pkg),
+                    obj.optJSONArray("permessi")?.let { a -> (0 until a.length()).map { a.optString(it) }.filter { it.isNotBlank() } }
+                        ?: emptyList())
             }
         }
 
