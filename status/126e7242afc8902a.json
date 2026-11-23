@@ -1,9 +1,9 @@
 {
   "serial": "126e7242afc8902a",
   "model": "SM-X236B",
-  "dpcVersionCode": 27,
-  "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T10:02:08Z",
+  "dpcVersionCode": 28,
+  "dpcVersionName": "1.4.2",
+  "lastCheckIn": "2026-11-23T10:10:21Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -17,6 +17,7 @@
     "posizione": true,
     "bluetooth": true,
     "wifi": true,
+    "playProtect": true,
     "schermoAccesoInCarica": true
   },
   "apps": {
