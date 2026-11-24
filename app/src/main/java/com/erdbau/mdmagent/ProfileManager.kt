@@ -7,8 +7,6 @@ import android.util.Base64
 import android.util.Log
 import org.json.JSONArray
 import org.json.JSONObject
-import java.net.HttpURLConnection
-import java.net.URL
 import java.security.KeyFactory
 import java.security.Signature
 import java.security.spec.X509EncodedKeySpec
@@ -201,17 +199,8 @@ object ProfileManager {
         false
     }
 
-    private fun download(url: String): String {
-        val c = URL(url).openConnection() as HttpURLConnection
-        c.connectTimeout = 15_000
-        c.readTimeout = 15_000
-        try {
-            if (c.responseCode != 200) throw IllegalStateException("HTTP ${c.responseCode}")
-            return c.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
-        } finally {
-            c.disconnect()
-        }
-    }
+    // Dalla 1.5.0 via API GitHub con token (repo privato), vedi DownloadUtils.
+    private fun download(url: String): String = DownloadUtils.downloadText(url)
 
     private fun prefs(context: Context) = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 }
