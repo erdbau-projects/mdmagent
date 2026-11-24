@@ -94,13 +94,13 @@ object StatusReporter {
     /** Id del tablet usato in status/ e nei profili (vedi ProfileManager). */
     internal fun deviceId(context: Context): String = getSerial(context.applicationContext)
 
-    private fun getSerial(context: Context): String = try {
-        Build.getSerial()
-    } catch (e: SecurityException) {
-        Log.w(TAG, "Impossibile leggere il serial (non Device Owner?), uso ANDROID_ID come fallback", e)
+    // L'identificativo dei tablet è da sempre ANDROID_ID (Build.getSerial()
+    // falliva per mancanza di READ_PHONE_STATE). Dalla 1.5.0 il permesso c'è
+    // (SimInfo): l'id resta BLOCCATO su ANDROID_ID per non cambiare identità ai
+    // tablet; il seriale vero viaggia a parte nel campo "serialeHW".
+    private fun getSerial(context: Context): String =
         android.provider.Settings.Secure.getString(context.contentResolver, android.provider.Settings.Secure.ANDROID_ID)
             ?: "sconosciuto"
-    }
 
     private fun buildStatusJson(context: Context, serial: String): JSONObject {
         val pm = context.packageManager
@@ -134,6 +134,8 @@ object StatusReporter {
             // Impostazioni del reparto ricevute e stato reale (posizione, Bluetooth...).
             put("impostazioni", ProfileManager.cachedSettings(context) ?: JSONObject())
             put("stato", DevicePolicies.state(context))
+            SimInfo.hardwareSerial(context)?.let { put("serialeHW", it) }
+            put("sim", SimInfo.sims(context))
             // Solo con "inviaPosizione" nel profilo, e cifrata (vedi LocationReporter).
             LocationReporter.encryptedLocation(context)?.let { put("posizioneCifrata", it) }
             put("apps", apps)
