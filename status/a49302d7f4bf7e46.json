@@ -1,9 +1,9 @@
 {
   "serial": "a49302d7f4bf7e46",
   "model": "SM-X236B",
-  "dpcVersionCode": 34,
-  "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T13:17:09Z",
+  "dpcVersionCode": 35,
+  "dpcVersionName": "1.5.3",
+  "lastCheckIn": "2026-11-25T13:17:34Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,10 +24,13 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "o8mBQqZ5BPp8WPmwcFJ9Ec8jynMpq2LHbahnN5oQ8PdZuUaqAkN71C7O7qRdqshpZS2+koDME\/HEcHgvLIe0Q\/CynxtumTh6N61Ual2tWh7A+Po1Kn9r69uyrWOkpPdSad8iMljro7KL1SGyAnL3rGZtwYkiYi54EalASh2WhQmQlYwENz8mJ6fynJYCSbsBYBpEmz6CmUVYW99HPegB6Kxv49q7z4IuWUb\/Yh922GyVE4YTKhVIJB5\/GkGxajTyPlrc9JCdTBG9zR6onRCsqpdXCxMKuPhOwNMAG1PomXZZTEsYEA+y5wZ1lXv7OyfonJVwJ5QeX\/o6fcNJR1vvIA==",
+  "lingua": "de-DE",
+  "linguaIso3": "DEU",
+  "serialeCifrato": "UuSQ\/vkWgAhjIsr6wPJWRKgb20rGVH0iiZfb2otYPMNcM7niROwfWYOhe1Xh\/KcMf2GTb7iyStJlisVETIYHAXRgttA4TYWU0D8BZGlRZAWLPXXuThIfXB+W+nsu\/iV4sgjoiQE2wBdZhX44Ysl8LF+0JIZN06ZIKe2gfcM+MRiABAtLxDrWasFa2nWlL4TyyUIol7KQASMZSMDItBS4SOP1yJpjeFQi5NIdSh\/DRNTQOaFg9N1jfreAOcIVi93E784V6WgsvMCW\/aiVqb6sI\/R0VPdj\/tzR9\/RhL6YpBklMEWzM4\/iHOo1a8fX2WJZ+YFbHr7HIA0KkZ+UIwrMGuA==",
   "simCifrate": [
-    "qQSdRDQff0Mp7KurkeVCDGJRkhdru7OcXQzthANYLMToWt6kNfRRQwvaa2Hp20QQRL8gepV7fvJ08fJZEsZEPI3v32gwZHdnwtQGp\/cu\/rA\/hisa8x7KZYA\/QR4T3CfBb18Q9ID3ETaXjwYrDCTRnFHpCUoLWAIqDu+1rfnH+jXhrmAy89\/vl5mICtSw+xd+6PjyTygwhnJXQc4V+vkXSFrkbc3b3CsJ9T8eV\/969TqFJj9FbyhMZ4KbKWhcC+abfOmruqrIL1dJmSO\/1a2skuKLYpVI6hbwSaqe69GaiNHFv6obaHbW55FG0pHlu6F+rZ\/bLZ9Qk1u98I1kqX\/POw=="
+    "waf9SwPdSj8opjM1KT00\/gfeCaCyuyuRexpIJYsuk2yEucs3mvwEqXDtycjAfddvF+xSSh9MIo38NfGMtTDboLy4x8rdk81gXPO7jc4hSbXDcaqoqPU99ExZ44rvJYQuaJEdjRaEpyZstNv0jhmW+eUuzBfdCQJDprQz8eXPLGWpQKbxl3jriPYxEHe67zVP3kOKUl1Ai4fhL+8dGVkgBfa7Mm0s6zK6uXwu4Wh9+EU4iWhdoyKu0re5UVLRFJtby1rvFKcKwAythIwAx5riT2+Wu18AZZrOTUmup+WDnfSUyb4RKjl0s2XA0K5BclJlRNR0GDGx6YNAnIjYar4i\/g=="
   ],
+  "posizioneCifrata": "3nFEa4g+WerAqeOdLWVVWkwImib5redsUsEIy6eX3PxRigmnc6VKhIAi91x3tKUr\/noIg4bOQZGDi7KO\/BtP\/nbwYsFB1sd4eJyAf5yYvQnlLWAPmPqRPsTN8Kuh3a\/UR0LVIcNPsu4mbA6T+jfr0vRQA27eZU1GgCk\/X3gsB07+hx34OgUJrbO2gEv5wtqdpHMfsuNUn1enzQZYBjkk1khKrqre+j7QoSTrhVB2gyLVLR60gbmczFMkW0tvb\/4lEsVHgOVvgXCYz8r\/wQPzb6eDKbp0ft5+aB\/B+zuESfnq3RPow7J1s61u88fcKl866\/bEOj2SyuK8vpOmbYmaPQ==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
