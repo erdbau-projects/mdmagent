@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T07:05:24Z",
+  "lastCheckIn": "2026-11-25T07:05:48Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "dRb8QeQDbHRP60KXtbHiYFc3THcbIFNZcZq7VWT6z6vg\/AS5SokEOEDVbXp0r4kQq0E+c+1nL1jV6UPR2LLR4txv5L\/QElQKlpIx\/g9xEI6YYvtEOhfvuMgk1gXL1qSmhvXXBHA8WDTImwzgJbOt7LuSZ49QnF1Dycm\/c3C2ZMyq8GztolHMDIZF64BEXJp9Tw+cZcZOX1b86j9TPONmWW9CTWnDw\/R2U0DyCXQJu+QaALi7qZcD3VMX4eeJV\/BpcH3Zmn7nsQXSMlnC0\/uwDtDpiW6xkh5NLXWYGo9zjzpEvY\/W8eoMWdMXPf8PbfrqS8A\/JtiNoyQvMI0d0kxG4g==",
+  "serialeCifrato": "2iczSHwNHJJnhqBqM5+Irn10r7zpi3eBqq+w2hOXEpw3pHJt10Mxrgr8C8o1WoXGmJPd5Yq5KyMd0iVx88FQDcBVGP3rZo1zzS2n2D6hy8J3rUW0fovhMHh5qtTH0PZMvUJmMrJ7bBHoGg2XFHP3VflS5zy\/gqXsF\/L6qoh90aU1QwIa4hkr7DbxKeMSrSki4zifJ76zDFag02kJgzI4PCspTT+yhiwbeDNCsCwKlbUijdldCJTaZVwYSduzcBUcXzI6ODiJ2iQcJlr9OfKzQHT4vcXwEkfKiK\/oHSm5O7j1iRR41omC6gMHKOoKF70RuQIeRoGoUP1M0aXevRvjVQ==",
   "simCifrate": [
-    "MygcYWyBqbbgXp2dmGK1tt8GL4K0C2EgZ9uCP3KmhA9Rr7W+wXm\/3FTcdiSlbxqwCzmEf+AMTBgFt6SHdcJw3Uo0pI\/HigTz5nFxo3SC9Xhxx5\/moja\/QZ36ak5VnZRvN4mJOqVGx7KqFZ\/l9xDvxPxoP1sYD+dWzki9pwJC8wMRG81bq5zisSvcwgWwpUavA1IBekD4T9OgFg4nXXXgPG2QLYIibVx04X9xT05zpS3G38vT98YooJIzjn9jZMrClVhOeOyfGnxqYtGlw3oAEbYMxhcqdT0pcLiAzGZt03mQOD4iaFh+WiddUtNai81Tdm3lCahzVIHmBR5SywTBXw=="
+    "1G8h3uI6926ayZX8ERYwcxBODrniPP0i0kv5+WwjeK3vN+vApqffNRB5UVmsDZbW9xvScj66MCALNnB1ydgz0elheBya+Dz1l5hs3xbKV8\/9c+vImdBCQwPJlJKi\/9NoZvuz3qfRcqgjh2VR8xtwlaX3BS6PlqBexCCLUGn1yaL\/QFO13kMDS0JvZdhswvAGqQIqlnUObY4qRjYjwSPDfPnYo2RmGxc8XURcvCWtiKqCF0GRXRwEcwQGS5FqU83CzO9b5gBOg8DfqVFeN1prvzQGXSGZfAYiyvjpxIzSr9SVWTcoPuOUDNfoSGvCSbMd+x8+fXYGbU1KPjhiKF6zuw=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -49,7 +49,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.35.05.969485213"
+      "versionName": "26.47.00.1022347503"
     }
   }
 }
