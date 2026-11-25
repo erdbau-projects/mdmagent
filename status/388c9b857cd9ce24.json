@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 34,
   "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T11:16:18Z",
+  "lastCheckIn": "2026-11-25T13:20:58Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,9 +24,8 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "Ga7RyYxKl6l6zoZhYhMERGK897KvEYbJs3EwakfdZpZeqUc7NNbzWVWxccEakqSGSO3XwwKiXfxlBxnBsVN5pCRNym20UFAQ0PVG0X43JgajjS8B9jDk1bmzBjJEDREVeq2FkZURQ6R4iEw8Cdtj1L5TYIzb56JCZeiUjvrlasJ342E2E+OFfzsqyXAprjhIjlfWt58nCgqU2etS3bQtLsPlgnF0rukbatqf\/lnNhRdLo4+P9IEyxjcMu80q\/9E0HD6NHTA0F95FhuIW2whYh8OrHIdzjn+UaEoGECGYZ8Hjew0t5XRv5A96J7bZYsIdbEazhnwpS0aKhDMAWOjqSQ==",
+  "serialeCifrato": "wa9gillh0ilQeVte4R9UiozSEtz7+MW8IT\/zKxfr1ICjSpkrlR+MeBAE3tx4tEz6TnZ32JLRfAWpEaj7AfpJcLOMsS5YR\/8e\/ukffjRKLKtQRjKkn\/QNoVXgNMBqjVslMXAiHmhNllTZBoeGh\/BFLHLpOFqfO01J88d+Kq9LYrT1VFmeWLMs9LnNOwXVgWwy6ZRUHysp9QewEXsPYaJk1iX\/FS9JBusppQ9sPJDKq9FL\/hHwobcKfDUet83fvKH8qYEtWahdET4u3ySqz0avVQWfAR3eREpYCSV3CkfPMPDTCuvirhZtJbryMy247eigLHTD7es9Ii4uZc3iuXVGyA==",
   "simCifrate": [],
-  "posizioneCifrata": "JFj6GFXx97mHxkON1ZrMvCPXpWk2ZIuOuFpGrY2QkHZj4rVZRaSRqxh+nukDjl7QlseWbDfgOmMqh+mS3R+QG9cWp2zCljEn7G17wYXV4UekgXI9r7yx2fQG1TZ70IYy5BDGBBzU12yyjYCwWbBhfQFNBd0E1esipXIyEBiea5lI3MIAjvtftcgAdMzKsgFEn9io70T8vpVchvghXxpUH030I39Oyn9j1R5bI8RXglS8vU\/YfLTdL\/qJSEpCy2gHjAOqeuehr508NOucVPeR\/iRY0JBHmCb2fu3fLXp3Iianun5xBczr9e46gshUCeTXqTftUqzuiouMeSq5xhG1LA==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
