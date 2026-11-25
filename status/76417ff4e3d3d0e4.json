@@ -1,9 +1,9 @@
 {
   "serial": "76417ff4e3d3d0e4",
   "model": "SM-X236B",
-  "dpcVersionCode": 27,
-  "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-25T11:20:08Z",
+  "dpcVersionCode": 34,
+  "dpcVersionName": "1.5.2",
+  "lastCheckIn": "2026-11-25T11:20:11Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -19,8 +19,13 @@
     "posizione": true,
     "bluetooth": true,
     "wifi": true,
+    "playProtect": true,
     "schermoAccesoInCarica": true
   },
+  "serialeCifrato": "aXdPDvM6okKOxHZnz007ySnsuMVnEXJi2IrTZGannwa+xdDtN+htpjC06YGbgzhQ9zfHCwa9UocEGL8p7696G\/BA0+2WudgKdw1L3EZbI5d\/SNDyXmlkrAnrMsnJZnxZSHtJPIpgSslfUgfKg2DS4WWEGgRmV47SjBXlmyHaKu5f8U5Lmme4EWzlOuON1XG4GPsw8dUCTEKgXGzr9IvgLvK0SgxAJnOi4PIiPAumdcHzd73VSfM2o+uYQkD01+0yojd7WoZOpjOi0Asiwni9g06BitROw7Cbs5fFcIE4qO5rsQo+4JPlVPGsUEwcZgqPCZTTUu6LTe+6tS1ofxVckg==",
+  "simCifrate": [
+    "aTNlXLKCTluIuUbunfNVCJF1zHaEZS+NHyQj5\/7PxPUufPGhqKAvQdY01y5\/Q8FpHts\/mhZDV7\/eUDfOhMM4r8jrcG3A8kjUHYJ5MSxMxXYG5cIOWpPCMkN4apIVkRIIMkVoQHpRwKKmf0ZSB1hB3P91W2TvUv7sRiL\/JvHIwuEjujQmp97BW7ZDuAGz6\/gCbJiqga\/\/3a3vcQL9IvNyo4gd4klt\/vAFsDr3ZQDya4A2UkP5b9j3zgPeguCwabcFKg0fQ3Kh+lBtv2evxmxtopKdO0HT44hOm\/QdP4CgD0cXFeH4bdwE7JmyqDeADn0Ef9GqFCI7rRlIepf65AkgUg=="
+  ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
