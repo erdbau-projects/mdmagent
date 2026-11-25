@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 32,
   "dpcVersionName": "1.5.0",
-  "lastCheckIn": "2026-11-25T06:30:23Z",
+  "lastCheckIn": "2026-11-25T06:31:22Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -33,7 +33,6 @@
       "iccid": "8939880841125229248"
     }
   ],
-  "posizioneCifrata": "jz6kr8w7tkVWHUtq9wJNYPaWuc1QnLvVPXwSZR\/FvMMyHq3jK23gZDQqkpVLqEe0Mm\/er6DvHTBg\/cWhNxePnrCeFGDIo1fG+EkAn5W4yI8YdXlECBB9C\/4zdeeczZNkuth07slk3+XDAr2S6yIq89KTTML5NbmHCO4+PPYLnPeDPfSlXmtkysREedalK6fHaX3OlOqBMm+orIgZV5uLHOyx0kxMnEeBdRJCjVgJyUyDrdWd0y2fWTzlw1Ocr2QR44f0xl\/iMXtvpy2CB1pIUy8kxJzoCrcKZfT\/zSSvrOfFL3Sx1qAKKl59n4Ya4SOxxLF\/zhN+Dd0VJBIS91OMBA==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
