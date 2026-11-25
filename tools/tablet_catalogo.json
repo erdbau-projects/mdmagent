@@ -107,9 +107,17 @@
     "serialeHW": "",
     "modello": "SM-X236B",
     "posizione": "ufficio",
+    "nome": "",
+    "nota": "",
+    "aggiornato": "2026-11-25"
+  },
+  "a49302d7f4bf7e46": {
+    "serialeHW": "",
+    "modello": "SM-X236B",
+    "posizione": "campo",
     "nome": "TAB-ERD-053",
     "nota": "",
-    "aggiornato": "2026-11-23"
+    "aggiornato": "2026-11-25"
   },
   "fb7de7b3f4c4e6b1": {
     "serialeHW": "R9TY605AZHB",
