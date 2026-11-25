@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 24,
   "dpcVersionName": "1.3.2",
-  "lastCheckIn": "2026-11-23T05:58:52Z",
+  "lastCheckIn": "2026-11-25T12:14:36Z",
   "profilo": "camionisti",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -16,7 +16,7 @@
     },
     "com.adobe.reader": {
       "installed": true,
-      "versionName": "26.10.1.51189"
+      "versionName": "26.10.2.51485"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
