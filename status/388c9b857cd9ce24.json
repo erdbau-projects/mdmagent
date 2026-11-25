@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T10:57:28Z",
+  "lastCheckIn": "2026-11-25T11:05:43Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -25,9 +25,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "E4lJUiocWqcxhdZnr3Hg89yhzuy9xFRElnAqt0xRm90OibHM0Wf4\/yS0mrFUzHujuaRCXfRmDz9Ggv+aiR5kG7vkB\/qSLfhKaM7gzSbR2Ly+zWuTNGMShnCOOKgz15RSFLAlqt0r5YKykVLF4WJZjsf2tzut1kuDaPBvSuH6yvXKXNL7VhEoymODH\/OkdDc0BMaqO8Chikhow30xUvm\/lop7dTierkeVUlPikP7ODFVp2HyS\/gDCMMxT4vgrevrWiGMbau6P0XX3PBWng+ZqUOkb1i566YS\/GdclqKyH7s7rTlA2wCU5NltvbVbblsukTDKWh+2bhHGtv0sp\/Ir3yQ==",
+  "serialeCifrato": "UnKkx0i+Pi2dvHO2tdDsd2HTlQi8MweDQsuE1GR3UhnxMFF8rfIPQvgkxZ3iiaOAAZW0PsUk2iqkmPmUHFprvo8H73uUwv3VzjYRAD1tKpiFSQZyVQFLQLQWhWmuqQWK0CtyQRkku7Tkd415JEctLAuyX5nUXSiLqcRGvWvx292Yh\/LDTY4oQSJbPDogpVxK25ryG+6ETpNiIEqnUiNu0NzyON3sVU3JcccPH8tHMRfRYyMP9Uvib8TzKa\/K7U2fa25\/lflKn0C7kydsCnOAog9Pz8GJDZ7q4HRcNhcZK5kYdUSon0jKKU4GUZMcw7Ds\/8el8oUPm3F6sCOR4RL+pQ==",
   "simCifrate": [],
-  "posizioneCifrata": "QJ2cN3y2pOH8Kj0\/qTGz2sw2My4fdJnfx16YEvOt+RqAdmLC1PcYmiOP+RZ1jl9Tq36L\/ka06wIZ\/4xfV3UepF6Bw9fkqJKwyRTaE2fQS1Lwhwd\/zCwI8d43NAWpKuO7UW58+NlazEtn0KmknXQXsa4eZj+T5yElx7\/mrdpStQ7faJ2xwC3rXX2hnHQyzuFqFlyYmoZskF0eY1YWRWBjzHicrIUBC86Sjj91ejj+YeoZk35G3GyGbtdrIJ\/wxsFS9p38ayXvNW76ikQNIIg+1SlAHypBoUC7zHP\/J+hEWaSH7cIZ83vDY6vxkyXnB+\/buJtkX1uZHp03dlMZBqYo7Q==",
+  "posizioneCifrata": "mfTrBkXshdgf0qNuSdCZhTXld0zyLZo7+u78sY\/8CVGF2dKFIBoW5ijnsSLd946Vr6Oq74YCNpR4jTLlc+P6USTHdZojQj2QKx\/+TPG8kFH\/+eKoaWK3Zsc+LboizoVIdt\/\/DA4EQS6gTzYNV\/sHOvofy99gikSnlz1SfrTcRgZ3EXWSxY1VrsFQ06c0ZqBytDQDdvnFRILvUQbmTzkI4KVNkByqvcWULESeBvjx5rg9RSXUxDi81L+3Y5U3A\/9mVIpRHM7MZGncHF\/LRJDeYGepOw\/wW6QV\/2Iz\/UWtaTpPiXLgtEkljR0Ih9cIPIcgY541RK6yfNKyoh7cZ78udA==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -51,7 +51,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.46.00.1016872485"
+      "versionName": "26.47.00.1022347503"
     }
   }
 }
