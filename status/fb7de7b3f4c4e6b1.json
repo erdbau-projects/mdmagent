@@ -3,14 +3,23 @@
   "model": "SM-X216R",
   "dpcVersionCode": 27,
   "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T09:24:50Z",
+  "lastCheckIn": "2026-11-25T10:18:56Z",
   "profilo": "camionisti",
-  "impostazioni": {},
+  "impostazioni": {
+    "posizione": true,
+    "oraAutomatica": true,
+    "schermoAccesoInCarica": true,
+    "bloccaReset": true,
+    "bloccaHotspotRete": true,
+    "playProtect": true,
+    "telefono": true,
+    "volumeMinimo": 50
+  },
   "stato": {
     "posizione": true,
     "bluetooth": true,
     "wifi": true,
-    "schermoAccesoInCarica": false
+    "schermoAccesoInCarica": true
   },
   "apps": {
     "it.rentri.appmobile.firdigitale": {
