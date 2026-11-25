@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T06:58:33Z",
+  "lastCheckIn": "2026-11-25T07:00:33Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "iPWRfxJLaDhzy8ugJEQvzeHqiXDHlV5Tqe7+b0aSDWIMZTvJtAaVknMtnoYVDLoSKw9xscSjrniGIa8Jn\/sSYDSLzIEA6daZzxCfr5YvZa\/+Xj9kFPheQKbSEfekroC41m6XWKKQpHKsrV7HHtllJH8AgO6ecshaWKBHplEjznAnpVNK67OInGAAWeKaXTcpmMcvDecXiPGwHW5aMfLL2C9x6NaEi6Y2xwJkQpcI0EAL+VH5sMbjhnkM20tx3RjOlaqMOTbS4tMR7GbbnQ1IHjmsCIdXWn1M8lMLfiT7gDR8p6azlH9wfjuuv5CqVTjUt+7G8999xd5bUNNGtuwCxg==",
+  "serialeCifrato": "hrXk8Q9YBWbymdeooBS\/4aSv1V1h7mjokR1bl6d8ldYTc5ELLMOcnW+o5ThQwKa2BY15w4a1PIwe8g6+I9UGeQb1VJbJ0801hjiI4KHXd5s2Vl+UWs9+5GpEgCmOntzVH4X4d5o04OcZ6ojBamNb\/9zjGrm6afWN7FAGUkoArEnWYWYyi9lCR77foeL87j6ZyYxrI0mBmEuXjTakFS+mxFMR1xca+QRZ4tiSJXxnyXuSY8fhaPnfERnzVMZdHxeihI4G0AeMf3Y+LNXesde3rKJglmXxkCY82NUSfg7iQEMqLj3iD0Pq6zpQBewI76z5kNjtehjnwSDa5AwxjrHhZQ==",
   "simCifrate": [
-    "VReRyFa6bESBF1pTrteLYlyP4hdRoFNHWG7\/RRXxE8U5\/XbZ26MLx6MnaaE68msAzRq+8mQY3YpAUmmiKPmteOv3xF\/ynmxXsPaWl3tqFQIu4I71v8f3oN8t1KbNgH8uPt6SvgNRePwXemAbtN1tmtPdEcyEjNieb+hErrWn1m02cf5Lk2UtT7usrAFsWKIO1XOuPl8a1cRn2OzDm93fnmwU56WfdvTNHnacmmgGr\/8X4ORQrQ6oA\/Nc9dcGQFZTu6bdF4S8Ri7\/6lFWDpxmolI4ZaA0Cunjpg6vLiKpbUws84izMrfnRcGQYyiLCOKNPlDehGPi9MSqZi4btgaCHw=="
+    "LHTqHImJIVoKo8FyYk4Oxifebtamx5kS49gyO2M2vEnvmXKxeAriDi9tLE3zZR804Pl6mVCpBOkNt6HFKPPoLZEyy9cmCQpsekKL0GqHfAPqeLepXy9AXJVPmfTsiOu8xf5+mwZPLY\/bq3pYzSQbAVgUNCabzV\/c6PNYqlxMmGXnZ0FnRPzfC\/VXzKaL1d9BgSyfNQfUCZXs6ja0gcAFRKKlJEt5n30ZCfQni6y6mx+YDABomsIaDTiY2nnj15UfT\/nyrH2QHKclUq0iqN7bqM6U7ZR+ipeDgd+stgTpFOTMyFUob3qKrV9uRnHjcR6ioDMV2cdV\/dCJ3XNaenPNQQ=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -49,7 +49,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.45.00.1011720968"
+      "versionName": "26.47.00.1022347503"
     }
   }
 }
