@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T09:24:28Z",
+  "lastCheckIn": "2026-11-25T13:04:45Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "GcGewkJJQAiPQkGV2maD\/hJsh5qSsiB5j7h54VWRUyAP\/CPRI3EXNpL7n7g9xmJ0LM8e8iLIALONnVlXBKpEyUZn2isizOFNWvkbM+gwJAqiaDJxlhOilIVKL7mXyYToFW4KPhAblzqmDGoEXN7vUjtusECe1\/uuz2iJ8yiGBYaW92w\/NDmP80tyjgxH3yODOaoq8UeTlYmByAM29hNTicasAUMv1eh23f2HmoNcHijFuJ5ao3WkSwCv3M0Fu6pKGg3P8G\/P7lKbKpYMiKLKlPcDZsA4H19usdBYF9SryyEn71xugt8XTU+J9x3grUSmuDZqWMRA1VdGEIvuDMmQaQ==",
+  "serialeCifrato": "EsobknGBrRhHZZKixGiOKk2im0c37Jq3E\/d+4pZhLRRcRX9xNNpsq+TvDGAiGVmasfMbU2QKq2AqqVG5UXU6OS4778c1C9WbXibx6cJPbUc4dOy49Dc3tcPdPtfDwQqFkRHy2haAjW55YilKqT54c1OkveJlBr5VW5kQ3sx6dCvr9P2\/VjutotZxqBGajNXTP33PPE6Stiyx9Ngnp404l14gMhM30zsRSI7jmO8\/dolzyiJLWrfawi4Hc8zL4vj3jaz2bGafjfC1oBez7rv8vVXimP\/G1Uq79hLYtCvhgZVNvhDBjvcDu3Jz3S5DTivejBUm46Ix6LhUda0buCY1zw==",
   "simCifrate": [
-    "TNBBIuZavVECBS13frNKdaAmFIJAIdToejGb8Ay9LtaMidrPUtItCOmX0WsnU3ji3Yu5bbZgwsMy8L\/A6wT4Gx8jfpcBbY05SoGiNG6p57ZmFQxmsrWfzG9tM8uCiwXy0m855iSgkp8psORq\/y6gpEAiHW+eeAH\/JLE9OSDZLd2J+QrkE63uB\/oWazcGFEI4GZE5chfqiqtqWfoXatH7bXUCcwKTtp9qDAvh4bbWB+9u1VFEU2ZOLDmksgLPA6+dgmtTnOTlZCdjzpqr4oC+qazInDtl+KsxBVILTJr48rkC2U0jWEb5PSt0ptUkqbQ8zioWwFWz3gC2pzvLWe7WaQ=="
+    "pHYPyBIShg3Y\/JWrogVoUN3PkiR6fLRADg7fF+kEmyWPMcr4gl0p\/2W7PYgJXITBboi1TIWDPHK5sr9ELHoE8Ybndr65z1TeO7faCmdU\/NaC8GiKNvjaJNqZFXRwCHjmxKCB4T5IDwU0Onz4qblm73GjuwulqaUZ37urOpcnabhn8NaH\/dwf2ZpXxTxbXhZQnp5xKG4K0BF4GZw9dfr64KpovuLNyPFe4miWuqWmQZveDjP8ZLs0seXQh+nTBIt91Udw6IN0rp9FKS1X7eXI3ZBGbI492kvybbQuj2aZ1SbLywRmfInZU2Xw1lwA2pTml9coXNLnooDrDhuPl7JIWQ=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -33,7 +33,7 @@
     },
     "com.adobe.reader": {
       "installed": true,
-      "versionName": "26.10.1.51195"
+      "versionName": "26.10.2.51485"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
