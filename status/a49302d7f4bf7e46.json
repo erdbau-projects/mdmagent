@@ -3,15 +3,25 @@
   "model": "SM-X236B",
   "dpcVersionCode": 32,
   "dpcVersionName": "1.5.0",
-  "lastCheckIn": "2026-11-25T06:00:02Z",
-  "profilo": "integrato",
-  "impostazioni": {},
+  "lastCheckIn": "2026-11-25T06:00:26Z",
+  "profilo": "camionisti",
+  "impostazioni": {
+    "posizione": true,
+    "oraAutomatica": true,
+    "schermoAccesoInCarica": true,
+    "bloccaReset": true,
+    "bloccaHotspotRete": true,
+    "playProtect": true,
+    "telefono": true,
+    "inviaPosizione": true,
+    "volumeMinimo": 50
+  },
   "stato": {
     "posizione": true,
     "bluetooth": true,
     "wifi": true,
     "playProtect": true,
-    "schermoAccesoInCarica": false
+    "schermoAccesoInCarica": true
   },
   "serialeHW": "RZGL42HH3SJ",
   "sim": [
@@ -22,6 +32,7 @@
       "iccid": "8939880841125229248"
     }
   ],
+  "posizioneCifrata": "KGodNEgSkQcIMlt7pALPxZvJw608n2BjXkN9MFk72V1q0TBh7q6g1ypdfvtrnTWzvhkeP++\/w6OttGEsYQ2zH0udkBt8d8GIR6HE3FSL6UQrRCseaJzqlxsY+VvBBvmKhJaQmpE\/YsnrHB3oj8y2ZBIagZUsptToM5Vh1jN1w6IeUNQpJYzQdaMA5BZwd7wRWu7lJUDG4Ig6GYkdtysCwKv92ojWeGaDpVJwoiU6YdR2To6btVJ+RpluECUa23kcOvNnK336mzS\/DMFl4yVDyGNOwrn0JHsdNH1ZHpiO+P9V6AGLXPjBxc\/2ZvPKYqlnwQWoF5755vVe7XDPD+Ogng==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": false
