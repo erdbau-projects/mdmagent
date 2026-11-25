@@ -1,9 +1,9 @@
 {
   "serial": "a49302d7f4bf7e46",
   "model": "SM-X236B",
-  "dpcVersionCode": 32,
-  "dpcVersionName": "1.5.0",
-  "lastCheckIn": "2026-11-25T06:31:22Z",
+  "dpcVersionCode": 33,
+  "dpcVersionName": "1.5.1",
+  "lastCheckIn": "2026-11-25T06:44:00Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,15 +24,11 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeHW": "RZGL42HH3SJ",
-  "sim": [
-    {
-      "slot": 1,
-      "numero": "+393932879909",
-      "operatore": "WINDTRE",
-      "iccid": "8939880841125229248"
-    }
+  "serialeCifrato": "yqDaLwM5OHRkDpc+j\/4OJ\/u6UarLssgIIl7zNsz8i9xMLPv7mZUYAq3zg1G3bpkYj+L1RAqIE9jogZAbiGwChRelVpjQsJvhdRT3Orunz74pWlym5gwKA4AozNiWXocJKM4i3MWE8+1IRtnA4UZkQAwoCIwmNnjTocmk0gBoUyefM+lZab+5HpztnFv6zjvA20bzBRoKvsJu5wUSA9gjlqKJGBcLmJp7e+b+ok4fAq0e+503Z3PBYlIefNZoeM3ydC0uxGB3J90DRx0zl1JxFQC+VZlvz0pYW7YzBVvQMXBEBa8tkQuEUqe+xI37Nq9IUHJ8FeRRBBWFLR4ZiLL0Pg==",
+  "simCifrate": [
+    "TFtsO2HCFiQoo15IEtUDzvtsw70MWgQ4LxHj+GAd+ywxEAa1xPUq4mdeRLQZTpl+s0h9c\/XbhLqpofVVCpIR1UglMDAgbRuOpV2KumtnDVAq6XQHXx9jK9GCZNoGRqoxdiTG+IM03Dvagri3tuISrOmCEYv6ZErOUszJzDKtt8S2s4gk2oex8DgvSku19nqMeXAjkW+KYR66CsphW1c+\/wNS40MNTu5M4ixq36G\/fXuK5cfmyuzlvRnEdo1n\/V7Pog\/2YZyUJbebiqubkP+\/3HwPbqfVwyIhfcBCZHC3pJTgJF5m3OkbvUKTffTuJXF1mgWYhuJaOzw9JsHZHA\/\/+w=="
   ],
+  "posizioneCifrata": "7Wsf76jIvdpVlrfeK2OpPHXYjYGp79osGAr38cEIYhD1BbLqY1YZDQEzg46a\/XRE1wbNCR25BXHvj0cJWWL6sThwuJLHkzqqOq7\/ipbzU15s5jrOpEZryzC6LnRMl1siqnjZWhcpfaflOLql4cUbRxRM5DyiYyMkaLrugnalQEk++oPNz9kn2RgmjYL2FEE548Ok42wQXg2OS72B37vfdbX1rv+V7DKjzFeapsLH+VS7SQT7M0NIa0erngB\/lTU4ifnZetfVfdK1LS5YsjfIq+kF1qd9eG07GLt\/IszMf5i3Na+ygPBU4bhQuZWpoWx3khjmSToeR85oU9ufh4iy6Q==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
