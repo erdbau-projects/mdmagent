@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 29,
   "dpcVersionName": "1.4.3",
-  "lastCheckIn": "2026-11-25T10:52:33Z",
+  "lastCheckIn": "2026-11-25T12:03:49Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -15,8 +15,7 @@
     "playProtect": true,
     "telefono": true,
     "inviaPosizione": true,
-    "volumeMinimo": 50,
-    "intervalloPosizione": 15
+    "volumeMinimo": 50
   },
   "stato": {
     "posizione": true,
