@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 27,
   "dpcVersionName": "1.4.1",
-  "lastCheckIn": "2026-11-23T09:22:58Z",
+  "lastCheckIn": "2026-11-25T11:20:08Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -11,6 +11,8 @@
     "schermoAccesoInCarica": true,
     "bloccaReset": true,
     "bloccaHotspotRete": true,
+    "playProtect": true,
+    "telefono": true,
     "volumeMinimo": 50
   },
   "stato": {
@@ -42,7 +44,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.46.00.1016872485"
+      "versionName": "26.47.00.1022347503"
     }
   }
 }
