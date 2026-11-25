@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T11:12:59Z",
+  "lastCheckIn": "2026-11-25T11:15:57Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -15,8 +15,7 @@
     "playProtect": true,
     "telefono": true,
     "inviaPosizione": true,
-    "volumeMinimo": 50,
-    "intervalloPosizione": 15
+    "volumeMinimo": 50
   },
   "stato": {
     "posizione": true,
@@ -25,9 +24,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "3Ia5nB+TelllUlIFXgczsYmaXaaQjNjOqGGzM+GTpicTq3WzpDEeFmgjkZEDawBmw\/ixC2cP5i6lrXt25ukgF4tEz57Two4dCFHRnZItlZ9evhjAtDhOZ+S4jWSah7NvD1P7hCgHYsBZgFlb19EMUUYP6z+FuFhDDtC87pn7TImTQ6X2WLem0tb5aQ2GDv3upjzYd4Uv9fs3YLmTBfkwH7sCJCdf0H9mJjUpATSILCxOORodJJDaDEcaulUle+2jDp+p6q1+MAJOVyFNI0kgp6W4zSyFzPtjFtJNbzF6NROfArm1GiJlYvvGcsLP0xocViAReUvhAeZ+IkRaJJ4pfQ==",
+  "serialeCifrato": "XuVwH5xqkslicYZ4I8ykn1RUa7e3uUZNrIAVDDPPPQzBz1PHK291ACZ++R2XRV+73HnsKYCEs5Y4pB42Bc1NCgRD81f7c4yKJgpbKvMZBvhCAZVdOMiHwIwAlQxdx8JL\/55ZqY98vKGAe4OzaGtcCNBbPavxbXmxAqDxmq1zQrEeUi2LhsXYlAC\/gTvGvwRkyX44I9VWBhef6CrRM3iM55ZyBJMdA4TXNRy2Zfm3YPdurMx3cBSGPWVHtLQT3sE0qxg\/DVYQ\/d\/Qasnk6f4+bUcTct4wmvkwqnI5hd6ql+gYXUh+EkarYqry3+iAlzy\/G3l3+sHJl11UAHF97AwNMA==",
   "simCifrate": [],
-  "posizioneCifrata": "RmouaeQvB9GwN9v+2ZpRYsPRt97O8mVuzqtUDfLex6qavoN7l62B1gp2zKvmhDbFvio\/SFhWl12J0qoce\/xdLWzyC8wZeoqT8PZOTU4d2JkGmHUFtkcOAVkMJmFnEihlKVtWFhmb3Wd4did5rZW37RPjHb2qbcYxJLrNqut41CQ0Q7CUtZYjpC6rPpdGAG3Pu89X73pxaexZhkdqUosfbQbZe39NeX+BTEnA0C7x0UjhwjX3obFLEaNgfUZ3ZfWFsj\/DLGXwOsSmr2urqrNfXPu5Z7gxKez5aUct\/44ip8LIGrUQXH8ghi1D+0nM2jbb0ylb9lnSMW0yJIBkDCWPlw==",
+  "posizioneCifrata": "kIhdyLyLOL9guIJLQ8CiOYLAqwfqoZ3OSQgazz6cieWUe8a6CnsswXDu3OPj7wGOEp9n+nBx1XB6zH4Nel5PlURJKizScmZeSk\/+XcXAaomoyarJlqCSBX7OG8RrpImOMZbXeiPX6uvIDKXtYI4sj0dEYlobIwSN7DHQdfQjNlA40WuoUGqZx+YtNFXAYH2x\/M3TQZeJ2miCup11mVwjT7X3G+jQVYccsMts2Vax8Xt6nxcpqo\/5G7ySeFqk9vw6kPf21PWH1Nd6hEc9E+ooDf8HjWyNIWYRumRfeeaQCsnKymOWg4sDwbFPS\/RrHcZ7s4cBV4wh7qWsZHOdfJ4snA==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
