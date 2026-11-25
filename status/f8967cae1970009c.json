@@ -3,19 +3,28 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T06:36:21Z",
+  "lastCheckIn": "2026-11-25T06:49:01Z",
   "profilo": "camionisti",
-  "impostazioni": {},
+  "impostazioni": {
+    "posizione": true,
+    "oraAutomatica": true,
+    "schermoAccesoInCarica": true,
+    "bloccaReset": true,
+    "bloccaHotspotRete": true,
+    "playProtect": true,
+    "telefono": true,
+    "volumeMinimo": 50
+  },
   "stato": {
     "posizione": true,
     "bluetooth": true,
     "wifi": true,
     "playProtect": true,
-    "schermoAccesoInCarica": false
+    "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "G+zfkcry3w+5WMapJqrfxlnTxBlI1No8rnmfJ+zoaHjfIafBEduhEREz+ERzbKZEY9vL8x7dw86lPf25urlE5odZNFTnbf7c+UJLZmD4VZZfNFAeOF5AgLvC9OJ2t7D5b00bamwUHhQ3N+8\/grxbod31o77gTAda+V8uqDX3VsGytLEv5RoPUh4PblkIz9qTPtCiNsS0qwUFiq2ydhU0ZrfKOJcNvpWJt54TAzU+TO9DErlvUkRXVjjQ1d+m11+fbvTZ3NQiv88i8nm8rgG5VyvcoRBTlh0rjiGCSd0ORnTGlFEnlp2KTygkAp5fVBse5OuCjh8XtH7hJ0LJUWfk\/g==",
+  "serialeCifrato": "qGT3ZBqLtXS7Ugoe6ibsi66Dse4m4PqFNoIWNSIVJkO3hiovKxAsvh6Q91G6SoQQ5fcs4aoB\/JdRLk1Ypvt\/0fS8lltJUaQphCCMHz4wzFEsVCznSPvCrBdIVPBFCdlnWSxlnqIDm55z0yx5LnQlf+FNYFiX6OsvGtabV5v2Dofh4IKFImqrABUwS+1qzbzTP4x7bUHv4rdYDwqhEe+Hwy+wcP8H9f9XLvdJamPOoYyJS2MR56pst75qQlMJEx3smitIMYiA2J5\/UnhjOL2URkL4kiOsFy7\/bn9VZ28i\/Vn2ptdja9x0PemG28GkajPnJ+u7MLZzvYXgN+Ee7Dy6ug==",
   "simCifrate": [
-    "uv8KgECB3YHF7BNLYDuMSM2ZYZBdC+sJOaNzTjDIwh2nBLl5wU8i5vVRBUopzEKievDAjFema4MzeBFyDaVzPaFjGRBSEDWu2kcAY\/Xyl57mbdjTPkSs9Dq3sxrUhYSvGSlopP88nqvartrlTFQei+VBAnB494CYVfUREhO4gyqDSwOS8b8h4vHlOfyUueBc0YLjuqcJeEvSWchOrHcuPXY025JgpTJmWAoyshApkGV+d1jMkWo+t7g0rSv0+Ez3SkPJId7cj18o9ZnYtcZSHAV5GzWQ08NMwukxbGc9ST1f4LWNcwDIGgibs5xeGHefGXDPpGwPKGpHJJ\/45qPHPw=="
+    "YCFPmMU56wwJIon5Ud+kwug5MB3Y\/+xn7AOA0a31KvUcfNdgSPoTlhxPcuJQQ+hJYDV8REZWEurfuT6w1JCP58mviMX3lcYd2itAKqBC\/hi2HSwWDv74ZlW1TJ3c+ssSdnSEr4aEIV0IFgnHdRF+HBfv4RVz2vJVxPLZPWuMf\/95wdYghBqJNflKzc4g9wfhyTbFUIIWpeEOXZ+XziiUDo3WMl1U3TwNSLQ+OxdPi4TmHqN7qLVIeuPEVZR11EDLvcz8oFeVaeIBk3QnqCm0FIw6NQSNuvEx3uA4\/6N3fqULnqgDcTJKReLMKZpfbYXnh57C2Oixh67tqjwFdOX+bQ=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
