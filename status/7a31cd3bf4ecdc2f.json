@@ -3,16 +3,18 @@
   "model": "SM-X236B",
   "dpcVersionCode": 29,
   "dpcVersionName": "1.4.3",
-  "lastCheckIn": "2026-11-25T07:52:28Z",
-  "profilo": "camionisti",
+  "lastCheckIn": "2026-11-25T08:52:30Z",
+  "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
+    "wifi": true,
     "oraAutomatica": true,
     "schermoAccesoInCarica": true,
     "bloccaReset": true,
     "bloccaHotspotRete": true,
     "playProtect": true,
     "telefono": true,
+    "inviaPosizione": true,
     "volumeMinimo": 50
   },
   "stato": {
