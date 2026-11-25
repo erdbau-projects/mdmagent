@@ -3,17 +3,17 @@
   "model": "SM-X236B",
   "dpcVersionCode": 29,
   "dpcVersionName": "1.4.3",
-  "lastCheckIn": "2026-11-25T11:16:13Z",
-  "profilo": "prova_telefono",
+  "lastCheckIn": "2026-11-25T11:16:36Z",
+  "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
     "oraAutomatica": true,
     "schermoAccesoInCarica": true,
     "bloccaReset": true,
     "bloccaHotspotRete": true,
-    "volumeMinimo": 50,
     "playProtect": true,
-    "telefono": true
+    "telefono": true,
+    "volumeMinimo": 50
   },
   "stato": {
     "posizione": true,
@@ -46,10 +46,6 @@
     "com.google.android.apps.maps": {
       "installed": true,
       "versionName": "26.46.00.1016872485"
-    },
-    "com.samsung.android.dialer": {
-      "installed": true,
-      "versionName": "16.2.02.5"
     }
   }
 }
