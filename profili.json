@@ -157,6 +157,7 @@
       ],
       "impostazioni": {
         "posizione": true,
+        "wifi": true,
         "oraAutomatica": true,
         "schermoAccesoInCarica": true,
         "bloccaReset": true,
