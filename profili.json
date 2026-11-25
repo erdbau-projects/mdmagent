@@ -164,8 +164,7 @@
         "playProtect": true,
         "telefono": true,
         "inviaPosizione": true,
-        "volumeMinimo": 50,
-        "intervalloPosizione": 15
+        "volumeMinimo": 50
       }
     }
   },
