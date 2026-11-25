@@ -134,6 +134,12 @@ object StatusReporter {
             // Impostazioni del reparto ricevute e stato reale (posizione, Bluetooth...).
             put("impostazioni", ProfileManager.cachedSettings(context) ?: JSONObject())
             put("stato", DevicePolicies.state(context))
+            // Lingua di sistema del tablet (ITA/DEU/ENG per la pagina di gestione).
+            try {
+                val loc = android.content.res.Resources.getSystem().configuration.locales[0]
+                put("lingua", loc.toLanguageTag())
+                put("linguaIso3", loc.isO3Language.uppercase(Locale.ROOT))
+            } catch (e: Exception) { /* non bloccante */ }
             // Repo pubblico: seriale e SIM (numero, ICCID) viaggiano CIFRATI, li legge solo la VM.
             SimInfo.hardwareSerial(context)
                 ?.let { LocationReporter.encryptForVm(JSONObject().put("serialeHW", it).toString()) }
