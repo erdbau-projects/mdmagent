@@ -114,6 +114,58 @@
           "displayName": "OsmAnd"
         }
       ]
+    },
+    "ufficio": {
+      "nome": "ufficio",
+      "apps": [
+        {
+          "packageName": "it.rentri.appmobile.firdigitale",
+          "displayName": "RENTRI FIR Digitale",
+          "permessi": [
+            "fotocamera",
+            "notifiche",
+            "posizione"
+          ]
+        },
+        {
+          "packageName": "com.adobe.reader",
+          "displayName": "Adobe Acrobat Reader"
+        },
+        {
+          "packageName": "de.mts_ag.android.mts_smart.mts",
+          "displayName": "MTS",
+          "permessi": [
+            "posizione"
+          ]
+        },
+        {
+          "packageName": "com.sec.android.app.myfiles",
+          "displayName": "I miei file"
+        },
+        {
+          "packageName": "com.sec.android.app.camera",
+          "displayName": "Fotocamera"
+        },
+        {
+          "packageName": "com.google.android.apps.maps",
+          "displayName": "Maps",
+          "permessi": [
+            "notifiche",
+            "posizione"
+          ]
+        }
+      ],
+      "impostazioni": {
+        "posizione": true,
+        "oraAutomatica": true,
+        "schermoAccesoInCarica": true,
+        "bloccaReset": true,
+        "bloccaHotspotRete": true,
+        "playProtect": true,
+        "telefono": true,
+        "inviaPosizione": true,
+        "volumeMinimo": 50
+      }
     }
   },
   "tablet": {}
