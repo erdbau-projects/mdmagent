@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T06:44:00Z",
+  "lastCheckIn": "2026-11-25T06:51:09Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,11 +24,11 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "yqDaLwM5OHRkDpc+j\/4OJ\/u6UarLssgIIl7zNsz8i9xMLPv7mZUYAq3zg1G3bpkYj+L1RAqIE9jogZAbiGwChRelVpjQsJvhdRT3Orunz74pWlym5gwKA4AozNiWXocJKM4i3MWE8+1IRtnA4UZkQAwoCIwmNnjTocmk0gBoUyefM+lZab+5HpztnFv6zjvA20bzBRoKvsJu5wUSA9gjlqKJGBcLmJp7e+b+ok4fAq0e+503Z3PBYlIefNZoeM3ydC0uxGB3J90DRx0zl1JxFQC+VZlvz0pYW7YzBVvQMXBEBa8tkQuEUqe+xI37Nq9IUHJ8FeRRBBWFLR4ZiLL0Pg==",
+  "serialeCifrato": "MwzPb\/8sNubEp3JYvAn9d8+Cv8qbvlCWHNpa2eePvJK5Fb1+QJwHR36LtF7nUzoaMLZ2XE73fFCRh7z8xI1VB7x8q7zzxy91pAx\/bklSpeQ\/CSgGa+lPA5VeQSk+1DR5NbMXB30Rwn1uc1ZDgB5iL6HaBAoHZAAcwx8oMDOg0tlc8LEkRKaSa\/pxOQZQqOyhJ6BLWKYOELUZwBsR\/3Ce5G2Uumoa4oYJHcmlXEBb8YcULblEOFVuOJqHSyLCdtC9E+m8lH6QbFkSOlQwWQ8PMHFJ9nBnjX7AEn\/kJsYyriztKtw52cLo9D8aaX2SJfg1xwsVQ5TdjlL6LytP+X31yA==",
   "simCifrate": [
-    "TFtsO2HCFiQoo15IEtUDzvtsw70MWgQ4LxHj+GAd+ywxEAa1xPUq4mdeRLQZTpl+s0h9c\/XbhLqpofVVCpIR1UglMDAgbRuOpV2KumtnDVAq6XQHXx9jK9GCZNoGRqoxdiTG+IM03Dvagri3tuISrOmCEYv6ZErOUszJzDKtt8S2s4gk2oex8DgvSku19nqMeXAjkW+KYR66CsphW1c+\/wNS40MNTu5M4ixq36G\/fXuK5cfmyuzlvRnEdo1n\/V7Pog\/2YZyUJbebiqubkP+\/3HwPbqfVwyIhfcBCZHC3pJTgJF5m3OkbvUKTffTuJXF1mgWYhuJaOzw9JsHZHA\/\/+w=="
+    "jiOrVzQFE\/LUcfyj4lM0PKQkzIOmZjB6BLMGE50m\/8hdaFBDxcBjuLumjkGHR4gI7nh6eOY7Z0OajDznH7OyKN7P3TBhA9GO9\/yYFW4KdByzvy+3Q6Df0z+0I2zyaXmzcOYbLpir22EODCWzOre38Q5qXDmcxvGf+16Svvs7+HVwaXYnwvvLlBaZYuoyAdRnX0AAq4n5EsvVyaqmQVzB3rVh7+YHvcJCegNUsrrFFsgzIzFZQsbr+jdWjG3BkICRaON15r49B03lT9HsYuFCTxg97Z5YdRtmobyzfppLOOWM7WQs\/3B7Qgu7qno+QYueCl+3kOgMfYDq97MFYOteFg=="
   ],
-  "posizioneCifrata": "7Wsf76jIvdpVlrfeK2OpPHXYjYGp79osGAr38cEIYhD1BbLqY1YZDQEzg46a\/XRE1wbNCR25BXHvj0cJWWL6sThwuJLHkzqqOq7\/ipbzU15s5jrOpEZryzC6LnRMl1siqnjZWhcpfaflOLql4cUbRxRM5DyiYyMkaLrugnalQEk++oPNz9kn2RgmjYL2FEE548Ok42wQXg2OS72B37vfdbX1rv+V7DKjzFeapsLH+VS7SQT7M0NIa0erngB\/lTU4ifnZetfVfdK1LS5YsjfIq+kF1qd9eG07GLt\/IszMf5i3Na+ygPBU4bhQuZWpoWx3khjmSToeR85oU9ufh4iy6Q==",
+  "posizioneCifrata": "KiyStx0ivyTd6mRIoc2jS5E1WrNLY\/bmmv5KSVY3x5vGBoTqW2ba00JKZAzRSXdiN5Z9t2UDF5+K+56X\/3Okd3rOV2Zx5+9hLskIh0fn08e+wACyVRtOvoW3Wl+yVGoDohXWXlQc+fCH\/NkBhqiH4AMWmJZ30hLZ+8PWY5TFmOEDo1RpjkysDPKjOlRsQhbzn5gGr3oFqLWAJ+hTCQKSi3E+htkEFpXoTzncMN0m5ahSwGWtSddg6Nh7ZUvEmI29X8+1hTCRlXj+BFKLoGBRp8W2SfkIi7Ym+a8WrNAYbkPBrUAtXrbdY9e55dAI91bfXZjzAsip8V4vnL\/W3B2tMQ==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -38,7 +38,8 @@
       "installed": false
     },
     "de.mts_ag.android.mts_smart.mts": {
-      "installed": false
+      "installed": true,
+      "versionName": "2.2.0(165)-MTS"
     },
     "com.sec.android.app.myfiles": {
       "installed": true,
