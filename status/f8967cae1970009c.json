@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T06:49:34Z",
+  "lastCheckIn": "2026-11-25T06:50:32Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "d\/bgd\/5X9\/GSTuOH+FKUeYfmEZ0\/BpPAritPn\/u0fknnsCFczGgrH9SV+qJnRjYbKzI0BZRBL+tmtIkhWmiN21X3Wyoe830LgUWqoOkmDzEm8bKeFOCZ7y9Bkc5QfNesRunJPCY4h7J5ZrQNhEQhnj8yydN8N4i9cl0uE1glIBUHRjcr0p55\/du6WC93gU99GrdxGa7h8cvz023cUmkSn\/fljk6XpcW+5JYRC85UAJlIjEynmim9UmgouD99HuYmu29kv0N\/SUIZBva9OqZ5C+GfXwmZoUKX3bowkRGg45Vrjb5mIk62yc2tiGta8j9B\/ppnvdnOdDVKLVLrVphU1g==",
+  "serialeCifrato": "NjUHHIp\/pnN7cnEtVVEFXXx3Qoq7MprASsonZHqacqcrDPVNPPowuSiEJOuJYy8fJ7o5S4Gm7IVmqIFmEEJTgDfPAMq7gauAiNFYvLOaOpNyhUlOSUkPW8gkfQM\/D2jBZsIiTcuoYFS+VkEeHfZj0DaVztdWPeKTSjyg2rtZaJOnzgZeKNfx0tnkwRgOwwNUMY6\/vMyM7nAnjH5FEz0Y3I\/b3BtG\/qR+dVsDDAqWdchMZ0YH4C+K9gpCmTTllI42TD4d\/gP7wcTB5t25f+rnMiZwy9ZduiAng37OOSQOpb+9Q94u40EdVkbFP\/8hWtEEGZpuEkysSEo2ij2zSt0A+g==",
   "simCifrate": [
-    "KOycrntf5RAA0oSjSSTwOCrA+QJ8L0csWm1sj6Fg+wTCf\/RWah4IU8RAF1b7OsroW0xUWBdflIYNtoiWOWftNVDag2oWKi9q3LLmqsXBELQOeBpbeIRd\/L1oGay06TUkUVWd5r4\/+rdRjmrYG8iFvcTprIlUZ6SU2NFVzk7J2lPA3uJ0qPmbh5whCNywijMPXjJQaArHkyHQrNyKqdW7L2fhx9yytRoLbMh2C7dOJMt4hU38+SBwV0CqQhrlqdpLOTWJkKIRasTDc3Oac6u0e3c51WHM5D7qhce+R57J57wvAAajRM8EkrQYoCyXkTPUKqNPD6mBbq\/w3ZEt\/aOe3g=="
+    "Xf4UJofhDFdUMO4wSpsgfD5vFeIHHS52uEye5NzgM1XVQS+pltxlArZc886SZqdu8a89Q3gytuf1AeuuSGFvyKKvaWj0R08TpOKLPlrOxzVUJ9GwRW531hANsMJt8UXOuUgCtMiDvOo69kXGbaT8o0Qo3hcNBMR+4Rj0mrVlSKNib\/nZB19yropQhs\/hqTbrOo\/BUie5UvW40iNHcwSPFfUD2OMoBeQ1qifLLBxTeO\/vLGnagxBNF2v2y\/Nim5wwbHS75jEMqFOzMVzUJendX9NsqbJ6ykIsI0Akn+BcT5Ezw58lqAzxNDqZ+I93S3zBBtBaaVkiRCusrRX0nCUPAw=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -49,7 +49,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.35.05.969485213"
+      "versionName": "26.47.00.1022347503"
     }
   }
 }
