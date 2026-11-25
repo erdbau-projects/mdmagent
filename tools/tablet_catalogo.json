@@ -67,9 +67,9 @@
     "serialeHW": "",
     "modello": "SM-X236B",
     "posizione": "campo",
-    "nome": "TAB-ERD-050",
+    "nome": "",
     "nota": "",
-    "aggiornato": "2026-11-20"
+    "aggiornato": "2026-11-25"
   },
   "873483afaf5f96ce": {
     "serialeHW": "R5GL12BVB2B",
@@ -108,6 +108,14 @@
     "modello": "SM-X236B",
     "posizione": "ufficio",
     "nome": "TAB-ERD-053",
+    "nota": "",
+    "aggiornato": "2026-11-25"
+  },
+  "f8967cae1970009c": {
+    "serialeHW": "",
+    "modello": "SM-X236B",
+    "posizione": "campo",
+    "nome": "TAB-ERD_050",
     "nota": "",
     "aggiornato": "2026-11-25"
   },
