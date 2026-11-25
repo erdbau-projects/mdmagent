@@ -1,18 +1,26 @@
 {
   "serial": "9f8d60553b1f89c2",
   "model": "SM-X236B",
-  "dpcVersionCode": 24,
-  "dpcVersionName": "1.3.2",
-  "lastCheckIn": "2026-11-25T12:14:36Z",
+  "dpcVersionCode": 34,
+  "dpcVersionName": "1.5.2",
+  "lastCheckIn": "2026-11-25T12:14:50Z",
   "profilo": "camionisti",
+  "impostazioni": {},
+  "stato": {
+    "posizione": true,
+    "bluetooth": true,
+    "wifi": true,
+    "playProtect": true,
+    "schermoAccesoInCarica": false
+  },
+  "serialeCifrato": "rFMvCA06mao7ltGEZaUWIIr1q3GH8Zz13jp9+HbIK1YuXQBi\/xczBQFJUUQygLriNlMveR1S\/T1uPFC8Q5+zj5\/6mxj5sAmbcvtik5SVOkQ\/iZcO99fpD8AJpBSCH5Z9U6TMkh1W1TPiVlMS11k119ocXLL0hSq9\/5Igo\/Lyy7AGXSpA4d+rqS7QjpJHdsWwMNpqKxdH9T7aekD7ZeYbRlGWtW7DXV2y3gnC2LFo4tv6YckrHOVQ\/j48GAJuchz0Y0JE44s9C299AMCNg+YMFuxq82cK+9ulolUo5Bgjgp7APAfPrtuN7xEA+czQIo+7MQTc1lGF2tH81svMNufCag==",
+  "simCifrate": [
+    "4afRaHf6HPe4f4uyqbCbzRPdR7\/Cp3FB3P1yTAcSQpP6QiWuhZqzPDhhYFX1m1MBLSpzP4pA6KWiPL1sLp+iAtllSmGpbGf6BvxfqdDpjTjC9LYI1gFWJRF0maJdEWa4Sb\/ApnJV6ZicBY3KEpFKARe1jq\/kCdS7g0G9f1tjrCsYx7+AXiXW\/Obi\/MIovFb8+qtcvTCSKR9cPmeKaWCT0Dk9SrZixVQrspHv9lQMGSN4Xu+NTKfPqH73GZazdD7sv4zSO5PLkzc\/8\/A520W\/4ALoVkxltdb4NjoHkLd09IAjvQ66EsM8HdUp+F2vxAtN28hQtTOOdRa6a77AECmogA=="
+  ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
       "versionName": "1.7.6"
-    },
-    "com.carriez.flutter_hbb": {
-      "installed": true,
-      "versionName": "1.4.9"
     },
     "com.adobe.reader": {
       "installed": true,
@@ -33,9 +41,6 @@
     "com.google.android.apps.maps": {
       "installed": true,
       "versionName": "26.46.00.1016872485"
-    },
-    "net.osmand": {
-      "installed": false
     }
   }
 }
