@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T06:51:09Z",
+  "lastCheckIn": "2026-11-25T06:52:30Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,18 +24,19 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "MwzPb\/8sNubEp3JYvAn9d8+Cv8qbvlCWHNpa2eePvJK5Fb1+QJwHR36LtF7nUzoaMLZ2XE73fFCRh7z8xI1VB7x8q7zzxy91pAx\/bklSpeQ\/CSgGa+lPA5VeQSk+1DR5NbMXB30Rwn1uc1ZDgB5iL6HaBAoHZAAcwx8oMDOg0tlc8LEkRKaSa\/pxOQZQqOyhJ6BLWKYOELUZwBsR\/3Ce5G2Uumoa4oYJHcmlXEBb8YcULblEOFVuOJqHSyLCdtC9E+m8lH6QbFkSOlQwWQ8PMHFJ9nBnjX7AEn\/kJsYyriztKtw52cLo9D8aaX2SJfg1xwsVQ5TdjlL6LytP+X31yA==",
+  "serialeCifrato": "QoAqhyEbArYCJdZq5eA8hUd0vutDfNptsuomcdAE7RHDYyRHYcICYK+snSripSNFlld43jD+v7OkQjpMLiu4PhAhUahIv0oGXzDD15KexeSLRKyvJ6SOUlSULszmlX5bHHkid1qynDdRJLzRHAs7HMm7ZWTegFIdAHXBr8N4REBMHPj+9xPYAmvuOiyEUMAgEoPw4LN7HIiiASrzI+0x4i\/Zr+vRevs2smZEUdMAHsjN+ed1iqn5Qrkf4ydyFiI6VZFMUh6xRK6FccCV7syPXD\/zE1bHM1Jtos1W2trlSTzxDdBpesNsjQOPF5Wo3wwaqvpRalj8f1NMPvaQpOlX+g==",
   "simCifrate": [
-    "jiOrVzQFE\/LUcfyj4lM0PKQkzIOmZjB6BLMGE50m\/8hdaFBDxcBjuLumjkGHR4gI7nh6eOY7Z0OajDznH7OyKN7P3TBhA9GO9\/yYFW4KdByzvy+3Q6Df0z+0I2zyaXmzcOYbLpir22EODCWzOre38Q5qXDmcxvGf+16Svvs7+HVwaXYnwvvLlBaZYuoyAdRnX0AAq4n5EsvVyaqmQVzB3rVh7+YHvcJCegNUsrrFFsgzIzFZQsbr+jdWjG3BkICRaON15r49B03lT9HsYuFCTxg97Z5YdRtmobyzfppLOOWM7WQs\/3B7Qgu7qno+QYueCl+3kOgMfYDq97MFYOteFg=="
+    "3FWlatKDJ5WJeUrrCnwFJAYNcvDyswfB37+saXNdCfm1oxFVWgLu\/wXeNwSIU9cnsWT8fCnppzkpva+k6DF6BOLwV538imI91iJVoDXCHodg8f7XwGB28FKw+For2vEMDo1q6ldA8RabuZf70WQeOzqXLxMWnB3xq4oFAbpgVn8VKQDX7mBwSydASSQg6zb0uHbghE+f80j\/kCocLSc+L2XT4dJv9CS+ebS1OqQnKJnPRTo6MLkMM4Kl5cxFMfrkbmFVwsqeYmw4CPmERi6dJtreJ8mP2EX5eeYaGIJDJM4XYc8Tgiu27frxR8Qta9E453Z4a9\/Qp+qzZqpym6\/\/1g=="
   ],
-  "posizioneCifrata": "KiyStx0ivyTd6mRIoc2jS5E1WrNLY\/bmmv5KSVY3x5vGBoTqW2ba00JKZAzRSXdiN5Z9t2UDF5+K+56X\/3Okd3rOV2Zx5+9hLskIh0fn08e+wACyVRtOvoW3Wl+yVGoDohXWXlQc+fCH\/NkBhqiH4AMWmJZ30hLZ+8PWY5TFmOEDo1RpjkysDPKjOlRsQhbzn5gGr3oFqLWAJ+hTCQKSi3E+htkEFpXoTzncMN0m5ahSwGWtSddg6Nh7ZUvEmI29X8+1hTCRlXj+BFKLoGBRp8W2SfkIi7Ym+a8WrNAYbkPBrUAtXrbdY9e55dAI91bfXZjzAsip8V4vnL\/W3B2tMQ==",
+  "posizioneCifrata": "HERNfyaz4mNfouRtxPuwrBPNqBhvefsOU6FhL3r57dqvSXrxRFp4+dTsJJgLPTvoiGVOzI0YqkitRMoUqNw16vqLTVVInpO+J3Zuv7NUCkfcQJ1+1YOlhLRaUgBbLW5jbohLiSNXVnckwsiD2Yep72Afb5Z+T\/T7W2fNhYrKn7KvScMHNaMSHj+cjCAXUHuCeQt\/eOpZyS0aIYpzgcJgj4ySFAzf+Jb0XZi150XKSSDlRyicQvh5dhsiax0pGvW2jOu3zu\/+y\/gt1LyHUGeHoTqY+PTFdocyz2u67AsDgE8xWdEozNwKPb951CSZcQD9WwfAZv5wfM+A8eEy9prUOg==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
       "versionName": "1.7.6"
     },
     "com.adobe.reader": {
-      "installed": false
+      "installed": true,
+      "versionName": "26.10.2.51485"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
