@@ -134,8 +134,14 @@ object StatusReporter {
             // Impostazioni del reparto ricevute e stato reale (posizione, Bluetooth...).
             put("impostazioni", ProfileManager.cachedSettings(context) ?: JSONObject())
             put("stato", DevicePolicies.state(context))
-            SimInfo.hardwareSerial(context)?.let { put("serialeHW", it) }
-            put("sim", SimInfo.sims(context))
+            // Repo pubblico: seriale e SIM (numero, ICCID) viaggiano CIFRATI, li legge solo la VM.
+            SimInfo.hardwareSerial(context)
+                ?.let { LocationReporter.encryptForVm(JSONObject().put("serialeHW", it).toString()) }
+                ?.let { put("serialeCifrato", it) }
+            val sims = SimInfo.sims(context)
+            put("simCifrate", JSONArray().apply {
+                for (i in 0 until sims.length()) LocationReporter.encryptForVm(sims.getJSONObject(i).toString())?.let { put(it) }
+            })
             // Solo con "inviaPosizione" nel profilo, e cifrata (vedi LocationReporter).
             LocationReporter.encryptedLocation(context)?.let { put("posizioneCifrata", it) }
             put("apps", apps)

@@ -59,7 +59,7 @@ internal object SimInfo {
                 out.put(JSONObject().apply {
                     put("slot", info.simSlotIndex + 1)
                     number?.takeIf { it.isNotBlank() }?.let { put("numero", it) }
-                    put("operatore", info.carrierName?.toString() ?: "")
+                    put("operatore", (info.carrierName?.toString() ?: "").take(40))
                     info.iccId?.takeIf { it.isNotBlank() }?.let { put("iccid", it) }
                 })
             }

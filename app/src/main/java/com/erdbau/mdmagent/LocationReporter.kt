@@ -50,17 +50,24 @@ object LocationReporter {
             put("t", iso(loc.time))
             put("p", loc.provider ?: "")
         }.toString()
-        return try {
-            val key = KeyFactory.getInstance("RSA")
-                .generatePublic(X509EncodedKeySpec(Base64.decode(PUBLIC_KEY_B64, Base64.DEFAULT)))
-            val c = Cipher.getInstance("RSA/ECB/OAEPPadding")
-            c.init(Cipher.ENCRYPT_MODE, key,
-                OAEPParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA256, PSource.PSpecified.DEFAULT))
-            Base64.encodeToString(c.doFinal(json.toByteArray(Charsets.UTF_8)), Base64.NO_WRAP)
-        } catch (e: Exception) {
-            Log.w(TAG, "Cifratura posizione fallita: ${e.message}")
-            null
-        }
+        return encryptForVm(json)
+    }
+
+    /**
+     * Cifra un testo breve (max ~190 byte, RSA-2048 OAEP-SHA256) con la chiave
+     * pubblica: lo legge solo la VM. Usato per posizione, SIM e seriale.
+     * Se la cifratura fallisce restituisce null: mai in chiaro.
+     */
+    internal fun encryptForVm(plain: String): String? = try {
+        val key = KeyFactory.getInstance("RSA")
+            .generatePublic(X509EncodedKeySpec(Base64.decode(PUBLIC_KEY_B64, Base64.DEFAULT)))
+        val c = Cipher.getInstance("RSA/ECB/OAEPPadding")
+        c.init(Cipher.ENCRYPT_MODE, key,
+            OAEPParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA256, PSource.PSpecified.DEFAULT))
+        Base64.encodeToString(c.doFinal(plain.toByteArray(Charsets.UTF_8)), Base64.NO_WRAP)
+    } catch (e: Exception) {
+        Log.w(TAG, "Cifratura fallita: ${e.message}")
+        null
     }
 
     @SuppressLint("MissingPermission")
