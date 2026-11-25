@@ -42,7 +42,7 @@ object StatusReporter {
     private const val TAG = "StatusReporter"
 
     private const val REPO = "erdbau-projects/mdmagent"
-    private const val API_BASE = "https://api.github.com/repos/$REPO/contents/status"
+    private const val API_BASE = "https://api.github.com/repos/$REPO/contents"
 
     // Un check-in alla volta: due PUT in parallelo sullo stesso file fanno
     // fallire il secondo con HTTP 409 (sha non più attuale), visto dal vivo.
@@ -74,7 +74,7 @@ object StatusReporter {
             try {
                 val serial = getSerial(appContext)
                 val body = buildStatusJson(appContext, serial)
-                publish(serial, body)
+                publish("status/$serial.json", body, "status: check-in $serial")
                 Log.i(TAG, "Check-in di stato inviato per $serial")
             } catch (e: Exception) {
                 // Come SelfUpdater: un fallimento qui (rete assente, API
@@ -179,16 +179,40 @@ object StatusReporter {
         return fmt.format(Date())
     }
 
+    /**
+     * Solo la posizione (cifrata), a intervalli scelti nel profilo
+     * (intervalloPosizione, vedi LocationScheduler). Va in posizioni/<id>.json,
+     * NON in status/: così non fa partire le notifiche su GitHub Actions.
+     */
+    fun reportLocation(context: Context) {
+        val appContext = context.applicationContext
+        if (BuildConfig.GITHUB_STATUS_TOKEN.isBlank()) return
+        executor.execute {
+            try {
+                val enc = LocationReporter.encryptedLocation(appContext) ?: return@execute
+                val id = getSerial(appContext)
+                val body = JSONObject().apply {
+                    put("t", isoTimestampNow())
+                    put("posizioneCifrata", enc)
+                }
+                publish("posizioni/$id.json", body, "posizione $id")
+                Log.i(TAG, "Posizione inviata per $id")
+            } catch (e: Exception) {
+                Log.w(TAG, "Invio posizione fallito (non bloccante): ${e.message}")
+            }
+        }
+    }
+
     /** GET per l'eventuale sha esistente, poi PUT (create o update) — Contents API di GitHub. */
-    private fun publish(serial: String, body: JSONObject) {
-        val url = "$API_BASE/$serial.json"
+    private fun publish(path: String, body: JSONObject, message: String) {
+        val url = "$API_BASE/$path"
         val content = Base64.encodeToString(body.toString(2).toByteArray(Charsets.UTF_8), Base64.NO_WRAP)
         // Due tentativi: se nel frattempo il file è cambiato (409), si rilegge
         // lo sha e si riprova una volta.
         for (attempt in 1..2) {
             val existingSha = fetchExistingSha(url)
             val payload = JSONObject().apply {
-                put("message", "status: check-in $serial")
+                put("message", message)
                 put("content", content)
                 if (existingSha != null) put("sha", existingSha)
             }
@@ -199,7 +223,7 @@ object StatusReporter {
                 val responseCode = connection.responseCode
                 if (responseCode in 200..299) return
                 if (responseCode != 409 || attempt == 2) {
-                    throw IOException("PUT status/$serial.json fallito: HTTP $responseCode")
+                    throw IOException("PUT $path fallito: HTTP $responseCode")
                 }
                 Log.i(TAG, "Check-in: conflitto 409, riprovo con lo sha aggiornato")
             } finally {

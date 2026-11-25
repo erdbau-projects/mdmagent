@@ -55,13 +55,14 @@ object SelfUpdater {
      * checkAndUpdate() viene invocato solo all'avvio (onCreate/boot).
      */
     const val PERIODIC_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000L // 6 ore
+    private const val BOOT_RETRIES = 5
 
     // Evita che due controlli (es. quello di avvio e quello periodico, se
     // capitano vicini) partano in sovrapposizione e scarichino/installino
     // due volte lo stesso APK in parallelo.
     private val checkInProgress = AtomicBoolean(false)
 
-    fun checkAndUpdate(context: Context) {
+    fun checkAndUpdate(context: Context, attempt: Int = 1) {
         val appContext = context.applicationContext
         if (!checkInProgress.compareAndSet(false, true)) {
             Log.i(TAG, "Controllo aggiornamento DPC già in corso, salto questa richiesta")
@@ -80,7 +81,13 @@ object SelfUpdater {
             } catch (e: Exception) {
                 // Un fallimento qui (rete assente, manifest non raggiungibile, ecc.)
                 // non deve mai bloccare l'avvio del kiosk: solo un log.
-                Log.w(TAG, "Controllo aggiornamento DPC fallito (non bloccante): ${e.message}")
+                Log.w(TAG, "Controllo aggiornamento DPC fallito (non bloccante, tentativo $attempt): ${e.message}")
+                // All'avvio la rete spesso non è ancora pronta: si riprova ogni
+                // minuto fino a 5 volte, invece di aspettare il controllo delle 6 ore.
+                if (attempt < BOOT_RETRIES) {
+                    android.os.Handler(android.os.Looper.getMainLooper())
+                        .postDelayed({ checkAndUpdate(appContext, attempt + 1) }, 60_000L)
+                }
             } finally {
                 checkInProgress.set(false)
             }

@@ -87,6 +87,9 @@
             </intent-filter>
         </receiver>
 
+        <!-- Invio posizione a intervalli: LocationScheduler.kt -->
+        <receiver android:name=".LocationAlarmReceiver" android:exported="false" />
+
         <!-- Provisioning da QR code (Android 10+): vedi ProvisioningActivities.kt -->
         <activity
             android:name=".ProvisioningModeActivity"

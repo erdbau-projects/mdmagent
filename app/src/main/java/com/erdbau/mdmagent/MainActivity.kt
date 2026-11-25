@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() {
     private val periodicProfileCheck = object : Runnable {
         override fun run() {
             refreshProfile()
+            LocationScheduler.ensure(this@MainActivity)
             // Riapplica le impostazioni (es. Bluetooth spento a mano, volume abbassato).
             if (!maintenanceMode && ::dpm.isInitialized && dpm.isDeviceOwnerApp(packageName)) {
                 DevicePolicies.apply(this@MainActivity, dpm, adminComponent,
@@ -224,6 +225,7 @@ class MainActivity : AppCompatActivity() {
             StatusReporter.reportStatus(this)
             // Profilo del reparto (quali app mostra il kiosk): vedi ProfileManager.
             refreshProfile()
+            LocationScheduler.ensure(this)
             // E ricontrolla periodicamente finché il kiosk resta acceso, così
             // un tablet mai riavviato riceve comunque i nuovi aggiornamenti
             // (e resta aggiornato anche il suo status/<seriale>.json).
@@ -481,6 +483,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onProfileChanged() {
         if (isFinishing || isDestroyed) return
+        LocationScheduler.ensure(this)  // intervallo posizione eventualmente cambiato
         if (maintenanceMode) {
             // In manutenzione si aggiorna solo la scritta; kiosk e griglia al rientro.
             return

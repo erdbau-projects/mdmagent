@@ -43,7 +43,10 @@ FORBIDDEN = {
 }
 # Impostazioni del reparto e permessi per app (vedi DevicePolicies.kt).
 SETTINGS = {"posizione": bool, "bluetooth": bool, "wifi": bool, "oraAutomatica": bool, "schermoAccesoInCarica": bool,
-            "bloccaReset": bool, "volumeMinimo": int, "bloccaHotspotRete": bool, "playProtect": bool, "telefono": bool, "inviaPosizione": bool}
+            "bloccaReset": bool, "volumeMinimo": int, "bloccaHotspotRete": bool, "playProtect": bool, "telefono": bool, "inviaPosizione": bool,
+            "intervalloPosizione": int}
+# Valori ammessi per le impostazioni numeriche (default: 0..100, es. volume).
+SETTING_VALUES = {"intervalloPosizione": {15, 30, 60, 180, 360}}
 PERMISSIONS = {"posizione", "posizioneSempre", "fotocamera", "microfono", "notifiche", "bluetooth", "foto", "telefono"}
 PKG_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z0-9_]+)+$")
 
@@ -79,7 +82,9 @@ def validate(d: dict) -> None:
                 errs.append(f"profilo '{pid}': impostazione sconosciuta '{k}'")
             elif SETTINGS[k] is bool and not isinstance(v, bool):
                 errs.append(f"profilo '{pid}': '{k}' deve essere true/false")
-            elif SETTINGS[k] is int and (isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 100):
+            elif SETTINGS[k] is int and k in SETTING_VALUES and v not in SETTING_VALUES[k]:
+                errs.append(f"profilo '{pid}': '{k}' ammessi {sorted(SETTING_VALUES[k])}")
+            elif SETTINGS[k] is int and k not in SETTING_VALUES and (isinstance(v, bool) or not isinstance(v, int) or not 0 <= v <= 100):
                 errs.append(f"profilo '{pid}': '{k}' deve essere un numero da 0 a 100")
     for tid, pid in (d.get("tablet") or {}).items():
         if pid not in profili:
