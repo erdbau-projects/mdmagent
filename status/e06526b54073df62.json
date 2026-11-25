@@ -1,17 +1,26 @@
 {
   "serial": "e06526b54073df62",
   "model": "SM-X236B",
-  "dpcVersionCode": 19,
-  "dpcVersionName": "1.2.7",
-  "lastCheckIn": "2026-11-25T06:56:28Z",
+  "dpcVersionCode": 33,
+  "dpcVersionName": "1.5.1",
+  "lastCheckIn": "2026-11-25T06:57:16Z",
+  "profilo": "integrato",
+  "impostazioni": {},
+  "stato": {
+    "posizione": true,
+    "bluetooth": true,
+    "wifi": true,
+    "playProtect": true,
+    "schermoAccesoInCarica": false
+  },
+  "serialeCifrato": "ZjuWxoorHG9t744TFhFp+oCpFggt92FBSDfG9wJqTXkrTFNBNvVf5HiwnpNSzLfB53Pp2VVyAcoNuNkzowH+shqcV9KFQd7WsncVhpwlMt32zIwMPqHYiW4hAeAPWt+zQaoFfvGJm1+tU\/1mR856q7A6oI1qiWxH\/0LnLuRiqrwO7Gp4vSz4WT2ekNQ0wCIW97pke+FNPUYXYJeXiWdFJaHBfyYarRJaBXSQgHaZ1fUWEFtn+kjJHjlW+XjBYT6ErzuFtAcaThZ25d0tf0JubnQc+21JNW1w0un\/HcLCYWYG\/GXtULQHKwpVPm1m9eJ9Juq9VH\/25nVFhHYCCvXkSA==",
+  "simCifrate": [
+    "B3KAH6V2HXbM8ld0aclQKaCCtlV6OODh+sDrReo3RbjClrRAM+ppJUFb+Udx0cIoLz2DSY5iyyMceXcpupEqIFbBtWi3\/oPxEEC4FlJE2PIdhQAIPdU7dsGVbnLm+bXNbnhMGLp5jAGUYfOzxbTjPo1YuVRf5ZmZlQdXCQMJRrHE48q1uuOA9xJ+bkFCL\/e6OIZP5Wy75Xq4DXgmWXOHUCFPGyLVSSONHaT2lbAzWSlOi8H5bQp\/SNzZWAxCE6IFiXgnZDcXe9FKURbx5T9\/3ouWlf8OLOUoX2QKIs12ArWz6qW46uRdYinCZG93\/Oo9BHz1Lm8ZNAvc34HdLlGSXw=="
+  ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
       "versionName": "1.7.6"
-    },
-    "com.carriez.flutter_hbb": {
-      "installed": true,
-      "versionName": "1.4.9"
     },
     "com.adobe.reader": {
       "installed": true,
@@ -32,9 +41,6 @@
     "com.google.android.apps.maps": {
       "installed": true,
       "versionName": "26.35.05.969485213"
-    },
-    "net.osmand": {
-      "installed": false
     }
   }
 }
