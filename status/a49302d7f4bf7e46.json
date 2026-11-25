@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 32,
   "dpcVersionName": "1.5.0",
-  "lastCheckIn": "2026-11-25T06:17:39Z",
+  "lastCheckIn": "2026-11-25T06:28:45Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -32,10 +32,11 @@
       "iccid": "8939880841125229248"
     }
   ],
-  "posizioneCifrata": "a5bcc9Cy\/BJd\/+yOF6FJJ5YiI9gBH663K4frwOBVcYj13a\/tW77vj3thhA56XQhZtflpLC3yy1bY2JKfYdsbB7PgZnOQzg+uGWiA7jBbBmW4QPz32561AzhDDqt123+eux9mtMViZ4YB+gv9bfU0b46MXuhEQVcipjNQmFuFpaIbhPR2d+Yas9dN8aQ3nkVmwkPcRr4ycnpvLJCqZnre9aiYyhwU71uVCaMCsqt42GdEgkUIzhIohR5sYJXhiItINzPIDtL8g8rDMdPMWj5hchjVI3A2n\/mkl9KqNa\/E1zbYbqcN86gdAjENHTopSK4W9kHobd10KOyV5eZrpXkMsA==",
+  "posizioneCifrata": "tFZ9nxCJc1IoWPKF9OsqGDXi75h8IZtZNUmw6qKOFIeSsO2PTq9BthPU8gFaRL2MKClPu17EDOl0owCbFaolL41\/ujWU88vkmuHve8yCP389JS7ldVTJcLUcziTRUaJ+Ghy\/rMtnqKFg7PJkjBLRtha3ETNoV59F0UZtWwkqEx3iRVgzDn8aJI\/1xQLNL9ePKtkuIgfKutrUrTvAGJDnMUrasZXnbxBSzgU91LJwK7ZFSXzwxq86n+nCuFz6vK4pfUyS54Lw2CGSuJ1N3\/j4A2kFa+eo70+4kv3KobRo3zSYGG4lamsadDgrmVCIvDkKOBnr7ZfAZMY2FAQ9uI1HoA==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
-      "installed": false
+      "installed": true,
+      "versionName": "1.7.6"
     },
     "com.adobe.reader": {
       "installed": false
