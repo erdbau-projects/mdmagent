@@ -1,0 +1,48 @@
+{
+  "serial": "a49302d7f4bf7e46",
+  "model": "SM-X236B",
+  "dpcVersionCode": 32,
+  "dpcVersionName": "1.5.0",
+  "lastCheckIn": "2026-11-25T06:00:02Z",
+  "profilo": "integrato",
+  "impostazioni": {},
+  "stato": {
+    "posizione": true,
+    "bluetooth": true,
+    "wifi": true,
+    "playProtect": true,
+    "schermoAccesoInCarica": false
+  },
+  "serialeHW": "RZGL42HH3SJ",
+  "sim": [
+    {
+      "slot": 1,
+      "numero": "+393932879909",
+      "operatore": "WINDTRE",
+      "iccid": "8939880841125229248"
+    }
+  ],
+  "apps": {
+    "it.rentri.appmobile.firdigitale": {
+      "installed": false
+    },
+    "com.adobe.reader": {
+      "installed": false
+    },
+    "de.mts_ag.android.mts_smart.mts": {
+      "installed": false
+    },
+    "com.sec.android.app.myfiles": {
+      "installed": true,
+      "versionName": "15.4.01.22"
+    },
+    "com.sec.android.app.camera": {
+      "installed": true,
+      "versionName": "16.0.00.77"
+    },
+    "com.google.android.apps.maps": {
+      "installed": true,
+      "versionName": "25.32.00.790560726"
+    }
+  }
+}
