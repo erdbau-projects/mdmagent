@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 34,
   "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T13:05:06Z",
+  "lastCheckIn": "2026-11-25T13:17:09Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,11 +24,10 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "NcJxW57YxPVLZJRC6QIvMr8yOTY+GSfpFmU9XhBJ6KTdb7kCAwNlQtAynHogdwTlWDCiz9WeUrtlJGk6UI8oXG3zgBg5vLlKajQ5JgsM6qYN52sbcxDC91b6GR886x7DlfEY4atg3t\/x6809OV7jHZV7v6hyPyPFXP4teN77LaojxRltFv3LrqJE1sUq1HMkScS30XdPjfkuUa3SD39Exs8imwch\/UYVl2Y0khLDhOqW\/EayzLHl+0ASH43wwWElX+k6glG2Kq9VpYgooxij8FWdqXXImJpap6\/V9N\/0fUWVqvH1Os1lU3hvviyUm4o2TYa8bv5jsQe+\/go0EkjdgA==",
+  "serialeCifrato": "o8mBQqZ5BPp8WPmwcFJ9Ec8jynMpq2LHbahnN5oQ8PdZuUaqAkN71C7O7qRdqshpZS2+koDME\/HEcHgvLIe0Q\/CynxtumTh6N61Ual2tWh7A+Po1Kn9r69uyrWOkpPdSad8iMljro7KL1SGyAnL3rGZtwYkiYi54EalASh2WhQmQlYwENz8mJ6fynJYCSbsBYBpEmz6CmUVYW99HPegB6Kxv49q7z4IuWUb\/Yh922GyVE4YTKhVIJB5\/GkGxajTyPlrc9JCdTBG9zR6onRCsqpdXCxMKuPhOwNMAG1PomXZZTEsYEA+y5wZ1lXv7OyfonJVwJ5QeX\/o6fcNJR1vvIA==",
   "simCifrate": [
-    "pDAlYgVnflgUygg+7N6SLE9uRuJvRI8tViqWoD3pCDlpPdZSTJ0XMFmjuiPzXe\/PZH0i+Hb4HI9O+rIOLnNG5SpgHbsJX8BE7w5tGpiXbzvAK4AXcPTW0p\/3JANiHXxFVIuVCcHitXI0YfFPR9ncoRC6nBwLvk8JBz26COvzxvHgk\/bUqhfMNYjTtpCApPCTWwzf6kfDzQ0kJXMoe91y3te93WIcmojLB64aDQZDc2Gxf+fTpr+ddQJdOPdRT3OgZAwq2KaZD4I2klCCMdSij3AAhotdHb2T5mrL0ymaMFm10hPpwqpQ9QvAMUgqMR9WwZ8IUtm5CvpmKy\/ObbR6pw=="
+    "qQSdRDQff0Mp7KurkeVCDGJRkhdru7OcXQzthANYLMToWt6kNfRRQwvaa2Hp20QQRL8gepV7fvJ08fJZEsZEPI3v32gwZHdnwtQGp\/cu\/rA\/hisa8x7KZYA\/QR4T3CfBb18Q9ID3ETaXjwYrDCTRnFHpCUoLWAIqDu+1rfnH+jXhrmAy89\/vl5mICtSw+xd+6PjyTygwhnJXQc4V+vkXSFrkbc3b3CsJ9T8eV\/969TqFJj9FbyhMZ4KbKWhcC+abfOmruqrIL1dJmSO\/1a2skuKLYpVI6hbwSaqe69GaiNHFv6obaHbW55FG0pHlu6F+rZ\/bLZ9Qk1u98I1kqX\/POw=="
   ],
-  "posizioneCifrata": "KGtMsaU70ZxwksFd\/sPsDDoZch5azIXupB3II\/xHL15bA14fETVTrVdHlXlEmNBo7J3muMvpmB0WRfMM1j0gYQGPJlpW2Nv7RiTwNlkQJL+qrVTETWk+bsp8jZHcj+loAdUN176lu5mDA2QbzQycbleQqkfa9yIMl\/G54YxXDE+fG76PTkMHfakNWiyYHPnyw+TzTdCf2iqZ12481NgjV7AqtpqZ3MUk+iTUYln8pBLL0Iutdg9mdsDJBpDZXd4zXWFAlYHKqkpvj\/IuQcv8zxuCeYYOFnkP12mbp0m6ZGoLeirvznrtubt\/s\/poNAzlotdW\/a7nnv\/sJ+7qbqERDQ==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
