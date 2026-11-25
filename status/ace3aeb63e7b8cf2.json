@@ -1,17 +1,26 @@
 {
   "serial": "ace3aeb63e7b8cf2",
   "model": "SM-X236B",
-  "dpcVersionCode": 18,
-  "dpcVersionName": "1.2.6",
-  "lastCheckIn": "2026-11-25T06:57:28Z",
+  "dpcVersionCode": 33,
+  "dpcVersionName": "1.5.1",
+  "lastCheckIn": "2026-11-25T06:58:03Z",
+  "profilo": "integrato",
+  "impostazioni": {},
+  "stato": {
+    "posizione": true,
+    "bluetooth": true,
+    "wifi": true,
+    "playProtect": true,
+    "schermoAccesoInCarica": false
+  },
+  "serialeCifrato": "QM6o4epz8j0j8hO\/+y7Df7Pzf7iLUllELh7zw0H65EFfcZcg1x\/fMOPURa74uAl7zY9gLpdhOSdugxp6OsKSN2BR9GRXuG3U\/GOKqn4PdgbtsFwu91vpoNdy5QX40gg\/AoSWOh2DVwgxNCzcdBuquDThqHvvscBlXThF6XV04JQxl1SRZzQtA8jseERnVxnVhcwUbIcSOniHEG0ILZMn190dJgas+frbNAgt51mPW54VyY0Naxv0IRwA6WicJ9xcdUDrIEcZdll3QDMwMvKdQSewaXn+yhgWKCc0BK+wt0cF3R7r4+IgAT06uJqbr3RtfpgnlVFhxJPVtQ7i7tmmtg==",
+  "simCifrate": [
+    "ACltJgCfy6KrFSXcbKC4pWCNh1wvoElEpg1pMbGHQXeg\/dCh9QP5Lb3VyM9ikIfdXrmPXY8ENKen8rAjKLD6zRuBb1OAWRhP71k4uvDcECkNZ8aW41VAaBASVfKt8plxEPVAtuTrJWV2JN5m8BJLahWif8K79huPRpA\/8hImkUSJakCl\/HnGrmLs1CWVZWNGZ385qnKIwnxlgbcD+P9IBUhPKZ\/FhW08mVLlcDkJBgzcSNcIrog1st2JGHWMSkyIu8dDcVDF0yFtaJX\/34NMKZixDrJxCQ\/PQiOeneL1C3\/gCJ+iT95M\/upxtxHhwO3QEcpawwTYV0MoqXl9SOgHKA=="
+  ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
       "versionName": "1.7.6"
-    },
-    "com.carriez.flutter_hbb": {
-      "installed": true,
-      "versionName": "1.4.9"
     },
     "com.adobe.reader": {
       "installed": true,
