@@ -49,7 +49,6 @@
         "bloccaHotspotRete": true,
         "playProtect": true,
         "telefono": true,
-        "inviaPosizione": true,
         "volumeMinimo": 50
       }
     },
