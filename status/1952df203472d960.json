@@ -1,9 +1,9 @@
 {
   "serial": "1952df203472d960",
   "model": "SM-X236B",
-  "dpcVersionCode": 34,
-  "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T13:20:27Z",
+  "dpcVersionCode": 35,
+  "dpcVersionName": "1.5.3",
+  "lastCheckIn": "2026-11-25T13:20:50Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,9 +24,11 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "59RTBr7BtHI+YgjlC\/rK4TwsNe9JFJT7agsWQHbdLGMThMZyA\/zm1gMZP2lG9ZoAObaroRe9uCjLz26Ld7pLADo\/7Sr1JRklso4aeGUmuih6+9cFenUHx1wojZJKYu4yZX5qAYU04Td6lzJVkFVjIwakzAC0Rf629tuYyOPNRefctmD8d6XHuZsBnQXTgjoo9ZW+jLsNtVhbmOQ4G+In+NQGalNhfUCCDi4smuaeA5Ma985hfg8E3MoaNOMInEevKxIWXmEXXke1BdPGuZ37z2eJSbKpX\/9vjJyQE\/Fh0zgW6Sj\/njeVkjniWpxiUverqgL4tK\/uUq0rGKHnBek0AA==",
+  "lingua": "it-IT",
+  "linguaIso3": "ITA",
+  "serialeCifrato": "fVT54XvO0fCcx8OATGR\/HnFboidVXZ1txY3cl0P4zlybd69an6+5LQB6mfisks\/lvJAOaK83aibsQvzET4QjqOUePfnJPCcUKZkfO+AbwGUZl77POuxbNPNcnzOipX\/R7bOkVrN2Pza4olpFUIxK7vopfp6J1vwTa3PTpFoiiwOH2iAlF0Euwou+dkZz8CGBk7paJcCaEikqQTmVz\/QAaOV4\/llKWL9JHp9ga+Z82U2+lMG9esC57UsoRWnbxC8acuqgPFscuydSyujMLFBeycXUfAlUnBm41I6vGgdM5gZWOMh9bQZhqQ7y5IHHUQpOoI3nFbLPW7eAEL846QgTGA==",
   "simCifrate": [
-    "QB4ux+bCYfQ67yuAY10ib7QV9rdLOOKgQEQ+bHuJK8DQTZALd5Q9lKD3Jc3sLiuudLp1QMKxurQJfweRzx5uhMJLs9rCgt3GtEro1GYV+5bh905nkWQP9oiUINaieogML6zt3\/SV81U6kOZUN4JvFxj\/OWdVepJCaaCcuxBm1JDXXUTUX5tKXMRa1EpnQQVOi6L9vJAxbkfUhsoGN1qbQtp4Act\/BLDoIT+HRfWYiFhXi3FfAxlid7ygyVx0gmumuZ5rv\/W3KIVBFM9bUoaBMkx+UE1qvwesRLHrJMMifbkEPnJZjudteFty0CLh6EigeobsgHVVBn5Zh1WGgjaW8Q=="
+    "8d2AzmSVxwKaEjunYIhRs30A0u1jt7LjWGtMdpVPtoTgwldvs3TVW+TiMqI9bjKXdg6ofuhAWxOxL8xnBHQ9m5vWnQDgJco1\/RWrpIxU1KTAHHIGZ1wD6EGYywTmBX90VSDX4b3sT+tWC3yBKYjHlJBMW3KJtrUIXNEfYiStA7+aezew1wQKptQJb9p\/ipMgEDGS32P0Jm+AgS\/p9Gq\/wjUXhRswwT7P2jYpzo2R+485051mxq8lQJSVFWZP6NeXW6h4oyJbAFM++ast6ig6ghWgIxfL\/\/gfCe83zaJSw4AH2AXsbsMiiiliI0oF3V4yNIwCW3wXnwpK\/MfTqXB5Gg=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
