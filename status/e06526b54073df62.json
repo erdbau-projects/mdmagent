@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 34,
   "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T13:05:21Z",
+  "lastCheckIn": "2026-11-25T19:05:20Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "e1JtcbKga4Ogf0SrjFvVy7tTjrjCLQ5M2gFyZ21g\/beNcUrhUv7jbQeznpC89KUMC+SA11E19zjkhF1t6z56ryx4tWP0AT3gjQbIWNG+mzyCsleYLRttkBT88cL\/rlNdtrCQf+T5V+U0rJkp2jClHab7jOT+Ly0lMdFs21P0Xpq9ReQBHGrGyb0jd6aSTlpqAqJidznM8IaBUuRGTY1kkspwQkkbnRIWEjUjWoByxqR+ARkRNRVOw+t4AJ1zLdoIisqGHIUS8rWEscLrblUN1byfG3WRpIXvrOtBF4Srgiy7rU\/xGUd1RWgqYvC97OzJCpC9BqT7gInihwn3GQMvgQ==",
+  "serialeCifrato": "X+BEc8j6gYKB8uLwGx9VF\/vScb8GNbLuq7fpxt4VkKpiX0TU4nj8BLLgvAJb935682SLGhpXn52zO\/OvpHhiv7RyZ1KS\/O5MO3Xkd2i1tmJWsq2IVBLPw\/iL0RCuduqJHSd7I5tZVjgQFIvr8xhGFJD4hkOdZ9p\/xHXMGzgmMn1xKO98d\/IH9mR+CK4NjMOLFC5bNacCaS4pjTy+4HX\/Fo+8NEor2PR3V\/b80NSsG0TM1yc4nAAvM0JXHolsb24hlvtjOCRZs63lFLqok8bg1pliLrbo3El4TOnJZQVgtun\/pzIEgJtFl4iX41WupJCZc0N8RrYhWQFD8eILJh9UXQ==",
   "simCifrate": [
-    "MbZ4DpPHW+o\/lSncXWH+VLWi+eONnWEJbR2EGwVm280YgpqKYsNBGemPZhGvraWhBQUpjDIe\/yw1J6jc24XQ79lYf7U0nn\/1bgGpenBbkwg\/dP9Jzoh02cBwslJQhK16vKjA8ZWfo4sVIDgTjNZ+IxOcT7ynfTYTaPm7+suEEWgP95EOJfLWK\/TkMOdLZTxaYF9wdgvb\/g6HryGKAqi1kJ5Yhor2s\/Rs0J6PsuIb+lBYjp1bq00wBdRBasWMxeI08a8Y+E0uIVnJFyZbqybQk5Qr5gxPLLfa66uhlGaQu+kFhwDG8nqyrA2itbsDi0BWejKTbBJ63bZz9Nzh\/KCEDA=="
+    "ymBy9\/7qksR57BM6lbBU0\/fAHGlXNkOJROtLtReWPF0FYYvUMUr\/hMUtuV0Scz7o5ifwAs2DbO5IIZ8UTxLoFGs9wXCapE354yYbY\/rSXdLDXWtHYgXxej2cvLCpUXcASR4g+Xaax7E2gqrEWlvWOO3ZQXL0Vb2XWsk\/E1wavQzc1lhpMQl0ndl6m5PvdKBxCm6TOpbSEVHU\/pOa\/nbvvmM3\/FhNs+W9PgRvFBPrB2ZCZCh++nAyEUOxyCMKjsMnhI0Ga+9CGrnJm9WsP4aZTWmKJgtEnSZWBxxDPPJt83vopoPcP36Iv2GhK9YECOE5HdwpH\/8girzVy9ywbGrXog=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
