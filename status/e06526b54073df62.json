@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 33,
   "dpcVersionName": "1.5.1",
-  "lastCheckIn": "2026-11-25T07:04:47Z",
+  "lastCheckIn": "2026-11-25T07:05:14Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "kDjez5yItnFJ0q+bYtYM6XUWj2dzQaco0J5laWXw4XMluh5l03JvtFEGwbvJ9k722ZTnBvsNCRyNflhwXPKrzGB9i0GqTegax39yOTaKcLKMZwv3DccA1BpGrobuUF542PrhQIAA\/LXRwC+l4EBJTBWgCLhrD+CQEDzExEYeMsVfLhZguBFF5VY3tXRGAgUxu2h7JE+dXmkGQa9cdWvaog3U4nN6tfYmqcVb2kxW6k9ksG\/lJECcxT8HPHFStGCeCUB1\/SU8X+RZg9drJhq0hUAgNqzB4s3ELbEnK9xV0wQStVaSth3qPt4Gk\/jkY5S5etQRmvPLJnAofhRkDHFa8g==",
+  "serialeCifrato": "AkQFZ6LXO62q1HCeFsTA85YfXmCji6EbAsBrmNggDHDVZrzV32Xa4pDwfBpOP0g8rC9SyAtqVNlA51e1O57FpeifSkc\/UA4THBu0suqY2QovWz+R7q0Oeih8vicTsXCzKLyI5QYnTwiPWT+viNMIgzQCQE4ZFmOgD5iDNlWmC5kXIWmG1Q3+EBCP20DZ8D3Yh0IFiHvtCnuP3Y75BFLAmWwe3Ep1ahwZjK5GBDFeg65wB77CLgeQR+DB4610fF3ePgvtjhGyD7aMfozbU0XkoaXi1dDrkne60ODX\/4YVFmlqvrE0xoSowwkpE6BNz12SVISEc1fzqlUFcnJybu1dXw==",
   "simCifrate": [
-    "VGCJPDab+94xPYo4eCx4q9NjoPAeBpZy4DmddRYcZ2YaIv+XnkHl2xHvZGCviF2XHDlEfZ1BFblHSbI36o39DnyBCPyyFMghwdswcpnCR9wQmM4ZkEFtMxap62q1CLgeKQABruN4i+PXQo97ElH6HFtlO4mINqB1zgWez3MCfM0akaQS28FTIz71DhJ12ifrlsekj\/5NXMKP4jW39hCEg\/QU6m2+aJjny6xpEdy8BHUkOPiSTNQNzXxK0SqChn5te4dmdfVyIwO7IVICMVhgo1VnEUECgjd\/9kTEa0Qh+H8BEg0uKX1ImnFEtzKbb4saRCoDcDoEpJTHvFUe0MXxHQ=="
+    "tivwa3+AGLYvksGJ6+RaFoV\/vO1ZdjHfv2PxCyxdeO4L94qGWX5Zjzk2wBYq89hwv6WsfANvamjq7h0E39U45hgS82OOxradRDQWnFsYLzuG3xut70i0PVExYR0XMKK8EmKyWH\/wHuZo4D9gX01rilU7iTbdga3jxO86WAMaRgbVmH2hiBKnMeOy\/PM3mC6nG3hvIX0pukjZSG\/gQ3gZttw9zFOzjCeT\/RngQV+u1jg5qqyji5BBZT1LyWMVO8IjA+B46lIXsx8gLR0oeLY1XCFsl9WOQqKiUqAw+kKcA0RZVfg7d7kwYSTUeOi0QRTEs9EMwVk0OWpg6I\/At65e+A=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -37,7 +37,7 @@
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
-      "versionName": "2.1.2(156)-MTS"
+      "versionName": "2.2.0(165)-MTS"
     },
     "com.sec.android.app.myfiles": {
       "installed": true,
