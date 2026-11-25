@@ -171,7 +171,7 @@ class MainActivity : AppCompatActivity() {
         dpm = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
         adminComponent = MdmDeviceAdminReceiver.getComponentName(this)
 
-        findViewById<TextView>(R.id.deviceNameText).text = getDeviceName()
+        findViewById<TextView>(R.id.versionText).text = "v${BuildConfig.VERSION_NAME}"
         findViewById<TextView>(R.id.statusText).setOnClickListener { onStatusTextTapped() }
         findViewById<Button>(R.id.exitMaintenanceButton).setOnClickListener { reenterKioskFromMaintenance() }
         findViewById<Button>(R.id.enableWriteSettingsButton).setOnClickListener {
@@ -275,21 +275,6 @@ class MainActivity : AppCompatActivity() {
      * compare mai. Se il permesso risulta appena concesso, applica subito il
      * timeout schermo invece di aspettare il prossimo ingresso in kiosk.
      */
-    /**
-     * "Nome dispositivo" di sistema (lo stesso mostrato in Impostazioni >
-     * Info tablet e nel Bluetooth) — usato qui solo per riconoscere il
-     * tablet a colpo d'occhio, senza doverlo aprire via adb. Letto con la
-     * chiave stringa invece della costante Settings.Global.DEVICE_NAME per
-     * restare compatibile fin da minSdk 24 (la costante tipizzata arriva
-     * solo da API 25, ma la impostazione esiste già prima). Se non è mai
-     * stato personalizzato (es. tablet appena provisionato) risulta vuoto:
-     * fallback al modello.
-     */
-    private fun getDeviceName(): String {
-        val name = Settings.Global.getString(contentResolver, "device_name")
-        return if (!name.isNullOrBlank()) name else Build.MODEL
-    }
-
     private fun updateWriteSettingsButtonVisibility() {
         val alreadyGranted = Settings.System.canWrite(this)
         if (alreadyGranted) applyScreenOffTimeout()

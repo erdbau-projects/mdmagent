@@ -34,17 +34,15 @@
         android:textSize="14sp" />
 
     <!--
-        Nome del tablet: discreto in basso a sinistra, utile per riconoscere
-        il device a colpo d'occhio (es. durante manutenzione in loco, senza
-        dover aprire le Impostazioni o passare da adb). Valorizzato in
-        MainActivity da Settings.Global "device_name", con fallback al
-        modello se non è mai stato personalizzato.
+        Versione di MDMAgent: discreta in basso a destra (dalla 1.5.2; prima
+        qui in basso a sinistra c'era il nome del dispositivo, ridondante con
+        il nome del tablet nella scritta di stato).
     -->
     <TextView
-        android:id="@+id/deviceNameText"
+        android:id="@+id/versionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
+        android:layout_gravity="bottom|end"
         android:layout_margin="12dp"
         android:alpha="0.45"
         android:textColor="@color/kiosk_text"
