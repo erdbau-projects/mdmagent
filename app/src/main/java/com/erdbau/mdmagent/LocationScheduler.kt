@@ -39,6 +39,7 @@ internal object LocationScheduler {
      */
     fun ensure(context: Context, force: Boolean = false) {
         val ctx = context.applicationContext
+        LocationRequestPoller.ensureIdleAlarm(ctx)
         val am = ctx.getSystemService(AlarmManager::class.java) ?: return
         val min = intervalMin(ctx)
         val prefs = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
@@ -58,6 +59,12 @@ internal object LocationScheduler {
 
 class LocationAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        if (intent.action == LocationRequestPoller.ACTION_POLL) {
+            // Controllo "Chiedi posizione adesso" in standby.
+            LocationRequestPoller.pollAsync(context)
+            LocationRequestPoller.ensureIdleAlarm(context, force = true)
+            return
+        }
         StatusReporter.reportLocation(context)
         LocationScheduler.ensure(context, force = true)
     }

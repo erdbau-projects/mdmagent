@@ -55,6 +55,8 @@ object StatusReporter {
      * Check-in poco dopo un cambiamento (app installata/rimossa, profilo
      * cambiato): più cambiamenti ravvicinati diventano un solo check-in.
      */
+    @Volatile private var failedRetries = 0
+
     fun reportStatusSoon(context: Context, delayMs: Long = 20_000) {
         pendingContext = context.applicationContext
         mainHandler.removeCallbacks(delayedReport)
@@ -76,11 +78,18 @@ object StatusReporter {
                 val body = buildStatusJson(appContext, serial)
                 publish("status/$serial.json", body, "status: check-in $serial")
                 Log.i(TAG, "Check-in di stato inviato per $serial")
+                failedRetries = 0
             } catch (e: Exception) {
                 // Come SelfUpdater: un fallimento qui (rete assente, API
                 // GitHub irraggiungibile, ecc.) non deve mai bloccare il
                 // kiosk, solo un log.
                 Log.w(TAG, "Check-in di stato fallito (non bloccante): ${e.message}")
+                // Si riprova tra 5 minuti (al massimo 6 volte di fila) invece di
+                // aspettare il controllo delle 6 ore.
+                if (failedRetries < 6) {
+                    failedRetries++
+                    reportStatusSoon(appContext, 5 * 60_000L)
+                }
             }
         }
     }
@@ -213,9 +222,12 @@ object StatusReporter {
     private fun publish(path: String, body: JSONObject, message: String) {
         val url = "$API_BASE/$path"
         val content = Base64.encodeToString(body.toString(2).toByteArray(Charsets.UTF_8), Base64.NO_WRAP)
-        // Due tentativi: se nel frattempo il file è cambiato (409), si rilegge
-        // lo sha e si riprova una volta.
-        for (attempt in 1..2) {
+        // Se nel frattempo il file è cambiato, o GitHub risponde con uno sha non
+        // ancora aggiornato (409/422, succede con molte scritture nel repo), si
+        // rilegge lo sha e si riprova con attese crescenti (1.5.4: prima erano
+        // 2 tentativi immediati, poi si aspettavano 6 ore).
+        val waits = longArrayOf(2_000, 4_000, 8_000, 15_000)
+        for (attempt in 1..waits.size + 1) {
             val existingSha = fetchExistingSha(url)
             val payload = JSONObject().apply {
                 put("message", message)
@@ -228,13 +240,14 @@ object StatusReporter {
                 connection.outputStream.use { it.write(payload.toString().toByteArray(Charsets.UTF_8)) }
                 val responseCode = connection.responseCode
                 if (responseCode in 200..299) return
-                if (responseCode != 409 || attempt == 2) {
+                if (responseCode !in setOf(409, 422) || attempt > waits.size) {
                     throw IOException("PUT $path fallito: HTTP $responseCode")
                 }
-                Log.i(TAG, "Check-in: conflitto 409, riprovo con lo sha aggiornato")
+                Log.i(TAG, "Check-in: conflitto $responseCode, riprovo tra ${waits[attempt - 1] / 1000} s")
             } finally {
                 connection.disconnect()
             }
+            Thread.sleep(waits[attempt - 1])
         }
     }
 
@@ -262,6 +275,8 @@ object StatusReporter {
         connection.setRequestProperty("Authorization", "Bearer ${BuildConfig.GITHUB_STATUS_TOKEN}")
         connection.setRequestProperty("Accept", "application/vnd.github+json")
         connection.setRequestProperty("X-GitHub-Api-Version", "2022-11-28")
+        connection.setRequestProperty("Cache-Control", "no-cache")
+        connection.useCaches = false
         if (method == "PUT") connection.setRequestProperty("Content-Type", "application/json")
         return connection
     }

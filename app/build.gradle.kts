@@ -52,8 +52,8 @@ android {
         applicationId = "com.erdbau.mdmagent"
         minSdk = 24
         targetSdk = 34
-        versionCode = 35
-        versionName = "1.5.3"
+        versionCode = 36
+        versionName = "1.5.4"
 
         buildConfigField("String", "GITHUB_STATUS_TOKEN", "\"$githubStatusToken\"")
         buildConfigField("String", "ADMIN_EXIT_PIN", "\"$adminExitPin\"")

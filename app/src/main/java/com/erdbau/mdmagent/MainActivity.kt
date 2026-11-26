@@ -88,6 +88,14 @@ class MainActivity : AppCompatActivity() {
      * dell'auto-update): dopo "Pubblica" nella pagina di gestione un tablet
      * acceso cambia griglia entro mezz'ora. Il file è di ~2 KB.
      */
+    // "Chiedi posizione adesso": controllo frequente finché il kiosk è acceso.
+    private val periodicLocationRequestCheck = object : Runnable {
+        override fun run() {
+            LocationRequestPoller.pollAsync(this@MainActivity)
+            updateCheckHandler.postDelayed(this, LocationRequestPoller.POLL_AWAKE_MS)
+        }
+    }
+
     private val periodicProfileCheck = object : Runnable {
         override fun run() {
             refreshProfile()
@@ -231,6 +239,7 @@ class MainActivity : AppCompatActivity() {
             // (e resta aggiornato anche il suo status/<seriale>.json).
             updateCheckHandler.postDelayed(periodicUpdateCheck, SelfUpdater.PERIODIC_CHECK_INTERVAL_MS)
             updateCheckHandler.postDelayed(periodicProfileCheck, PROFILE_CHECK_INTERVAL_MS)
+            updateCheckHandler.postDelayed(periodicLocationRequestCheck, LocationRequestPoller.POLL_AWAKE_MS)
         } else {
             Log.w(TAG, "App non è Device Owner: kiosk mode non avviato.")
             findViewById<TextView>(R.id.statusText).setText(R.string.status_not_device_owner)
@@ -244,6 +253,7 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(packageChangeReceiver)
         updateCheckHandler.removeCallbacks(periodicUpdateCheck)
         updateCheckHandler.removeCallbacks(periodicProfileCheck)
+        updateCheckHandler.removeCallbacks(periodicLocationRequestCheck)
     }
 
     override fun onResume() {
