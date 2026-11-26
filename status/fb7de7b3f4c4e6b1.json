@@ -1,9 +1,9 @@
 {
   "serial": "fb7de7b3f4c4e6b1",
   "model": "SM-X216R",
-  "dpcVersionCode": 35,
-  "dpcVersionName": "1.5.3",
-  "lastCheckIn": "2026-11-25T13:20:11Z",
+  "dpcVersionCode": 36,
+  "dpcVersionName": "1.5.4",
+  "lastCheckIn": "2026-11-26T11:11:57Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -26,11 +26,11 @@
   },
   "lingua": "de-DE",
   "linguaIso3": "DEU",
-  "serialeCifrato": "jYKv6LKkRrF00KpPYoYwPqk2u5X42W1W5S+W29MO\/rgfU15n2YgHnrYGg6Dvt2QU5au9yamZ\/reKrshyZqNbb5rYsKlQ+Upjaw9P4bFiyzanSZMDrS2psl03K8azjJKJxddxqtg2f+gX0iWrwbypbF\/RLMG+225VjW4\/JTA0FJkOTKEdEUw8gUN6lDoN1zzEf2qXL7i79sos4uLGgaJ6lxUS37SFWYgcf+ZdchAyYgnIUTsbpX13\/NxMIlzeEVxF+fl8jLcp6rcNmstDNSq7GCuLHCuDLCDeygATSgaxGn+pRTWTcQOBSjqES5TQKbVqtio+c6Q2O4yRTDMXnsuhSQ==",
+  "serialeCifrato": "roZ0aUFeHegb\/cXmZgxypH\/BI1R61NA2RK15ur\/kaMCX5KmSSaE4JZca7KuFlAkaRLk1oAyP86yyKNpWELtly4s0ewITWtWuD0Q5HMFotFFoib+ba9MwoUs6SxsIfnWFXGwLFM8ABFxuI6\/AHrAV92Y2H7aSIy3jbAJVisMyAO0ZTDt9healjDb0CFo014wBtNu7n\/JwHH8K\/50y5zaRsX5Ptpa\/Mcwmerx\/Adk0z4aMsfkFVCEZ9I3\/QT0igXBZ2mBday52j9Syep76+CLY08nXf0QMGBQk226DAq3\/vXZo9Pl9Snsr8lNfa+tytfHdBZTE9rJX9kURYX\/b\/5kt0Q==",
   "simCifrate": [
-    "uiaSg3mGpawKkTPx6dkpHGRcYqKBr7bOFVUjZM+ZaqgsGbaEDlrH03oMokhkC+YSCFDtRqdRaGVAGHSRg7f6s3ScZhJaLZqPuADdQuO27QyeRT3v7Yjs6Z75skLQgvv8UNDMhE5sc9vVgyemzCf6gyBo3sjDYldW6rBsDGurtV2uqCx72qkmnqCQfZHzi+BCcL5JvIZKpP2WKvDRgZZRsyiJoQduGjYT\/EYD35rg7B7u0MdCcvhGoFc5TDVksLBE3HNJKlSbc\/Q0o7jvNNLDF7hJ\/smyB\/g4yWCEfhgH4JAFbK40EVXGBVmqBucbFc93S\/um+VGKjpYK4HlSYgbrGA=="
+    "YLCpwvtF5ybBQEanKJqNa5eeN2YZBDx2SpggsE96\/Ts34Pbi01PocVrNgH+C9FREU\/X3MIbKptrs1OqXZ4777xJEVqnX9YG7N3d2IR9u3l5uyaX9TVo3xodXvI4gc0nCjytcRSTMgvQT1suGCBYFzuHo4Z3y1OK3i\/JnRfLqFyxaWjAhKJxTfSeWyqJo2W8DAYjBuyOvMeId6N27Vlz79zdElLVEJS8yFaGp+NMPabKmCqCeLkEi0VuwhTEzvzXYHlBeNT1jpn\/BCc0ri6zsbRuHyvfwpsvTaWZolEl9fn6rJjv9u5ewBbdvbkvq+qA1BhCE2VPWNMFsgtHOqjBmhQ=="
   ],
-  "posizioneCifrata": "aMAARsS\/VT1wSPjLVfvwRhVHbkp2eWcufpWuChZ3VV+iPEPkQq0JM\/xba32AVT9puK3WQDLst4IJ4oEH7re8jnN+DFjirnQxihL5SvQHCA761J8eEJnWgZzSIGYef+Rsbsr9tg+gZz0O4J7zvA1nPOAftfBGpukY0vKbw5rAFEATfGwuz6KsyKIkf25Z0HcLRMB\/PCmOLPYonNqcVlda2hD8vKC2sId7QHKAsgjhiJMx1uy4qPAtttM6Kihddhv9vYFeAo9NQ89uMtNY4QkhgDvL+7vkv1IEamqpsBRk53GPFlMR1VCdNDB6b8Sf8no+vCGakWFW8mSnKGU5deRS\/g==",
+  "posizioneCifrata": "T9KvoeNKQgobR13\/uzPz0tchQ+m0f1oYxSnN1q6G8dURVBFvSPWSsDfqhw+W4K2Xvntu92ktmLWFjkp5n28M2Ymyh5HYqzLyVWLI1imBSl3uv\/3ck6Q4f8f7wk5upXHTwG9Vpiqc6x6jZSfvE8fYs5c\/MMnG6nQyQgsD1x8IiSf0BVTx+v5boDHeY1DrIXPigod16zItCCIUxfS3kYV1W4J8oyc7MOJeoY\/+qlw7uUp1SgzC+juFAQax2L4qvE8M6cDwieaxN29jkbnidHT068Bg7J74u8wPuvev72T34rkq\/uR8W7LlzV0jH30Rp5SzmqvhLOAzGK09qQd3vUAN4A==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -46,7 +46,7 @@
     },
     "com.sec.android.app.myfiles": {
       "installed": true,
-      "versionName": "15.4.07.41"
+      "versionName": "15.4.09.5"
     },
     "com.sec.android.app.camera": {
       "installed": true,
@@ -54,7 +54,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "25.38.02.806933749"
+      "versionName": "26.47.01.1022347503"
     }
   }
 }
