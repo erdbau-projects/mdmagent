@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 36,
   "dpcVersionName": "1.5.4",
-  "lastCheckIn": "2026-11-26T07:17:04Z",
+  "lastCheckIn": "2026-11-26T07:37:08Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -24,9 +24,9 @@
   },
   "lingua": "de-DE",
   "linguaIso3": "DEU",
-  "serialeCifrato": "HcSV470aCq49tbtio+ahlxdEX\/qus1xuHCXoWce4IFd9PKBa\/EXL0En4QHf0cQU3LmHuYYmpGnDRwte8SKKiVLudhtHHggtFVkx0m3QjT0LYSubPmoYT8WJrVZr\/mphOAcHlMGozFkVlB6W2ED1suKzajqqQbe\/2cjYvA3SxD5I2rdS0iuNRG1VOb\/nexuZ6KCjsqFNkx96NT728yFq8tKSvQhetG0xs0JaXs33QKakcPm09SOKzDxU2yttFuEp+NAIS9D7L2hTwaDDbMESmCz0fqYTkd68Myzybpm\/BywkarfoQCuo4HUhV3bTTPDaNNCqdMcvDi8bUtLax2zpqRA==",
+  "serialeCifrato": "Ic2qwAShyk\/145Yy2KK+ujRU6J9qwIucT7fM9O46PLISXlbuek53P0yr895HDxoL4nWI2ECAfIPQ5WOrvgzQ8jmW3mpM2Xy24vDcpqawEHXQCyaIkYaTBdKcjXE6RHWRx6L\/ep74zm4qCfcqMsxEx71w\/hy0XEyfzIxQixosKkY1owiWwuuVzWmJ2Vfup14WMNZOvucbJhkdzNjY8wIVs0ToPVOTiUY07MoW8+O+aADUWSduVKJgrAMmauUn5LArSMVMTjkKRIU+XMNjatr6C69swthiMCxrlnhluAsWYTFWjA0JVGgeb0kiGiahP5xVQjXEDJUIrkghEtfpITpq4Q==",
   "simCifrate": [
-    "ybMyKO5+n8XVQ7i21picxE+ZKhnI7NpTUpX39ib\/KJPuCV\/ma6DTiyscNHciOdZkkvWafyYLgNxAeLOcWH3cpGuVkGw9iH+1ETc1V3BlZERycZWKIlOB1MsDfrXinlJHQwtRr4bSdHQ4UY7i7KapKTVmtC6H3vbCe6WCNNccMDDToG5vcugnb4MJcZvwP00eKKDV5G+HNP1nYQAcUNkfuYkRI6MTdLf\/oJYA27\/vktDMKH4mRXeRHituIEIGv5+WgJGQ8zfTvfbHcpeUlRzT\/uvMJjCTk877737kE85JpwBBk21yMEIMWJnDyfVwBDpm9aDY3USQYl1MUK2HyA9HkA=="
+    "dSqgXCRKMaWhpR8mBw5+MNBUAHyydhvyCFGKNViM09S3ahVPhJR4QH\/DOf2qEEjw+Ge1o7jntkVcYycWHwr2WXYPRmShTYKpgJ2b8MP4EMuJ2eAgUWhfd3sKI4b2oTCdsUeH21iov4NQmZF0MY+DP9v14RmOkuSM9ahmQrOjRpxYf6kYC7IhH+fKWOCb4530tB+K5B1K5CsugaJiCamUzQh0tzI7ozPiDqkjYUog\/OBoexoCa1esGC4P44TC7w4da\/sWP1LeAPA\/0yX7zIudYSQ7epkcoqvNfsxsp+R9MzKSY0gudKilft0g3Wrv\/02AIqFKH+kYMHbweyVfalkTHw=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -51,7 +51,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.46.00.1016872485"
+      "versionName": "26.47.01.1022347503"
     }
   }
 }
