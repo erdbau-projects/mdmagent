@@ -1,9 +1,9 @@
 {
   "serial": "68811bf7bda62b20",
   "model": "SM-X236B",
-  "dpcVersionCode": 34,
-  "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T13:19:46Z",
+  "dpcVersionCode": 35,
+  "dpcVersionName": "1.5.3",
+  "lastCheckIn": "2026-11-26T01:00:49Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -24,10 +24,13 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "zCVujNAwVbio4QGtMP09oHt1Sd8b5hYrFACJfhQFcOrTDTBX1vx2AU+QSgmgyLKT4iA\/zxDFJRxnC6VWeQHABQW9FztNL+rP28Zy9TBN7ZefnJD20fOU4myzguzxZAZrrB8C9ophRNxH2UWc0wTtJu3h2yuqDPS+oYQ1vBdbeIArLzJROvgV3siyOvVI\/WMDvOKcYp0gUv2TPTERQ5Q6x2oV1vi6rJeFp2utvkRIA7f8Bc8RagZUnvDgNaLD0ZWnuzwj2cAmU6aX7wZKeVbwkGokp5YQ4\/VGAv\/yMQn\/c4AzsCVAas\/MRBMkjCLS44Lsg4qvnLrOFoq4mAYAlztu8Q==",
+  "lingua": "it-IT",
+  "linguaIso3": "ITA",
+  "serialeCifrato": "SCnSc3JhBugPJUYPeN0My6RG9w8MLNNFyE8ZKluk719rLBZ3aCQ6Lb8Ycfyk1L8Nlj10HE\/Oz5iHIqd7fxrxZ8RF++IM3YDW9xAjyeA+2cOrEwJ0Xelsk9NAiO9lqyiffoCfWR7RJokmUw2zSJm5xpmgPc56\/lbsdN+qLWSRXbF1E\/uL\/ou3kylo4mso9aM1NCpN++uDLw9+d7xWmwYSiIiTswD3\/aNJ9aR8NH8zTJCKqnS9BYtlTyOBaWu2zuK5vpyTJOvhYXrDRwdq2HG1E84nrVhdxlZ1piLL84a69UjTN8FiqdPdNmYqpkbO4Wo1XoN58M3\/8v3sF0BC8tHLdA==",
   "simCifrate": [
-    "hEAbf19KxizumWTv9Fixnr6B+k8iVVOzAay7Ooc94UdwHMUxp\/9svnOp7fqUFyAO+zQO8Qgy6vvbx0XUCu2B\/xxh0ab4KblwazZELC3mr6BbF0oprXnJvC8zP9VvjgFXneb8nIzYNEQfzG9Uzw4kI0N8u0olUrV9wapdpmMJsHkmTh71HB6vZ6koxoPdMAsnCbdRz77tJynDN+gTY081tgake4VoIA5wnu1etStieeYfeVtNJ+hWABdO+A\/WoK19aeGlt9H7LtPn26uWDO6wFyOSGmpar8oaC6iWt\/QuVAsyq69tjvq4y1GNAe0uFQf3Am+XH\/0qY5QU0ms+7b95kg=="
+    "hjmxAE5Mvc3DMH\/BpbUj6qC3eZVONduqmbH5nhUymnJawlaEWkSnxQevcnSWN4Onq\/ZAembwgJgoOa0wopyc0vcR9MPcXpwHo7CcrSWUauGYZKQ5a\/6jjoIIkI0NvaqFS9\/1W16b\/5+pb7GRfWOlUfuZO\/Cn\/E0zAvsran4myYQstZkK1a1SsDvRtXfPP4k\/2DTpxqSajBPDDlaZq2iatLFVJIPHUXGyLu7OOZ\/Ikl3lk\/UHiEyqeofuSFMn7OFMYBX6pZFzu1vQloFPnwDkYbB2R22HMYvmksAGjiNf9f4SOld1JRsV+IEg0+aLukyBYuNXHOcX6u5MuRK5HET68Q=="
   ],
+  "posizioneCifrata": "19KONGemg5YB1K5gXHNYY\/WTa88uSTs99w7hVBoSKOKmVgFFN3\/FP6vQRb\/oQ+Yi3ijtE7YgWs+TTZ7I63MDKktaN90wYe5rnTcwl72H3I4jK89N+JoG5TKoKEDg2RH+Bke3gyNI\/ZvFxZk7ylQNZ8bm8obEuUZDEVJJegIGOMqmmSCE646joFi1bXoRw8PpzzcqWwhQnpcNzvRm+T+skOV9se69FzU6HJBETu22eq2ralh2mo3omM6bO9x2oo1\/HToPRFYvBNwmD4QKbkxvIS6+N8hqOKmXk\/zEahJhpf92vYD0WzkTOH9zMWIfSQT\/w2h4JNAQAjQEPRlAAZyOcA==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
