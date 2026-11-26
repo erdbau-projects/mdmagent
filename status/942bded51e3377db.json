@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 36,
   "dpcVersionName": "1.5.4",
-  "lastCheckIn": "2026-11-26T13:45:34Z",
+  "lastCheckIn": "2026-11-26T13:46:31Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -26,11 +26,11 @@
   },
   "lingua": "it-IT",
   "linguaIso3": "ITA",
-  "serialeCifrato": "wgJL3NPqzSpSCcvkGLjYo9f8QXGySOsjPPb3Epzbt0TYoVH\/ESYOuuDA8d2YUkxgZHIXQmPVfthEzZgQ3JZnZcEO\/Z2\/+ykjWd1qW81TDcgju\/rm5kPGbPu\/4b8UW4pNZOIYkTVaLDqSJyO6WPK7MuYw0m3CrG6i1GAMJht+CZcyo6VbW3GXHTITVhTP\/n9f0vyboutxPTQtYksB5+E+rFILy9IjGtdCpUdT\/gDqfQ3LZXqop0X7kLrAmfrmAh7o+uS5Y4qbAfjy9qJTVa7j0nDK8UryozAqOHThwFtln\/K1NuzYT1yvBN7cs0eq+IM7EGOeYxogqka2z16PlMiPsA==",
+  "serialeCifrato": "XRxffpDwuNIjKfMIgMDi6bKFPw6JykQElgU1SJ3ZDRwyzyOKyIRGPwCdLTnkkPBFgrp11QIdJt\/TQwPtfVgPkWgu1CPz1lxsQGbKagWKJfFEapz0mV8BrfwA3SUHC5wr4nzK\/kewICymRCTu3dM3Et7papOX1CxXeh+DCaigYv+9wloPR0OZXHNmvqWEieLorv3n4cYIDiiBubvhhOwPcWGV3ZeSQqWLqdD+oLkfIevLKySVldntHt+snEAI0UlO8r7c+uQp6Sk+2Kr4GulwKpAGvTiWi1R97GZpONHkXCX4xZIps0ika\/UjqHRkr4USKXUgEAA8NqShSfOKINT1cg==",
   "simCifrate": [
-    "7nYgxzB1vd1adgXKMEwKbVBj5vX2CC4rPooKyQSHtIIeervKLti40tylH0G91kv7TuMUUmb1rqIOe4Y3+OIST5vA5HCEYR9F523vtORx\/N22spGXKVx\/JmFlXxkjilE0W4XiYoh6bpZuK+FOqMwTgVc+xeX17l7IycJfNCQDU9Ud4aVlBbpMK0ryy4NI\/mFpfngMOnaaUSu+I51Ew6\/y5Kwa6SzdOZC1mwm0sV9uzEYHx5ZxRAemKDFSbHQWCOAD4dXkpks64VneAXQj8JBWj8yldA+SEAGyvam990crEaZ5dTtiwHlo9RyhMF+INkS6QGwDIT\/gS\/d1RZ7TRemUeg=="
+    "CMrFwRWta7dtlJsE2w8nBXBPsCLZMn\/qgr9AlLBQILMbKyfFeAR5zqzrFLlRE7OUP1xoDHcgOYemcXgIReSOnvlxxyhGkBsQwPjF\/MuKhDvaAbXjh2S9Ftd1BSWG2tepKFLg6Wvl61bUcoO6Fc8zgq2vUOWWuX1RL1oHnDxhYQQZDx6PxZiUb\/AcB\/oKttqA37sK245uy6\/6IPBSD5tdJsWeoUUpLPB0M0N0CCCAyGKLsz9bosrbg4EgPfuzWj3Oua6wEYzDurAMyC4hb9v\/tqSxuoQf3wtRx1DRvdyTOLQs9stA74AO8jEbCzU\/lyQXFJNQg\/UE4IB2gS+KhTBjug=="
   ],
-  "posizioneCifrata": "NK6goobppGeEoBZRWBdMoC7oOuRrjMGCOLSNLvlxwqI4WY4+1j6t8UCYOBxjDwiljsTCqVjFuP7rt8TdfeS4PQ8KqVFo37I\/sGyuZIDxr+YC6cXK08MCyiH\/UzAxJqz6FGqpYQrLq35lDWMBBSZP5u3OKTRmk8PRSVJXB3S+gMoiH\/PzfyApR9dDnG4hi9b2Y91AMCXOd7ziSR+IRH6srRRDTvGjkl2EUStQJ6hIGntUnywo1hvRlY3SrKKYx1l36OKmMUT7m7Wn7UJhFPIaTQgct28zw2k+9SPNiIxk8qfRt9nSL+7xEyzCkvlqC4TqOxgarygLNBnv5C3CEkLpTA==",
+  "posizioneCifrata": "UzvjeIGb4NY8COO1PG0xtRObm1NSV0JRISwj2enQ6bbeEsS08m\/q5eLH4lx788NZbGkiajtcbRON5QWcfavtykXM9EeHrR6VVZr\/P4YTu2stGI2o2qypaM4GjA5yQ9ZLR4ne4gogtuz9wBnQomgTJhvIGamGeJbyDAGFpCnOQ2bp3kQpmg0fzvtHE1Fw+HmdSnraiAVCVTwkFonmaTKpPzcYeauUHw1dWeuX7HZOF0dHIL8cRCUDpBka2IhwU5LPQf+gDNalzxxSFzJC5roO1AXeLYWdrFnBlDfezv+85Rvr4Zx+u5ypz64XGKLUP3FmPZZin+ul+iXNcPZhTwhvMQ==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
