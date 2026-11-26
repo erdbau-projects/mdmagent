@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 34,
   "dpcVersionName": "1.5.2",
-  "lastCheckIn": "2026-11-25T13:11:52Z",
+  "lastCheckIn": "2026-11-26T11:14:23Z",
   "profilo": "camionisti",
   "impostazioni": {
     "posizione": true,
@@ -22,9 +22,9 @@
     "playProtect": true,
     "schermoAccesoInCarica": true
   },
-  "serialeCifrato": "P2IRGrzNaEvxCY5sTbhYeOnKAPz9jK5pRFIffLe6kJ9nEK4vOP9k78FrdXuPA8kKJ90A7C0uzIgBMel9KYNycg7mZIAEmqsEqe8G4ttTmd4KU5HzjhfQnh\/xNHWgcr4R+ZYnomuCRtHjyMor8\/8hEFgeSOft3XvMkrhr2F386NXE\/aZuYXtE5GPWnVf2RQQIZ32Wy4AAvisCGVSvVJIRlb9LDSme7rD3a9kl3qsoz4DbBcJQVGAvT9up04Gc94xByHaqYUVQme6R5Dg\/b48Kwe9RmeY2kDzSY\/cc9OkVb4Kil+GuycbNrYNs1mOf34J0JKSY27CrLVgKFheS8xQ1QA==",
+  "serialeCifrato": "iWOQduchE5EEScUjyHJUteGlD06H+y3Vlblu\/T2RwAKdxGyAFg6HZ2\/fiLBt6lMEINxmb510+kR3iiGhDPWOVoJobweQEYxn7E4Tib\/k+IQxxrYzCCobzAeIksriFUu+NPHBIW2t6Qz7Odh0ZMBJBykSubwj89OU7IdLqUoacbTvSU+UcyR1PxuSNTwBint7dvvDbC7ZCPX59yI9OfpizF5xa+mTzxYR2dDLx4w\/4+n3o3+QuZLeBauaBbsLvuh6zr0KRe987TX3aU\/sahxQptIclcPlkpLz6l7\/IRIFm6UDrLIleanUD\/CyTZtKsH+Re75dzDS17FPZhuiTcDdg+Q==",
   "simCifrate": [
-    "aP8ovD1NPHA58JE0UYs\/VNwpY5Hn5IzLBw9KyVDtt2HGK0LaVqFHXznzbH7AHrWE8gD5S+FZc1f5e\/prMxR4uGcGEPKW06H6o3MTI\/hu9BzMZ8EeRFpg7h5zw6wn07y5+hbG4T1Isx45UdVCfSy\/PJ1r3PvdR9rTExWusX0MTwgxtX3zvUXF8B1x1RptUNXbMgMjpIVV6VTEAdbjRKdkA59QN7OJLNOzr5Yn9OAM2nt+I\/aTgzUprjOvHsrLkmMVWvZ8ojBMKKDxxp+J1D0cMIyJWm7gEHsheIPAfDP33seDYh90K38dmDcVzmlY4ELePONkygSH5pAiFikCPUWWkQ=="
+    "emJGBJz9jWjW99lcuD6L30USK7biD96UWBIWgkTRkAjT0mYkMz5rYgvs7dqECZnM5ZsZNMRxm8yQtD1lf1wVnSJDddZoTv0Lve1Om+ch1DixfJCVnr0ZKexuYQ\/rrfdtrt5Hrj\/Vlm4gzCiN4Fv39ezVptMU9vi7YiQA4JAB2eBB7OaIX\/9l0qTel4rm\/dRpz\/bHhTi2gxRbuuhKa+04WmkzXki\/vDZcu+pn7zW84MaLUFK5EICkWG5ptaePq2F4ECcFnO1qV4pzykj8G+BaVRthauCg4lVluPQQdn4qoOoyUlzwSvgN9bMCflWnpB8Xq+UzGuMJ0TPHZiT4N7+Tmw=="
   ],
   "apps": {
     "it.rentri.appmobile.firdigitale": {
@@ -33,7 +33,7 @@
     },
     "com.adobe.reader": {
       "installed": true,
-      "versionName": "26.10.1.51189"
+      "versionName": "26.10.2.51485"
     },
     "de.mts_ag.android.mts_smart.mts": {
       "installed": true,
@@ -49,7 +49,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.45.00.1011720968"
+      "versionName": "26.47.01.1022347503"
     }
   }
 }
