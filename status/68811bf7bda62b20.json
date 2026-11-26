@@ -3,7 +3,7 @@
   "model": "SM-X236B",
   "dpcVersionCode": 35,
   "dpcVersionName": "1.5.3",
-  "lastCheckIn": "2026-11-26T01:02:40Z",
+  "lastCheckIn": "2026-11-26T11:08:47Z",
   "profilo": "ufficio",
   "impostazioni": {
     "posizione": true,
@@ -26,11 +26,10 @@
   },
   "lingua": "it-IT",
   "linguaIso3": "ITA",
-  "serialeCifrato": "wW2NzR3GIzOCLC3FmtFtc0trKPju9+5lMk8Rd0kQdRX1kY1rs5v6obrLI7cXWIi84UbmdrGU6Ni9cD94a0bjzetEsKRAoSU\/jkXocZYAu2mrDOeDDAVGzZTFKpKmw3fSEGv2DVaBw73+yX4MTu5EqTSdLY0SussuedqyYgx79TftkvKcrTiUx43AImjXUp+DR50jqmPRXc\/cqjd9WlzWRpAJn3fliWpjLUs7z+aDr5rG7lUw2T9vIrDwm0RjQNwmIWfnOC2QzWAA3MGGYhWeQBNpS0o\/ndnm3MmyvUFHuLTfgckspXTMS1XY6dl2U3UcKvPce+ZQm2xt2MaSgmIE0Q==",
+  "serialeCifrato": "lgCH5m4UKA67qj66ift+MiO9GgRj5CazdQw3e3Lcp5X8Y163\/RIAIAGCn7tRntk2k7Ce1SEFWvkDk832IwZEpUkzCcND1YGLJt\/Azn4iiWUAydg3bGyw4ogYeds1J\/4TCwC55XK9HUs\/vjy+uukrM4u6jrRZAV4yzohiPGwM6i9JmxyHUUjdOPhgK91NxoDVVK3xKn2\/Tl19OJTR4BHo6Xilhn44jRbrmelRZOeCi3Xn1dV+MCXyE1\/NaSuqByZCVH86aMYtRz3G61Q43fyKFwRMTf29RMUXcxc2TpfFTkiUUYO1i53KNbctaxNRRAaR65M4HJehe3Qfv1XqZEkA3A==",
   "simCifrate": [
-    "Qbulc1i4M9l3D1h4bkEXwciqV2GBoxVLqJHgp6pZV48TjCHVvjLzpubIaOXNmUoweY9QmaH3EVvVYzfNSNA5HXcDb+OQ3qbZ7n6c\/YMaRzVf9M7YDg8EkUpDa4iCKfY1a5Vyu1XV\/jrSW0FW8uBOthyUlT5PXXZNVr8chEhpRlr1b26DHNZ2+LhS9fwW25BL3p8L\/pX6TLnuJKeJNFY03em7jaC1f6m6yqV6tkp2wRWqBjFK9dhBxzT6QBhSC4orBHlYCZxqDtFMnT1XAU+wgdDAnTDBUVEFRGw+41wM6AIme2PZUN15r3gTN2eTg7s4h09HvYojarOloVaR5rVbXA=="
+    "rZ3j9sG42DQ3oAGZCeuClgu4BCUoVLOTZAgFF+UJ795ppkYPrbM+hTdunH6bklMajpz+U\/+069viRgrCZAb5a0VYt4R4yTyPUpCqN9U8v21IRPXV\/rGbyxoq+SxRDRZu505SF4Qn3LRNu2rXfkWRrRUSy2Ril44cZwbTRefUCrIXMRP5Q0VpRqk6qCpmmkcEjBfSy6bTxtvzqej415AXMQUjSQxgS\/wG0P5GIcdjIEHqxcnNSsgJIUL02f2Wq0F9\/Ra+iYHjWlYbv1JWxDIsihC5z8gvHxvNW2zzPAGhZoy72JW7RxQYFeKNT1\/PQNTAK\/Zhob8ql\/YAjBJ2au9YKA=="
   ],
-  "posizioneCifrata": "VYyV9Z2L2ZkSURLX5Z\/JO0XZ9F5FbByvEf+\/zhjft7ebiX6pDzsHtdGyTFAi3aaUEJEjIVzTaSoRrVEn4dct47zGA0KHImkmVxShIjNfLIPElR\/k\/Eg4cooPy+6r0bzjb9q3XTybgTJaMQz7iTOrDgy7YXFGQLJE+nzknph\/ks+oi6u8J\/Tq8K152niI1TwZrsyOVqyshw9baET44vnEWeyh4IxHW47jBfnhaPFiWbSODvT2ipythWQAsL4LlbBG1bTVEP011PV\/Hm4J8ob1JvBcSokPAFB92Vh3C+H1DJQxbELgwLEM4y+zWbtQPiO4eMiSj3HwErFP3n6aNrS6jQ==",
   "apps": {
     "it.rentri.appmobile.firdigitale": {
       "installed": true,
@@ -54,7 +53,7 @@
     },
     "com.google.android.apps.maps": {
       "installed": true,
-      "versionName": "26.47.00.1022347503"
+      "versionName": "26.47.01.1022347503"
     }
   }
 }
